@@ -1,0 +1,3385 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IOCL Daily Sale Register — M/S Chandra Pratima Petroleum</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            obsidian: '#050811',
+            ioclOrange: '#F37021',
+            ioclNavy: '#0A3D91',
+            glassCyan: '#06B6D4',
+            glassEmerald: '#10B981',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* ==========================================================================
+       1. LIQUID FLUID TRANSPARENT GLASSMORPHISM ENGINE (SCREEN UI)
+       ========================================================================== */
+    :root {
+      --bg-canvas: #050811;
+      --glass-bg: rgba(255, 255, 255, 0.055);
+      --glass-bg-elevated: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.14);
+      --glass-border-top: rgba(255, 255, 255, 0.30);
+      --glass-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.65), inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-canvas);
+      color: #F8FAFC;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum" 1, "zero" 1;
+    }
+
+    /* Animated Liquid Gradient Orbs Canvas */
+    .liquid-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+      background: radial-gradient(circle at 50% 0%, #0b132b 0%, #050811 75%);
+    }
+
+    .liquid-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(95px);
+      opacity: 0.42;
+      mix-blend-mode: screen;
+      will-change: transform;
+    }
+
+    .orb-saffron {
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, #F37021 0%, rgba(243, 112, 33, 0) 70%);
+      top: -120px;
+      left: -80px;
+      animation: floatOrb1 22s ease-in-out infinite alternate;
+    }
+
+    .orb-navy {
+      width: 640px;
+      height: 640px;
+      background: radial-gradient(circle, #0A3D91 0%, rgba(10, 61, 145, 0) 70%);
+      top: 15%;
+      right: -140px;
+      opacity: 0.62;
+      animation: floatOrb2 26s ease-in-out infinite alternate;
+    }
+
+    .orb-cyan {
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, #06B6D4 0%, rgba(6, 182, 212, 0) 70%);
+      bottom: -100px;
+      left: 18%;
+      opacity: 0.30;
+      animation: floatOrb3 24s ease-in-out infinite alternate;
+    }
+
+    .orb-emerald {
+      width: 460px;
+      height: 460px;
+      background: radial-gradient(circle, #10B981 0%, rgba(16, 185, 129, 0) 70%);
+      bottom: 8%;
+      right: 12%;
+      opacity: 0.26;
+      animation: floatOrb4 28s ease-in-out infinite alternate;
+    }
+
+    /* Subtle frosted noise texture */
+    .liquid-grain {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.032;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    @keyframes floatOrb1 {
+      0% { transform: translate(0px, 0px) scale(1); }
+      50% { transform: translate(90px, 60px) scale(1.12); }
+      100% { transform: translate(30px, 130px) scale(0.95); }
+    }
+    @keyframes floatOrb2 {
+      0% { transform: translate(0px, 0px) scale(1.05); }
+      50% { transform: translate(-110px, 80px) scale(0.92); }
+      100% { transform: translate(-40px, -60px) scale(1.1); }
+    }
+    @keyframes floatOrb3 {
+      0% { transform: translate(0px, 0px) scale(0.95); }
+      50% { transform: translate(120px, -70px) scale(1.15); }
+      100% { transform: translate(-50px, -30px) scale(1); }
+    }
+    @keyframes floatOrb4 {
+      0% { transform: translate(0px, 0px) scale(1); }
+      50% { transform: translate(-80px, -90px) scale(1.08); }
+      100% { transform: translate(60px, -40px) scale(0.94); }
+    }
+
+    /* Multi-Layered Frosted Glass Cards */
+    .glass-card {
+      position: relative;
+      background: var(--glass-bg);
+      backdrop-filter: blur(28px) saturate(185%);
+      -webkit-backdrop-filter: blur(28px) saturate(185%);
+      border: 1px solid var(--glass-border);
+      border-top-color: var(--glass-border-top);
+      border-radius: 22px;
+      box-shadow: var(--glass-shadow);
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.28s ease, box-shadow 0.28s ease;
+      overflow: hidden;
+    }
+
+    .glass-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: radial-gradient(
+        520px circle at var(--mouse-x, 50%) var(--mouse-y, 0%),
+        rgba(255, 255, 255, 0.22),
+        transparent 55%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .glass-card:hover::before {
+      opacity: 1;
+    }
+
+    .glass-subcard {
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-top-color: rgba(255, 255, 255, 0.20);
+      border-radius: 16px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    /* Glassy Input Pills */
+    .glass-input {
+      background: rgba(5, 8, 17, 0.48);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 11px;
+      color: #F8FAFC;
+      transition: all 0.2s ease;
+      outline: none;
+    }
+
+    .glass-input:hover {
+      border-color: rgba(255, 255, 255, 0.26);
+      background: rgba(5, 8, 17, 0.62);
+    }
+
+    .glass-input:focus {
+      border-color: rgba(6, 182, 212, 0.75);
+      background: rgba(5, 8, 17, 0.78);
+      box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.18), 0 4px 16px rgba(6, 182, 212, 0.15);
+    }
+
+    .glass-input-orange:focus {
+      border-color: rgba(243, 112, 33, 0.8);
+      box-shadow: 0 0 0 3px rgba(243, 112, 33, 0.20), 0 4px 16px rgba(243, 112, 33, 0.15);
+    }
+
+    /* Hide number input arrows for cleaner tabular alignment */
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
+    /* Custom Glass Select */
+    .glass-select {
+      background-color: rgba(10, 16, 34, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #F8FAFC;
+      border-radius: 12px;
+      outline: none;
+      cursor: pointer;
+    }
+    .glass-select option {
+      background-color: #0b1224;
+      color: #F8FAFC;
+    }
+
+    /* Glass Buttons */
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-top-color: rgba(255, 255, 255, 0.32);
+      border-radius: 12px;
+      color: #F8FAFC;
+      transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.14);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.5);
+    }
+    .btn-glass:active {
+      transform: translateY(0);
+    }
+
+    .btn-iocl-primary {
+      background: linear-gradient(135deg, #F37021 0%, #d9580c 100%);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-top-color: rgba(255, 255, 255, 0.55);
+      border-radius: 12px;
+      color: #FFFFFF;
+      box-shadow: 0 10px 28px -6px rgba(243, 112, 33, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .btn-iocl-primary:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 32px -6px rgba(243, 112, 33, 0.68), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+
+    .btn-emerald-glass {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.28) 0%, rgba(6, 182, 212, 0.22) 100%);
+      border: 1px solid rgba(16, 185, 129, 0.45);
+      border-top-color: rgba(167, 243, 208, 0.55);
+      border-radius: 12px;
+      color: #ECFDF5;
+      box-shadow: 0 8px 24px -6px rgba(16, 185, 129, 0.35);
+      transition: all 0.2s ease;
+    }
+    .btn-emerald-glass:hover {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.38) 0%, rgba(6, 182, 212, 0.30) 100%);
+      transform: translateY(-1px);
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(5, 8, 17, 0.4);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.32);
+    }
+
+    /* ==========================================================================
+       2. EXECUTIVE A4 PRINT SHEET STYLING (ZERO-GAP AUTO-FILL & CRISP PAPER)
+       ========================================================================== */
+    #print-preview-wrapper {
+      display: none;
+    }
+
+    body.preview-mode #glass-app {
+      display: none !important;
+    }
+
+    body.preview-mode #print-preview-wrapper {
+      display: block !important;
+      position: relative;
+      z-index: 20;
+      padding: 78px 16px 40px 16px;
+    }
+
+    .a4-paper-sheet {
+      width: 210mm;
+      height: 297mm;
+      margin: 0 auto;
+      background: #FFFFFF;
+      color: #0F172A;
+      border: 1px solid #CBD5E1;
+      border-radius: 2px;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.8);
+      padding: 5mm;
+      position: relative;
+      overflow: hidden;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Executive Double-Line Outer Frame */
+    .a4-paper-sheet::after {
+      content: "";
+      position: absolute;
+      inset: 2.8mm;
+      border: 0.75pt solid rgba(243, 112, 33, 0.45);
+      border-radius: 2px;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .a4-watermark {
+      position: absolute;
+      top: 53%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-26deg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+      opacity: 0.04;
+    }
+
+    .a4-content {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1.5pt solid #062152;
+      border-radius: 2px;
+      overflow: hidden;
+      background: #FFFFFF;
+    }
+
+    /* Zero-Gap Architectural Grid Rows */
+    .a4-body-stack {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .a4-grid-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+      border-bottom: 1.25pt solid #062152;
+    }
+
+    .a4-grid-row.grow-1 {
+      flex: 1.28;
+    }
+
+    .a4-grid-row.grow-2 {
+      flex: 1.08;
+    }
+
+    .a4-grid-row.grow-3 {
+      flex: 0.94;
+    }
+
+    .a4-cell-left {
+      display: flex;
+      flex-direction: column;
+      border-right: 1.25pt solid #062152;
+      background: #FFFFFF;
+    }
+
+    .a4-cell-right {
+      display: flex;
+      flex-direction: column;
+      background: #FFFFFF;
+    }
+
+    .a4-panel-fill {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .print-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--p-font, 8pt);
+      line-height: 1.22;
+    }
+
+    .print-table th,
+    .print-table td {
+      border-bottom: 0.55pt solid #CBD5E1;
+      border-right: 0.55pt solid #CBD5E1;
+      padding: var(--p-pad-y, 3.1px) 6.5px;
+      vertical-align: middle;
+    }
+
+    .print-table th:last-child,
+    .print-table td:last-child {
+      border-right: none;
+    }
+
+    .print-table tbody tr:nth-child(even) td {
+      background-color: #F8FAFC;
+    }
+
+    .print-table th {
+      background: #F1F5F9;
+      color: #0F172A;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 6.7pt;
+      letter-spacing: 0.06em;
+      border-bottom: 0.9pt solid #94A3B8;
+    }
+
+    .print-section-header {
+      background: linear-gradient(90deg, #051B44 0%, #0A3D91 72%, #1353BA 100%);
+      color: #FFFFFF;
+      font-weight: 800;
+      font-size: 7.4pt;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3.5px 7px;
+      border-bottom: 1pt solid #051B44;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .print-section-header.orange-accent {
+      background: linear-gradient(90deg, #9A3412 0%, #EA580C 60%, #F37021 100%);
+      border-bottom-color: #7C2D12;
+    }
+
+    .print-section-header.emerald-accent {
+      background: linear-gradient(90deg, #064E3B 0%, #047857 65%, #059669 100%);
+      border-bottom-color: #064E3B;
+    }
+
+    .print-section-header.purple-accent {
+      background: linear-gradient(90deg, #3B0764 0%, #5B21B6 65%, #6D28D9 100%);
+      border-bottom-color: #3B0764;
+    }
+
+    .print-sec-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      border: 0.6pt solid rgba(255, 255, 255, 0.45);
+      color: #FFFFFF;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 6.4pt;
+      font-weight: 800;
+      padding: 0.5px 4px;
+      border-radius: 2px;
+      margin-right: 5px;
+    }
+
+    /* Auto-stretch ledger ruling inside shorter column so CL Total pins flush to bottom with zero gap */
+    .a4-flex-spacer {
+      flex: 1;
+      min-height: 2px;
+      background: repeating-linear-gradient(
+        to bottom,
+        #FFFFFF 0px,
+        #FFFFFF 16.5px,
+        #F1F5F9 17px,
+        #F1F5F9 17.5px
+      );
+    }
+
+    .print-cl-bar {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 7px;
+      font-weight: 800;
+      font-size: 8pt;
+      letter-spacing: 0.02em;
+      border-top: 1.1pt solid #062152;
+      background: linear-gradient(90deg, #EFF6FF 0%, #DBEAFE 100%);
+      color: #062152;
+    }
+
+    .print-cl-bar.amber {
+      border-top-color: #C2410C;
+      background: linear-gradient(90deg, #FFF7ED 0%, #FFEDD5 100%);
+      color: #7C2D12;
+    }
+
+    .print-cl-bar.emerald {
+      border-top-color: #047857;
+      background: linear-gradient(90deg, #ECFDF5 0%, #D1FAE5 100%);
+      color: #064E3B;
+    }
+
+    .print-cl-bar.purple {
+      border-top-color: #5B21B6;
+      background: linear-gradient(90deg, #F5F3FF 0%, #EDE9FE 100%);
+      color: #3B0764;
+    }
+
+    .print-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-variant-numeric: tabular-nums;
+      text-align: right;
+    }
+
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 4.5mm;
+      }
+
+      html, body {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .liquid-canvas,
+      .liquid-grain,
+      #glass-app,
+      #preview-toolbar,
+      #modal-backdrop,
+      #cloud-modal-backdrop,
+      #toast-container {
+        display: none !important;
+      }
+
+      #print-preview-wrapper {
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+      }
+
+      .a4-paper-sheet {
+        width: 100% !important;
+        height: 287mm !important;
+        min-height: 287mm !important;
+        max-height: 287mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+        border-radius: 0 !important;
+        background: #FFFFFF !important;
+        page-break-after: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      .a4-paper-sheet::after {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-ioclOrange/30 selection:text-white">
+
+  <!-- Animated Liquid Fluid Orbs Background -->
+  <div class="liquid-canvas" aria-hidden="true">
+    <div class="liquid-orb orb-saffron"></div>
+    <div class="liquid-orb orb-navy"></div>
+    <div class="liquid-orb orb-cyan"></div>
+    <div class="liquid-orb orb-emerald"></div>
+  </div>
+  <div class="liquid-grain" aria-hidden="true"></div>
+
+  <!-- ==========================================================================
+       MAIN LIQUID GLASS INTERACTIVE APPLICATION (#glass-app)
+       ========================================================================== -->
+  <div id="glass-app" class="relative z-10 max-w-[1440px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-5">
+
+    <!-- TOP COMMAND & HEADER GLASS BAR -->
+    <header class="glass-card p-4 sm:p-5">
+      <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4">
+        
+        <!-- Brand Emblem & Editable Station Header -->
+        <div class="flex items-start sm:items-center gap-3.5 flex-1 min-w-0">
+          <!-- Custom IndianOil Inspired Emblem SVG -->
+          <div class="shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-[#F37021] via-[#e25c0e] to-[#b54100] p-0.5 shadow-lg shadow-orange-600/30 border border-white/30">
+            <div class="w-full h-full rounded-[14px] bg-[#F37021] flex items-center justify-center relative overflow-hidden">
+              <svg viewBox="0 0 64 64" class="w-11 h-11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="24" fill="#F37021" stroke="#FFFFFF" stroke-width="2.5"/>
+                <rect x="6" y="25" width="52" height="14" rx="2" fill="#0A3D91" stroke="#FFFFFF" stroke-width="1.5"/>
+                <text x="32" y="34.5" text-anchor="middle" fill="#FFFFFF" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="8.5" letter-spacing="0.6">IOCL</text>
+              </svg>
+            </div>
+          </div>
+
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wider uppercase bg-ioclOrange/20 text-orange-200 border border-ioclOrange/40">
+                <span class="w-1.5 h-1.5 rounded-full bg-ioclOrange animate-pulse"></span>
+                IndianOil Dealer Register
+              </span>
+              <span id="save-status-badge" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-400/25">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                Connecting Cloud Server...
+              </span>
+              <span id="gdrive-status-pill" class="hidden inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-cyan-500/15 text-cyan-200 border border-cyan-400/30">
+                G-Drive Synced
+              </span>
+            </div>
+            <input
+              id="input-station-name"
+              type="text"
+              aria-label="Station Name and Address"
+              class="w-full bg-transparent text-base sm:text-xl font-extrabold tracking-tight text-white border-b border-transparent hover:border-white/20 focus:border-cyan-400 focus:outline-none py-0.5 transition-colors truncate"
+              value="M/S CHANDRA PRATIMA PETROLEUM, VANGAON, 401103, MAHARASHTRA"
+            />
+            <p class="text-xs text-slate-300/80 mt-0.5 flex flex-wrap items-center gap-x-3 gap-y-1">
+              <span>Daily Sale, Bank, Cash, Expense, Credit &amp; Lube Stock Ledger</span>
+              <span class="text-white/30">•</span>
+              <span class="font-mono text-cyan-300 text-[11px]" id="header-ref-badge">REF: DSR-08-NOV-26</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Controls Cluster: Date, Preset Selector, Carry Forward, Print Preview, Export PDF -->
+        <div class="flex flex-wrap items-center gap-2.5">
+          <!-- Register Date Picker + Formatted DD-MM-YY Pill + Pull Prev CL -->
+          <div class="flex items-center gap-2 bg-slate-950/50 border border-white/15 rounded-xl px-3 py-1.5">
+            <div class="flex flex-col">
+              <span class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Register Date (Auto-Save Key)</span>
+              <div class="flex items-center gap-2">
+                <input
+                  id="input-register-date"
+                  type="date"
+                  class="bg-transparent text-xs font-mono text-white focus:outline-none cursor-pointer [color-scheme:dark]"
+                />
+                <span id="formatted-date-pill" class="px-2 py-0.5 rounded-md bg-ioclNavy/80 border border-blue-400/30 text-[11px] font-mono font-bold text-cyan-200">
+                  08-11-26
+                </span>
+                <button id="btn-pull-prev-cl" type="button" title="Sync Opening Balances from Previous Day's CL Totals" class="px-2 py-0.5 rounded-md bg-emerald-500/20 hover:bg-emerald-500/35 border border-emerald-400/35 text-[10px] font-bold text-emerald-200 transition cursor-pointer">
+                  ↻ Prev CL
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sheet Preset Selector -->
+          <div class="flex flex-col">
+            <select id="preset-selector" aria-label="Load Register Preset" class="glass-select px-3 py-2.5 text-xs sm:text-sm font-semibold min-w-[185px]">
+              <option value="08-NOV-26">Preset: 08-NOV-26 (Latest)</option>
+              <option value="04-NOV-26">Preset: 04-NOV-26</option>
+              <option value="02-NOV-26">Preset: 02-NOV-26</option>
+              <option value="01-NOV-26">Preset: 01-NOV-26</option>
+              <option value="BLANK">Blank New Register</option>
+            </select>
+          </div>
+
+          <!-- Carry Forward to Next Day Button -->
+          <button id="btn-carry-forward" type="button" class="btn-emerald-glass px-3.5 py-2.5 text-xs sm:text-sm font-semibold inline-flex items-center gap-2 cursor-pointer">
+            <svg class="w-4 h-4 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+            </svg>
+            <span>Next Day (CL → Open)</span>
+          </button>
+
+          <!-- Google Drive & Cloud Server Sync Button -->
+          <button id="btn-open-cloud-modal" type="button" class="btn-glass px-3.5 py-2.5 text-xs sm:text-sm font-semibold inline-flex items-center gap-2 cursor-pointer text-cyan-200 border-cyan-400/30">
+            <svg class="w-4 h-4 text-cyan-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+            </svg>
+            <span>G-Drive / Server</span>
+          </button>
+
+          <!-- Print Preview Toggle -->
+          <button id="btn-print-preview" type="button" class="btn-glass px-3.5 py-2.5 text-xs sm:text-sm font-semibold inline-flex items-center gap-2 cursor-pointer">
+            <svg class="w-4 h-4 text-cyan-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+            <span>A4 Preview</span>
+          </button>
+
+          <!-- Print / Export PDF Button -->
+          <button id="btn-print-pdf" type="button" class="btn-iocl-primary px-4 py-2.5 text-xs sm:text-sm font-bold inline-flex items-center gap-2 cursor-pointer">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+            </svg>
+            <span>Print / PDF</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- SAVED DAILY REGISTERS TIMELINE BAR (AUTO-SAVED BY DATE ON SERVER) -->
+      <div class="mt-4 pt-3 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+        <div class="flex items-center gap-2 shrink-0">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-cyan-300">Saved Daily Sheets:</span>
+          <span id="saved-dates-count" class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-white/10 text-slate-200">0 Dates</span>
+        </div>
+        <div id="saved-dates-strip" class="flex items-center gap-2 overflow-x-auto pb-1 flex-1">
+          <span class="text-xs text-slate-400 italic">Loading daily registers from server...</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- TOP KPI GLASS STRIP (4 LIVE SUMMARY CARDS) -->
+    <section aria-label="Live Register Summary KPIs" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+      
+      <!-- KPI 1: Gross Sale & Inflows (E10) -->
+      <div class="glass-card p-4 flex flex-col justify-between">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold uppercase tracking-wider text-orange-300/90">1. Gross Sale &amp; Inflows</span>
+          <span class="px-2 py-0.5 rounded-md text-[10px] font-mono bg-ioclOrange/20 text-orange-200 border border-ioclOrange/30">CELL E10</span>
+        </div>
+        <div class="my-2.5">
+          <div class="text-2xl sm:text-[26px] font-extrabold font-mono tabular-nums text-white tracking-tight" data-calc="grossInflows">₹5,29,331.58</div>
+        </div>
+        <div class="flex items-center justify-between text-xs text-slate-300/80 pt-2 border-t border-white/10">
+          <span>Fuel Volume: <strong class="font-mono text-white tabular-nums" data-calc="totalLiters">4,796.00 L</strong></span>
+          <span class="text-orange-300 font-mono text-[11px]" data-calc="fuelSalesSub">₹5,29,331.58</span>
+        </div>
+      </div>
+
+      <!-- KPI 2: Today's Net Cash (C25) & Cash CL Total (C30) -->
+      <div class="glass-card p-4 flex flex-col justify-between">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-300/90">2. Cash Closing (CL)</span>
+          <span class="px-2 py-0.5 rounded-md text-[10px] font-mono bg-emerald-500/20 text-emerald-200 border border-emerald-400/30">CELL C30</span>
+        </div>
+        <div class="my-2.5">
+          <div class="text-2xl sm:text-[26px] font-extrabold font-mono tabular-nums text-emerald-300 tracking-tight" data-calc="cashClTotal">₹3,63,670.51</div>
+        </div>
+        <div class="flex items-center justify-between text-xs text-slate-300/80 pt-2 border-t border-white/10">
+          <span>Today's Cash (C25):</span>
+          <strong class="font-mono text-white tabular-nums" data-calc="todaysCash">₹2,76,251.58</strong>
+        </div>
+      </div>
+
+      <!-- KPI 3: A/c CL Total (C16/C22) & IOCL CL Total (F14/F17) -->
+      <div class="glass-card p-4 flex flex-col justify-between">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold uppercase tracking-wider text-cyan-300/90">3. Bank A/c &amp; IOCL CL</span>
+          <span class="px-2 py-0.5 rounded-md text-[10px] font-mono bg-cyan-500/20 text-cyan-200 border border-cyan-400/30">A/C &amp; IOCL</span>
+        </div>
+        <div class="my-2.5">
+          <div class="text-2xl sm:text-[26px] font-extrabold font-mono tabular-nums text-cyan-200 tracking-tight" data-calc="acClTotal">₹3,53,521.00</div>
+        </div>
+        <div class="flex items-center justify-between text-xs text-slate-300/80 pt-2 border-t border-white/10">
+          <span>IOCL CL Bal:</span>
+          <strong class="font-mono tabular-nums" data-calc="ioclClTotal">-₹12,12,245.00</strong>
+        </div>
+      </div>
+
+      <!-- KPI 4: Credit CL Total (C43) & Oil Stock CL Total (F40) -->
+      <div class="glass-card p-4 flex flex-col justify-between">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold uppercase tracking-wider text-indigo-300/90">4. Credit &amp; Lube Oil CL</span>
+          <span class="px-2 py-0.5 rounded-md text-[10px] font-mono bg-indigo-500/20 text-indigo-200 border border-indigo-400/30">C43 &amp; F40</span>
+        </div>
+        <div class="my-2.5">
+          <div class="text-2xl sm:text-[26px] font-extrabold font-mono tabular-nums text-white tracking-tight" data-calc="creditClTotal">₹5,74,173.00</div>
+        </div>
+        <div class="flex items-center justify-between text-xs text-slate-300/80 pt-2 border-t border-white/10">
+          <span>Oil Stock CL (F40):</span>
+          <strong class="font-mono text-amber-300 tabular-nums" data-calc="oilClTotal">₹1,94,446.00</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 1: PRODUCT SALES & INFLOWS
+         ======================================================================== -->
+    <section class="glass-card p-4 sm:p-6">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-3.5 mb-4 border-b border-white/10">
+        <div class="flex items-center gap-2.5">
+          <span class="w-7 h-7 rounded-lg bg-ioclOrange/25 border border-ioclOrange/50 text-orange-300 font-mono font-bold text-xs flex items-center justify-center">01</span>
+          <div>
+            <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Product Sales &amp; Inflows</h2>
+            <p class="text-xs text-slate-400">Fuel nozzle sales, lubricant oil sale, credit recovery &amp; direct inflows</p>
+          </div>
+        </div>
+        <button id="btn-add-extra-inflow" type="button" class="btn-glass px-3 py-1.5 text-xs font-semibold inline-flex items-center gap-1.5 cursor-pointer text-orange-200 border-orange-400/30">
+          <span class="text-base leading-none">+</span> Add Extra Inflow
+        </button>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse min-w-[640px]">
+          <thead>
+            <tr class="text-[11px] uppercase tracking-wider text-slate-400 border-b border-white/10">
+              <th class="py-2.5 px-3 font-semibold">Product / Inflow Head</th>
+              <th class="py-2.5 px-3 font-semibold text-right w-40">Sale Volume (Liters)</th>
+              <th class="py-2.5 px-3 font-semibold text-right w-36">Rate (₹ / L)</th>
+              <th class="py-2.5 px-3 font-semibold text-right w-48">Amount (₹)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/10 text-sm">
+            <!-- MS (Petrol) -->
+            <tr class="hover:bg-white/[0.02] transition-colors">
+              <td class="py-2.5 px-3">
+                <div class="flex items-center gap-2.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399]"></span>
+                  <div>
+                    <div class="font-bold text-white">MS (Motor Spirit / Petrol)</div>
+                    <div class="text-[11px] text-slate-400 font-mono">Formula: =C5*D5</div>
+                  </div>
+                </div>
+              </td>
+              <td class="py-2.5 px-3 text-right">
+                <div class="relative inline-flex items-center w-36">
+                  <input id="input-ms-liters" type="number" step="any" class="glass-input w-full px-3 py-1.5 text-right font-mono text-sm tabular-nums pr-7" />
+                  <span class="absolute right-2.5 text-[11px] text-slate-400 font-mono">L</span>
+                </div>
+              </td>
+              <td class="py-2.5 px-3 text-right">
+                <div class="relative inline-flex items-center w-32">
+                  <span class="absolute left-2.5 text-[11px] text-slate-400 font-mono">₹</span>
+                  <input id="input-ms-rate" type="number" step="any" class="glass-input w-full pl-6 pr-2.5 py-1.5 text-right font-mono text-sm tabular-nums" />
+                </div>
+              </td>
+              <td class="py-2.5 px-3 text-right font-mono font-bold text-white tabular-nums text-base" data-calc="msAmount">
+                ₹4,53,825.00
+              </td>
+            </tr>
+
+            <!-- HSD (Diesel) -->
+            <tr class="hover:bg-white/[0.02] transition-colors">
+              <td class="py-2.5 px-3">
+                <div class="flex items-center gap-2.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee]"></span>
+                  <div>
+                    <div class="font-bold text-white">HSD (High Speed Diesel)</div>
+                    <div class="text-[11px] text-slate-400 font-mono">Formula: =C6*D6</div>
+                  </div>
+                </div>
+              </td>
+              <td class="py-2.5 px-3 text-right">
+                <div class="relative inline-flex items-center w-36">
+                  <input id="input-hsd-liters" type="number" step="any" class="glass-input w-full px-3 py-1.5 text-right font-mono text-sm tabular-nums pr-7" />
+                  <span class="absolute right-2.5 text-[11px] text-slate-400 font-mono">L</span>
+                </div>
+              </td>
+              <td class="py-2.5 px-3 text-right">
+                <div class="relative inline-flex items-center w-32">
+                  <span class="absolute left-2.5 text-[11px] text-slate-400 font-mono">₹</span>
+                  <input id="input-hsd-rate" type="number" step="any" class="glass-input w-full pl-6 pr-2.5 py-1.5 text-right font-mono text-sm tabular-nums" />
+                </div>
+              </td>
+              <td class="py-2.5 px-3 text-right font-mono font-bold text-white tabular-nums text-base" data-calc="hsdAmount">
+                ₹75,506.58
+              </td>
+            </tr>
+
+            <!-- Oil Sale (Lubricants) -->
+            <tr class="hover:bg-white/[0.02] transition-colors">
+              <td class="py-2.5 px-3" colspan="3">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-400 shadow-[0_0_10px_#fbbf24]"></span>
+                    <div>
+                      <div class="font-bold text-white">Oil Sale (SERVO Lubricants)</div>
+                      <div class="text-[11px] text-amber-300/80">Auto-deducted from Oil Stock Ledger (Section 06)</div>
+                    </div>
+                  </div>
+                  <span class="text-[11px] font-mono text-slate-400">CELL E7</span>
+                </div>
+              </td>
+              <td class="py-2.5 px-3 text-right">
+                <div class="relative inline-flex items-center w-44">
+                  <span class="absolute left-3 text-xs text-slate-400 font-mono">₹</span>
+                  <input id="input-oil-sale" type="number" step="any" class="glass-input glass-input-orange w-full pl-7 pr-3 py-1.5 text-right font-mono text-sm font-semibold tabular-nums" />
+                </div>
+              </td>
+            </tr>
+
+            <!-- Recovery -->
+            <tr class="hover:bg-white/[0.02] transition-colors">
+              <td class="py-2.5 px-3" colspan="3">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-purple-400 shadow-[0_0_10px_#c084fc]"></span>
+                    <div>
+                      <div class="font-bold text-white flex items-center gap-2">
+                        <span>Credit Recovery Inflow</span>
+                        <button id="btn-toggle-recovery-sync" type="button" class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-cyan-500/20 text-cyan-200 border border-cyan-400/40 hover:bg-cyan-500/30 transition cursor-pointer">
+                          Auto-Synced with Sec 05
+                        </button>
+                      </div>
+                      <div class="text-[11px] text-slate-400" id="recovery-sync-hint">Automatically equals sum of Credit Recovery items in Section 05</div>
+                    </div>
+                  </div>
+                  <span class="text-[11px] font-mono text-slate-400">CELL E8</span>
+                </div>
+              </td>
+              <td class="py-2.5 px-3 text-right">
+                <div class="relative inline-flex items-center w-44">
+                  <span class="absolute left-3 text-xs text-slate-400 font-mono">₹</span>
+                  <input id="input-recovery-amount" type="number" step="any" class="glass-input w-full pl-7 pr-3 py-1.5 text-right font-mono text-sm font-semibold tabular-nums" />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+
+          <!-- Dynamic Extra Inflow Rows -->
+          <tbody id="list-extra-inflows" class="divide-y divide-white/10 text-sm"></tbody>
+
+          <!-- Total Gross Sale & Inflows Footer -->
+          <tfoot>
+            <tr class="bg-gradient-to-r from-ioclOrange/20 via-ioclOrange/10 to-transparent border-t-2 border-ioclOrange/50">
+              <td class="py-3 px-3 font-extrabold text-orange-200 uppercase tracking-wider text-xs sm:text-sm" colspan="3">
+                Total Gross Sale &amp; Inflows (E10)
+              </td>
+              <td class="py-3 px-3 text-right font-mono font-extrabold text-lg sm:text-xl text-white tabular-nums" data-calc="grossInflows">
+                ₹5,29,331.58
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 2: A/C DETAILS (BANK / CARD) + SBI & IOCL TRACKER
+         ======================================================================== -->
+    <section class="glass-card p-4 sm:p-6">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-3.5 mb-4 border-b border-white/10">
+        <div class="flex items-center gap-2.5">
+          <span class="w-7 h-7 rounded-lg bg-cyan-500/25 border border-cyan-400/50 text-cyan-200 font-mono font-bold text-xs flex items-center justify-center">02</span>
+          <div>
+            <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">A/c Details (Bank / Card) &amp; IOCL Account Tracker</h2>
+            <p class="text-xs text-slate-400">Digital POS/UPI receipts (auto-deducted from Cash), Bank Ledger, SBI &amp; IOCL Company Balance</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        
+        <!-- LEFT SUB-CARD (7 cols): A/c Card & Bank Ledger -->
+        <div class="lg:col-span-7 glass-subcard p-4 flex flex-col justify-between space-y-4">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between border-b border-white/10 pb-2.5">
+              <h3 class="text-sm font-bold text-cyan-200 uppercase tracking-wider">A/c Card &amp; Bank Ledger</h3>
+              <button id="btn-add-digital" type="button" class="btn-glass px-2.5 py-1 text-[11px] font-semibold text-cyan-200 cursor-pointer">+ Add Card / UPI</button>
+            </div>
+
+            <!-- Digital Receipts List -->
+            <div>
+              <div class="text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-2">Today's Digital / Card Receipts</div>
+              <div id="list-digital-receipts" class="space-y-2"></div>
+              <div class="mt-2.5 px-3 py-2 rounded-xl bg-cyan-500/15 border border-cyan-400/30 flex items-center justify-between">
+                <span class="text-xs font-bold text-cyan-200">Today's Digital/Card Total (C14) <span class="font-normal text-cyan-300/70">(Deducted in Cash)</span></span>
+                <span class="font-mono font-bold text-sm text-white tabular-nums" data-calc="digitalTotal">₹2,29,285.00</span>
+              </div>
+            </div>
+
+            <!-- + A/c Opening Balance -->
+            <div class="flex items-center justify-between gap-3 pt-1">
+              <label for="input-ac-opening" class="text-xs sm:text-sm font-semibold text-slate-200">+ A/c Opening Balance</label>
+              <div class="relative w-44">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 font-mono">₹</span>
+                <input id="input-ac-opening" type="number" step="any" class="glass-input w-full pl-7 pr-3 py-1.5 text-right font-mono text-sm tabular-nums" />
+              </div>
+            </div>
+
+            <!-- + Bank Credits / Deposits -->
+            <div class="pt-2 border-t border-white/10">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-semibold text-emerald-300">+ Bank Credits / Deposits</span>
+                <button id="btn-add-bank-credit" type="button" class="btn-glass px-2.5 py-1 text-[11px] font-semibold text-emerald-200 cursor-pointer">+ Add Credit</button>
+              </div>
+              <div id="list-bank-credits" class="space-y-2"></div>
+            </div>
+
+            <!-- - Bank Debits / Outflows -->
+            <div class="pt-2 border-t border-white/10">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-semibold text-rose-300">- Bank Debits / Outflows (RTGS / Charges)</span>
+                <button id="btn-add-bank-debit" type="button" class="btn-glass px-2.5 py-1 text-[11px] font-semibold text-rose-200 cursor-pointer">+ Add Debit</button>
+              </div>
+              <div id="list-bank-debits" class="space-y-2"></div>
+            </div>
+          </div>
+
+          <!-- A/c Closing Total -->
+          <div class="px-3.5 py-3 rounded-xl bg-gradient-to-r from-cyan-500/25 to-blue-600/20 border border-cyan-400/40 flex items-center justify-between">
+            <div>
+              <div class="text-xs font-extrabold uppercase tracking-wider text-cyan-100">A/c Closing Total (CL Total)</div>
+              <div class="text-[10px] text-cyan-200/75 font-mono">Digital + Opening + Credits − Debits</div>
+            </div>
+            <div class="font-mono font-extrabold text-lg text-white tabular-nums" data-calc="acClTotal">₹3,53,521.00</div>
+          </div>
+        </div>
+
+        <!-- RIGHT SUB-CARD (5 cols): SBI & IOCL Account Tracker -->
+        <div class="lg:col-span-5 glass-subcard p-4 flex flex-col justify-between space-y-4">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between border-b border-white/10 pb-2.5">
+              <h3 class="text-sm font-bold text-indigo-200 uppercase tracking-wider">SBI &amp; IOCL Account Tracker</h3>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-200 border border-indigo-400/30">COMPANY A/C</span>
+            </div>
+
+            <!-- SBI Balance -->
+            <div class="p-3 rounded-xl bg-slate-950/40 border border-white/10 flex items-center justify-between gap-3">
+              <div>
+                <label for="input-sbi-balance" class="text-xs font-bold text-blue-200 block">SBI Bank Balance</label>
+                <span class="text-[10px] text-slate-400">Current SBI Account Snapshot</span>
+              </div>
+              <div class="relative w-40">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 font-mono">₹</span>
+                <input id="input-sbi-balance" type="number" step="any" class="glass-input w-full pl-7 pr-3 py-1.5 text-right font-mono text-sm font-semibold tabular-nums" />
+              </div>
+            </div>
+
+            <!-- IOCL Opening Balance (supports negative or positive) -->
+            <div class="flex items-center justify-between gap-3 pt-1">
+              <div>
+                <label for="input-iocl-opening" class="text-xs sm:text-sm font-semibold text-slate-200 block">IOCL Opening Balance</label>
+                <span class="text-[10px] text-slate-400">Supports negative (-) or positive (+)</span>
+              </div>
+              <div class="relative w-44">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 font-mono">₹</span>
+                <input id="input-iocl-opening" type="number" step="any" class="glass-input w-full pl-7 pr-3 py-1.5 text-right font-mono text-sm tabular-nums" />
+              </div>
+            </div>
+
+            <!-- + IOCL Credits / RTGS / Rece -->
+            <div class="pt-2 border-t border-white/10">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-semibold text-emerald-300">+ IOCL Credits / RTGS / Rece</span>
+                <button id="btn-add-iocl-credit" type="button" class="btn-glass px-2.5 py-1 text-[11px] font-semibold text-emerald-200 cursor-pointer">+ Add RTGS</button>
+              </div>
+              <div id="list-iocl-credits" class="space-y-2"></div>
+            </div>
+
+            <!-- - IOCL Debits / Load -->
+            <div class="pt-2 border-t border-white/10">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-semibold text-rose-300">- IOCL Debits / Tanker Load</span>
+                <button id="btn-add-iocl-debit" type="button" class="btn-glass px-2.5 py-1 text-[11px] font-semibold text-rose-200 cursor-pointer">+ Add Load</button>
+              </div>
+              <div id="list-iocl-debits" class="space-y-2"></div>
+            </div>
+          </div>
+
+          <!-- IOCL Closing Total -->
+          <div class="px-3.5 py-3 rounded-xl bg-gradient-to-r from-indigo-500/25 to-purple-600/20 border border-indigo-400/40 flex items-center justify-between">
+            <div>
+              <div class="text-xs font-extrabold uppercase tracking-wider text-indigo-100">IOCL Closing Total (CL Total)</div>
+              <div class="text-[10px] text-indigo-200/75 font-mono">Opening + Credits − Debits</div>
+            </div>
+            <div class="font-mono font-extrabold text-lg tabular-nums" data-calc="ioclClTotal">-₹12,12,245.00</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTIONS 3 & 4: CASH LEDGER (LEFT) + EXPENSE LEDGER (RIGHT)
+         ======================================================================== -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      
+      <!-- SECTION 3: CASH LEDGER -->
+      <div class="glass-card p-4 sm:p-6 flex flex-col justify-between space-y-4">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <div class="flex items-center gap-2.5">
+              <span class="w-7 h-7 rounded-lg bg-emerald-500/25 border border-emerald-400/50 text-emerald-200 font-mono font-bold text-xs flex items-center justify-center">03</span>
+              <div>
+                <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Cash Ledger</h2>
+                <p class="text-xs text-slate-400">Net physical cash reconciliation &amp; cash outflows</p>
+              </div>
+            </div>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-200 border border-emerald-400/30">CELL C25–C30</span>
+          </div>
+
+          <!-- Today's Cash (Read-Only Auto Formula Badge) -->
+          <div class="p-3.5 rounded-xl bg-emerald-500/15 border border-emerald-400/35 flex items-center justify-between gap-3">
+            <div>
+              <div class="text-xs font-bold uppercase tracking-wider text-emerald-200">Today's Net Cash (C25)</div>
+              <div class="text-[11px] font-mono text-emerald-300/80">= Gross Inflows − Digital − Expense − Credit</div>
+            </div>
+            <div class="font-mono font-extrabold text-lg text-white tabular-nums" data-calc="todaysCash">₹2,76,251.58</div>
+          </div>
+
+          <!-- + Opening Cash -->
+          <div class="flex items-center justify-between gap-3">
+            <label for="input-cash-opening" class="text-xs sm:text-sm font-semibold text-slate-200">+ Opening Cash Balance</label>
+            <div class="relative w-44">
+              <span class="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 font-mono">₹</span>
+              <input id="input-cash-opening" type="number" step="any" class="glass-input w-full pl-7 pr-3 py-1.5 text-right font-mono text-sm tabular-nums" />
+            </div>
+          </div>
+
+          <!-- = Total Cash Available -->
+          <div class="px-3.5 py-2.5 rounded-xl bg-white/[0.05] border border-white/15 flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-200">= Total Cash Available</span>
+            <span class="font-mono font-bold text-base text-emerald-200 tabular-nums" data-calc="totalCashAvailable">₹3,63,670.51</span>
+          </div>
+
+          <!-- - Cash Outflows / Deductions -->
+          <div class="pt-2 border-t border-white/10">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-semibold text-rose-300">- Cash Outflows / Bank Deposit / Returns</span>
+              <button id="btn-add-cash-outflow" type="button" class="btn-glass px-2.5 py-1 text-[11px] font-semibold text-rose-200 cursor-pointer">+ Add Outflow</button>
+            </div>
+            <div id="list-cash-outflows" class="space-y-2"></div>
+          </div>
+        </div>
+
+        <!-- Cash Closing Total -->
+        <div class="px-4 py-3 rounded-xl bg-gradient-to-r from-emerald-500/25 to-teal-600/20 border border-emerald-400/45 flex items-center justify-between">
+          <div>
+            <div class="text-xs font-extrabold uppercase tracking-wider text-emerald-100">Cash Closing Total (CL Total)</div>
+            <div class="text-[10px] text-emerald-200/75 font-mono">Total Cash Available − Cash Outflows (C30)</div>
+          </div>
+          <div class="font-mono font-extrabold text-xl text-white tabular-nums" data-calc="cashClTotal">₹3,63,670.51</div>
+        </div>
+      </div>
+
+      <!-- SECTION 4: EXPENSE LEDGER -->
+      <div class="glass-card p-4 sm:p-6 flex flex-col justify-between space-y-4">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <div class="flex items-center gap-2.5">
+              <span class="w-7 h-7 rounded-lg bg-rose-500/25 border border-rose-400/50 text-rose-200 font-mono font-bold text-xs flex items-center justify-center">04</span>
+              <div>
+                <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Expense Ledger</h2>
+                <p class="text-xs text-slate-400">Daily station expenses (auto-deducted in Cash) &amp; cumulative total</p>
+              </div>
+            </div>
+            <button id="btn-add-expense" type="button" class="btn-glass px-3 py-1.5 text-xs font-semibold text-rose-200 border-rose-400/30 cursor-pointer">+ Add Expense</button>
+          </div>
+
+          <!-- Today's Expense Items -->
+          <div>
+            <div class="text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-2">Today's Expense Vouchers</div>
+            <div id="list-expenses" class="space-y-2"></div>
+          </div>
+
+          <!-- Today's Expense Total -->
+          <div class="px-3.5 py-2.5 rounded-xl bg-rose-500/15 border border-rose-400/30 flex items-center justify-between">
+            <span class="text-xs font-bold text-rose-200">Today's Expense Total (F29) <span class="font-normal text-rose-300/75">(Deducted in Cash)</span></span>
+            <span class="font-mono font-bold text-base text-white tabular-nums" data-calc="todaysExpenseTotal">₹21,695.00</span>
+          </div>
+
+          <!-- + Opening Expense (Cumulative) -->
+          <div class="flex items-center justify-between gap-3 pt-1">
+            <label for="input-expense-opening" class="text-xs sm:text-sm font-semibold text-slate-200">+ Opening Expense (Cumulative)</label>
+            <div class="relative w-44">
+              <span class="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 font-mono">₹</span>
+              <input id="input-expense-opening" type="number" step="any" class="glass-input w-full pl-7 pr-3 py-1.5 text-right font-mono text-sm tabular-nums" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Expense Closing Total -->
+        <div class="px-4 py-3 rounded-xl bg-gradient-to-r from-rose-500/25 to-orange-600/20 border border-rose-400/40 flex items-center justify-between">
+          <div>
+            <div class="text-xs font-extrabold uppercase tracking-wider text-rose-100">Expense Closing Total (CL Total)</div>
+            <div class="text-[10px] text-rose-200/75 font-mono">Today's Expense + Cumulative Opening</div>
+          </div>
+          <div class="font-mono font-extrabold text-xl text-white tabular-nums" data-calc="expenseClTotal">₹3,82,153.00</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTIONS 5 & 6: CREDIT (UDHAAR) LEDGER (LEFT) + OIL / LUBRICANTS LEDGER (RIGHT)
+         ======================================================================== -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      
+      <!-- SECTION 5: CREDIT (UDHAAR) LEDGER -->
+      <div class="glass-card p-4 sm:p-6 flex flex-col justify-between space-y-4">
+        <div class="space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-white/10">
+            <div class="flex items-center gap-2.5">
+              <span class="w-7 h-7 rounded-lg bg-purple-500/25 border border-purple-400/50 text-purple-200 font-mono font-bold text-xs flex items-center justify-center">05</span>
+              <div>
+                <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Credit (Udhaar) Ledger</h2>
+                <p class="text-xs text-slate-400">Credit sales given today (deducted in Cash) &amp; party recoveries</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1.5 bg-slate-950/60 p-1 rounded-xl border border-white/10">
+              <button id="btn-credit-mode-single" type="button" class="px-2.5 py-1 rounded-lg text-[11px] font-semibold transition cursor-pointer">Single Total</button>
+              <button id="btn-credit-mode-itemized" type="button" class="px-2.5 py-1 rounded-lg text-[11px] font-semibold transition cursor-pointer">Itemized</button>
+            </div>
+          </div>
+
+          <!-- Today's Credit Given: Single Mode OR Itemized Party-wise Mode -->
+          <div id="credit-single-box" class="flex items-center justify-between gap-3 p-3 rounded-xl bg-purple-500/10 border border-purple-400/25">
+            <div>
+              <label for="input-credit-single" class="text-xs sm:text-sm font-bold text-purple-200 block">Today's Credit Given (C38)</label>
+              <span class="text-[10px] text-slate-400">Auto-deducted in Cash Ledger</span>
+            </div>
+            <div class="relative w-44">
+              <span class="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 font-mono">₹</span>
+              <input id="input-credit-single" type="number" step="any" class="glass-input w-full pl-7 pr-3 py-1.5 text-right font-mono text-sm font-semibold tabular-nums" />
+            </div>
+          </div>
+
+          <div id="credit-itemized-box" class="hidden space-y-2 p-3 rounded-xl bg-purple-500/10 border border-purple-400/25">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-purple-200">Party-Wise Credit Given Today</span>
+              <button id="btn-add-credit-item" type="button" class="btn-glass px-2.5 py-1 text-[11px] font-semibold text-purple-200 cursor-pointer">+ Add Party Credit</button>
+            </div>
+            <div id="list-credit-items" class="space-y-2"></div>
+            <div class="pt-2 border-t border-white/10 flex items-center justify-between text-xs">
+              <span class="font-bold text-purple-200">Today's Credit Total (C38):</span>
+              <span class="font-mono font-bold text-white tabular-nums" data-calc="todaysCreditTotal">₹0.00</span>
+            </div>
+          </div>
+
+          <!-- + Opening Credit -->
+          <div class="flex items-center justify-between gap-3">
+            <label for="input-credit-opening" class="text-xs sm:text-sm font-semibold text-slate-200">+ Opening Credit Balance</label>
+            <div class="relative w-44">
+              <span class="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 font-mono">₹</span>
+              <input id="input-credit-opening" type="number" step="any" class="glass-input w-full pl-7 pr-3 py-1.5 text-right font-mono text-sm tabular-nums" />
+            </div>
+          </div>
+
+          <!-- = Total Credit -->
+          <div class="px-3.5 py-2.5 rounded-xl bg-white/[0.05] border border-white/15 flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-200">= Total Credit</span>
+            <span class="font-mono font-bold text-base text-purple-200 tabular-nums" data-calc="totalCredit">₹5,74,173.00</span>
+          </div>
+
+          <!-- - Credit Recovery Items -->
+          <div class="pt-2 border-t border-white/10">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-semibold text-emerald-300">- Credit Recovery Received (Party-wise)</span>
+              <button id="btn-add-recovery-item" type="button" class="btn-glass px-2.5 py-1 text-[11px] font-semibold text-emerald-200 cursor-pointer">+ Add Recovery</button>
+            </div>
+            <div id="list-credit-recoveries" class="space-y-2"></div>
+          </div>
+        </div>
+
+        <!-- Credit Closing Total -->
+        <div class="px-4 py-3 rounded-xl bg-gradient-to-r from-purple-500/25 to-indigo-600/20 border border-purple-400/45 flex items-center justify-between">
+          <div>
+            <div class="text-xs font-extrabold uppercase tracking-wider text-purple-100">Credit Closing Total (CL Total)</div>
+            <div class="text-[10px] text-purple-200/75 font-mono">Total Credit − Credit Recoveries (C43)</div>
+          </div>
+          <div class="font-mono font-extrabold text-xl text-white tabular-nums" data-calc="creditClTotal">₹5,74,173.00</div>
+        </div>
+      </div>
+
+      <!-- SECTION 6: OIL / LUBRICANTS LEDGER -->
+      <div class="glass-card p-4 sm:p-6 flex flex-col justify-between space-y-4">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <div class="flex items-center gap-2.5">
+              <span class="w-7 h-7 rounded-lg bg-amber-500/25 border border-amber-400/50 text-amber-200 font-mono font-bold text-xs flex items-center justify-center">06</span>
+              <div>
+                <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Oil / Lubricants Ledger</h2>
+                <p class="text-xs text-slate-400">SERVO lubricant stock valuation &amp; daily sale deduction</p>
+              </div>
+            </div>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-200 border border-amber-400/30">CELL F40</span>
+          </div>
+
+          <!-- Opening Oil Stock Value -->
+          <div class="flex items-center justify-between gap-3">
+            <label for="input-oil-opening" class="text-xs sm:text-sm font-semibold text-slate-200">Opening Oil Stock Value</label>
+            <div class="relative w-44">
+              <span class="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 font-mono">₹</span>
+              <input id="input-oil-opening" type="number" step="any" class="glass-input w-full pl-7 pr-3 py-1.5 text-right font-mono text-sm tabular-nums" />
+            </div>
+          </div>
+
+          <!-- - Today's Oil Sale (Auto-linked from Section 1) -->
+          <div class="p-3.5 rounded-xl bg-amber-500/12 border border-amber-400/30 flex items-center justify-between">
+            <div>
+              <div class="text-xs font-bold text-amber-200">- Today's Oil Sale (Auto-Linked)</div>
+              <div class="text-[10px] text-amber-300/75">Synced live from Section 01 (Cell E7)</div>
+            </div>
+            <div class="font-mono font-bold text-base text-amber-200 tabular-nums" data-calc="linkedOilSale">₹0.00</div>
+          </div>
+
+          <!-- + Oil Stock Added / Adjustment -->
+          <div class="flex items-center justify-between gap-3">
+            <div>
+              <label for="input-oil-added" class="text-xs sm:text-sm font-semibold text-slate-200 block">+ Oil Stock Added / Adjustment</label>
+              <span class="text-[10px] text-slate-400">New lubricant invoice stock received (optional)</span>
+            </div>
+            <div class="relative w-44">
+              <span class="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 font-mono">₹</span>
+              <input id="input-oil-added" type="number" step="any" class="glass-input w-full pl-7 pr-3 py-1.5 text-right font-mono text-sm tabular-nums" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Oil Closing Total -->
+        <div class="px-4 py-3 rounded-xl bg-gradient-to-r from-amber-500/25 to-orange-600/20 border border-amber-400/45 flex items-center justify-between">
+          <div>
+            <div class="text-xs font-extrabold uppercase tracking-wider text-amber-100">Oil Closing Total (CL Total)</div>
+            <div class="text-[10px] text-amber-200/75 font-mono">Opening Oil − Today's Sale + Stock Added (F40)</div>
+          </div>
+          <div class="font-mono font-extrabold text-xl text-white tabular-nums" data-calc="oilClTotal">₹1,94,446.00</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 7: PARTNER / CAPITAL SUMMARY FOOTER
+         ======================================================================== -->
+    <footer class="glass-card p-4 sm:p-6">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-3.5 mb-4 border-b border-white/10">
+        <div class="flex items-center gap-2.5">
+          <span class="w-7 h-7 rounded-lg bg-blue-500/25 border border-blue-400/50 text-blue-200 font-mono font-bold text-xs flex items-center justify-center">07</span>
+          <div>
+            <h2 class="text-base sm:text-lg font-bold text-white tracking-tight">Partner / Capital Account Summary</h2>
+            <p class="text-xs text-slate-400">Proprietor &amp; partner capital standing balances</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="px-3 py-1.5 rounded-xl bg-blue-500/15 border border-blue-400/30 text-xs">
+            <span class="text-slate-300">Combined Capital: </span>
+            <strong class="font-mono text-white tabular-nums" data-calc="totalPartnerCapital">₹15,40,185.00</strong>
+          </div>
+          <button id="btn-add-partner" type="button" class="btn-glass px-3 py-1.5 text-xs font-semibold text-blue-200 cursor-pointer">+ Add Partner</button>
+        </div>
+      </div>
+
+      <div id="list-partners" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </footer>
+
+  </div>
+
+  <!-- ==========================================================================
+       A4 EXECUTIVE PRINT PREVIEW & PRINT SHEET (#print-preview-wrapper)
+       ========================================================================== -->
+  <div id="print-preview-wrapper">
+    <!-- Floating Screen-Only Preview Toolbar -->
+    <div id="preview-toolbar" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 glass-card px-4 py-2.5 flex items-center gap-3 shadow-2xl border-white/25 bg-slate-950/85">
+      <span class="text-xs font-bold text-cyan-200 hidden sm:inline">A4 Executive PDF Preview</span>
+      <span class="text-white/20 hidden sm:inline">|</span>
+      <button id="btn-exit-preview" type="button" class="btn-glass px-3.5 py-1.5 text-xs font-semibold cursor-pointer">
+        ← Back to Glass Editor
+      </button>
+      <button id="btn-preview-print-now" type="button" class="btn-iocl-primary px-4 py-1.5 text-xs font-bold cursor-pointer inline-flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+        </svg>
+        Print / Save as PDF
+      </button>
+    </div>
+
+    <!-- Crisp White A4 Paper Sheet -->
+    <div id="a4-paper-sheet" class="a4-paper-sheet">
+      <div class="a4-watermark" aria-hidden="true">
+        <svg viewBox="0 0 120 120" width="175" height="175" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="60" cy="60" r="54" fill="#F37021" stroke="#0A3D91" stroke-width="4"/>
+          <circle cx="60" cy="60" r="46" fill="none" stroke="#FFFFFF" stroke-width="2.5"/>
+          <rect x="4" y="45" width="112" height="30" rx="4" fill="#0A3D91" stroke="#FFFFFF" stroke-width="2.5"/>
+          <text x="60" y="65" text-anchor="middle" fill="#FFFFFF" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="16" letter-spacing="0.5">IndianOil</text>
+        </svg>
+        <div style="font-size: 20pt; font-weight: 800; letter-spacing: 0.14em; color: #0A3D91; white-space: nowrap;">CHANDRA PRATIMA PETROLEUM</div>
+      </div>
+      <div id="a4-dynamic-content" class="a4-content"></div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       CUSTOM GLASS CONFIRMATION MODAL (NEVER alert() OR confirm())
+       ========================================================================== -->
+  <div id="modal-backdrop" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md">
+    <div class="glass-card max-w-lg w-full p-6 space-y-4 border-white/25">
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 mb-1">
+            End-of-Day Rollover
+          </span>
+          <h3 class="text-lg font-extrabold text-white">Carry Forward to Next Day?</h3>
+        </div>
+        <button id="btn-modal-close" type="button" class="text-slate-400 hover:text-white p-1 cursor-pointer">✕</button>
+      </div>
+      
+      <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+        This will transfer all current <strong>Closing Totals (CL)</strong> into tomorrow's <strong>Opening Balances</strong>, advance the register date by 1 day, and clear daily sales, vouchers, and recoveries for a fresh day:
+      </p>
+
+      <div id="modal-rollover-summary" class="p-3.5 rounded-xl bg-slate-950/60 border border-white/10 space-y-1.5 text-xs font-mono"></div>
+
+      <div class="flex items-center justify-end gap-3 pt-2">
+        <button id="btn-modal-cancel" type="button" class="btn-glass px-4 py-2 text-xs font-semibold cursor-pointer">Cancel</button>
+        <button id="btn-modal-confirm" type="button" class="btn-emerald-glass px-4 py-2 text-xs font-bold cursor-pointer">Confirm &amp; Start Next Day →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       GOOGLE DRIVE & CLOUD SERVER SYNC MODAL
+       ========================================================================== -->
+  <div id="cloud-modal-backdrop" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+    <div class="glass-card max-w-xl w-full p-6 space-y-4 border-cyan-400/30">
+      <div class="flex items-start justify-between gap-3 border-b border-white/10 pb-3">
+        <div>
+          <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-cyan-500/20 text-cyan-200 border border-cyan-400/35 mb-1">
+            Real-Time Cloud Server &amp; Google Drive Sync
+          </span>
+          <h3 class="text-lg font-extrabold text-white">Daily Register Cloud &amp; G-Drive Backup</h3>
+        </div>
+        <button id="btn-cloud-modal-close" type="button" class="text-slate-400 hover:text-white p-1 cursor-pointer">✕</button>
+      </div>
+
+      <div class="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-400/30 space-y-1 text-xs">
+        <div class="flex items-center justify-between">
+          <span class="font-bold text-emerald-200">1. Live Cloud Server Auto-Save</span>
+          <span id="cloud-server-state-text" class="font-mono text-[11px] text-emerald-300">ACTIVE • AUTO-SYNCING</span>
+        </div>
+        <p class="text-slate-300/90 leading-relaxed">
+          Every date's register (<span class="font-mono text-white" id="cloud-active-date-label">2026-11-08</span>) is automatically saved to the cloud server in real time. Switching to a new date automatically carries forward the previous day's <strong>Closing Totals (CL)</strong> into the new day's <strong>Opening Balances</strong>.
+        </p>
+      </div>
+
+      <!-- Optional Direct Google Drive API Folder Sync -->
+      <div class="p-3.5 rounded-xl bg-slate-950/60 border border-white/10 space-y-3 text-xs">
+        <div class="flex items-center justify-between">
+          <span class="font-bold text-cyan-200">2. Direct Google Drive Folder Auto-Backup (Optional)</span>
+          <span id="gdrive-conn-badge" class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/10 text-slate-300">Not Linked</span>
+        </div>
+        <p class="text-slate-400 text-[11px] leading-relaxed">
+          Connect your Google OAuth Client ID to automatically push daily JSON backups straight into a <strong class="text-slate-200">IOCL_Daily_Sale_Register</strong> folder on your Google Drive whenever you edit or carry forward a date.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-2">
+          <input id="input-gdrive-client-id" type="text" placeholder="Paste Google OAuth Client ID (xxxx.apps.googleusercontent.com)" class="glass-input flex-1 px-3 py-1.5 text-xs font-mono text-white" />
+          <button id="btn-connect-gdrive" type="button" class="btn-iocl-primary px-3.5 py-1.5 text-xs font-bold cursor-pointer shrink-0">
+            Connect G-Drive
+          </button>
+        </div>
+        <div class="flex flex-wrap items-center gap-2 pt-1">
+          <button id="btn-gdrive-sync-now" type="button" class="btn-emerald-glass px-3 py-1.5 text-xs font-semibold cursor-pointer">
+            ↑ Sync All Dates to G-Drive Now
+          </button>
+          <button id="btn-download-json-backup" type="button" class="btn-glass px-3 py-1.5 text-xs font-semibold cursor-pointer">
+            ↓ Export All Dates (.JSON)
+          </button>
+          <label class="btn-glass px-3 py-1.5 text-xs font-semibold cursor-pointer inline-flex items-center gap-1">
+            <span>↑ Import Backup</span>
+            <input id="input-import-json-backup" type="file" accept=".json" class="hidden" />
+          </label>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between pt-1">
+        <button id="btn-delete-current-date" type="button" class="px-3 py-1.5 rounded-xl text-xs font-semibold text-rose-300 hover:bg-rose-500/20 border border-rose-400/25 transition cursor-pointer">
+          Delete Current Date from Server
+        </button>
+        <button id="btn-cloud-modal-done" type="button" class="btn-glass px-4 py-2 text-xs font-bold cursor-pointer">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       TOAST NOTIFICATION CONTAINER
+       ========================================================================== -->
+  <div id="toast-container" class="fixed bottom-4 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- ==========================================================================
+       APPLICATION LOGIC, REAL-TIME CLOUD SERVER & GOOGLE DRIVE SYNC ENGINE
+       ========================================================================== -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, deleteDoc, onSnapshot, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    (function () {
+      'use strict';
+
+      const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+      let db = null;
+      let auth = null;
+      let currentUser = null;
+      let cloudReady = false;
+      let isApplyingRemoteUpdate = false;
+
+      // Map of YYYY-MM-DD -> Register Object synced from Cloud Server
+      const savedRegistersMap = {};
+
+      // Optional Google Drive OAuth Token State
+      let gdriveAccessToken = null;
+      let gdriveClientId = '';
+      let gdriveFolderId = null;
+
+      // Unique ID generator
+      function uid() {
+        return 'id_' + Math.random().toString(36).slice(2, 9);
+      }
+
+      // Indian Rupee Formatter (en-IN)
+      function formatINR(num, showPlus) {
+        const val = Number(num) || 0;
+        const absStr = Math.abs(val).toLocaleString('en-IN', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        });
+        if (val < 0) return '-₹' + absStr;
+        return (showPlus && val > 0 ? '+' : '') + '₹' + absStr;
+      }
+
+      // Format Liters
+      function formatLiters(num) {
+        const val = Number(num) || 0;
+        return val.toLocaleString('en-IN', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }) + ' L';
+      }
+
+      // Format Date YYYY-MM-DD -> DD-MM-YY & DD-MMM-YY
+      function formatDates(isoDate) {
+        if (!isoDate || !/^\d{4}-\d{2}-\d{2}$/.test(isoDate)) {
+          return { shortNum: '08-11-26', shortMonth: '08-NOV-26' };
+        }
+        const parts = isoDate.split('-');
+        const yyyy = parts[0];
+        const mm = parts[1];
+        const dd = parts[2];
+        const yy = yyyy.slice(-2);
+        const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+        const mIdx = Math.max(0, Math.min(11, parseInt(mm, 10) - 1));
+        return {
+          shortNum: dd + '-' + mm + '-' + yy,
+          shortMonth: dd + '-' + months[mIdx] + '-' + yy
+        };
+      }
+
+      // Escape HTML for safe rendering
+      function esc(str) {
+        const safe = (str === null || str === undefined) ? '' : String(str);
+        return safe
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      // Real Register Presets from IOCL DAILY SALE REGISTER.xlsx
+      const PRESETS = {
+        '08-NOV-26': {
+          stationName: 'M/S CHANDRA PRATIMA PETROLEUM, VANGAON, 401103, MAHARASHTRA',
+          registerDate: '2026-11-08',
+          msLiters: 4034,
+          msRate: 112.50,
+          hsdLiters: 762,
+          hsdRate: 99.09,
+          oilSale: 0,
+          autoSyncRecovery: true,
+          recoveryManual: 0,
+          extraInflows: [],
+          digitalReceipts: [
+            { id: 'd1', label: 'Phone Pe', amount: 112776 },
+            { id: 'd2', label: 'Paytm', amount: 116509 }
+          ],
+          acOpening: 124236,
+          bankCredits: [],
+          bankDebits: [],
+          sbiBalance: 5765,
+          ioclOpening: -1212245,
+          ioclCredits: [],
+          ioclDebits: [],
+          cashOpening: 87418.93,
+          cashOutflows: [],
+          expenseItems: [
+            { id: 'e1', label: 'Fitter Diesel', amount: 495 },
+            { id: 'e2', label: 'Watchman', amount: 700 },
+            { id: 'e3', label: 'Nikhil', amount: 20000 },
+            { id: 'e4', label: 'Tanker Entry', amount: 500 }
+          ],
+          expenseOpening: 360458,
+          creditMode: 'single',
+          creditSingleAmount: 2100,
+          creditItems: [],
+          creditOpening: 572073,
+          creditRecoveries: [],
+          oilOpening: 194446,
+          oilAdded: 0,
+          partners: [
+            { id: 'p1', name: 'Sanjay Bhai', balance: 1074560 },
+            { id: 'p2', name: 'Dhiru Bhai', balance: 465625 }
+          ]
+        },
+
+        '04-NOV-26': {
+          stationName: 'M/S CHANDRA PRATIMA PETROLEUM, VANGAON, 401103, MAHARASHTRA',
+          registerDate: '2026-11-04',
+          msLiters: 3179,
+          msRate: 112.50,
+          hsdLiters: 2182,
+          hsdRate: 99.09,
+          oilSale: 0,
+          autoSyncRecovery: true,
+          recoveryManual: 7082,
+          extraInflows: [
+            { id: 'ei1', label: 'Pandit ji Card', amount: 100000 }
+          ],
+          digitalReceipts: [
+            { id: 'd3', label: 'Phone Pe', amount: 112280 },
+            { id: 'd4', label: 'Paytm', amount: 293245 }
+          ],
+          acOpening: 284729,
+          bankCredits: [
+            { id: 'bc1', label: 'DPT Dhiru Bhai', amount: 80000 }
+          ],
+          bankDebits: [
+            { id: 'bd1', label: 'Paytm Charges', amount: 354 }
+          ],
+          sbiBalance: 5765,
+          ioclOpening: 18300,
+          ioclCredits: [],
+          ioclDebits: [],
+          cashOpening: 107674.98,
+          cashOutflows: [
+            { id: 'co1', label: 'S Return Pramod Bhai', amount: 200000 },
+            { id: 'co2', label: 'Return Pramod Bhai', amount: 20000 },
+            { id: 'co3', label: 'Return Dhiru Bhai', amount: 80000 }
+          ],
+          expenseItems: [
+            { id: 'e5', label: 'Yadav Salary', amount: 6600 },
+            { id: 'e6', label: 'Khan Salary', amount: 730 },
+            { id: 'e7', label: 'Pramod Bhai ms', amount: 500 },
+            { id: 'e8', label: 'Pramod Bhai', amount: 150 },
+            { id: 'e9', label: 'Canteen', amount: 910 }
+          ],
+          expenseOpening: 87738,
+          creditMode: 'single',
+          creditSingleAmount: 6814,
+          creditItems: [],
+          creditOpening: 588967,
+          creditRecoveries: [
+            { id: 'cr1', label: 'N.S Dhanmehar', amount: 7082 }
+          ],
+          oilOpening: 175319,
+          oilAdded: 0,
+          partners: [
+            { id: 'p3', name: 'Sanjay Bhai', balance: 1074560 },
+            { id: 'p4', name: 'Dhiru Bhai', balance: 465625 }
+          ]
+        },
+
+        '02-NOV-26': {
+          stationName: 'M/S CHANDRA PRATIMA PETROLEUM, VANGAON, 401103, MAHARASHTRA',
+          registerDate: '2026-11-02',
+          msLiters: 2976,
+          msRate: 112.50,
+          hsdLiters: 1565,
+          hsdRate: 99.09,
+          oilSale: 2705,
+          autoSyncRecovery: true,
+          recoveryManual: 29724,
+          extraInflows: [
+            { id: 'ei2', label: 'Pramod Bhai', amount: 40000 },
+            { id: 'ei3', label: 'Sanjay Bhai', amount: 300000 }
+          ],
+          digitalReceipts: [
+            { id: 'd5', label: 'Phone Pe', amount: 118671 },
+            { id: 'd6', label: 'Paytm', amount: 139927 },
+            { id: 'd7', label: 'Dhiru Bhai Tr', amount: 8041 }
+          ],
+          acOpening: 437892,
+          bankCredits: [
+            { id: 'bc2', label: 'Pramod Bhai Tr', amount: 100000 },
+            { id: 'bc3', label: 'Cash Deposit', amount: 725000 }
+          ],
+          bankDebits: [
+            { id: 'bd2', label: 'IOCL RTGS', amount: 1250053 }
+          ],
+          sbiBalance: 5765,
+          ioclOpening: -2369393,
+          ioclCredits: [
+            { id: 'ic1', label: 'RTGS', amount: 1250000 }
+          ],
+          ioclDebits: [],
+          cashOpening: 199169.54,
+          cashOutflows: [
+            { id: 'co4', label: 'Cash Deposit To Bank', amount: 725000 }
+          ],
+          expenseItems: [
+            { id: 'e10', label: 'D.G Diesel', amount: 2000 },
+            { id: 'e11', label: 'Yadav Pass', amount: 320 },
+            { id: 'e12', label: 'Arman', amount: 1200 }
+          ],
+          expenseOpening: 64038,
+          creditMode: 'single',
+          creditSingleAmount: 31280,
+          creditItems: [],
+          creditOpening: 619955,
+          creditRecoveries: [
+            { id: 'cr2', label: 'Ajay Baniya', amount: 14803 },
+            { id: 'cr3', label: 'Ajay Baniya', amount: 14921 }
+          ],
+          oilOpening: 182334,
+          oilAdded: 0,
+          partners: [
+            { id: 'p5', name: 'Sanjay Bhai', balance: 1074560 },
+            { id: 'p6', name: 'Dhiru Bhai', balance: 465625 }
+          ]
+        },
+
+        '01-NOV-26': {
+          stationName: 'M/S CHANDRA PRATIMA PETROLEUM, VANGAON, 401103, MAHARASHTRA',
+          registerDate: '2026-11-01',
+          msLiters: 2411,
+          msRate: 112.50,
+          hsdLiters: 1656,
+          hsdRate: 99.09,
+          oilSale: 0,
+          autoSyncRecovery: true,
+          recoveryManual: 11525,
+          extraInflows: [],
+          digitalReceipts: [
+            { id: 'd8', label: 'Phone Pe', amount: 113632 },
+            { id: 'd9', label: 'Paytm', amount: 81540 }
+          ],
+          acOpening: 242720,
+          bankCredits: [],
+          bankDebits: [],
+          sbiBalance: 5765,
+          ioclOpening: -1139912,
+          ioclCredits: [],
+          ioclDebits: [
+            { id: 'id1', label: 'Load', amount: 1229481 }
+          ],
+          cashOpening: 114984,
+          cashOutflows: [
+            { id: 'co5', label: 'S Return Pramod Bhai', amount: 100000 },
+            { id: 'co6', label: 'Sanjay Bhai', amount: 2850 }
+          ],
+          expenseItems: [
+            { id: 'e13', label: 'Sujeet', amount: 2000 },
+            { id: 'e14', label: 'Arman Salary', amount: 8250 },
+            { id: 'e15', label: 'Flowers', amount: 1200 },
+            { id: 'e16', label: 'Watchman', amount: 600 },
+            { id: 'e17', label: 'Metre Exp', amount: 1488 },
+            { id: 'e18', label: 'Tanker Entry', amount: 500 },
+            { id: 'e19', label: 'Fitter Exp', amount: 50000 }
+          ],
+          expenseOpening: 0,
+          creditMode: 'single',
+          creditSingleAmount: 610,
+          creditItems: [],
+          creditOpening: 630870,
+          creditRecoveries: [
+            { id: 'cr4', label: 'Prakash Mama', amount: 11525 }
+          ],
+          oilOpening: 182334,
+          oilAdded: 0,
+          partners: [
+            { id: 'p7', name: 'Sanjay Bhai', balance: 1074560 },
+            { id: 'p8', name: 'Dhiru Bhai', balance: 465625 }
+          ]
+        },
+
+        'BLANK': {
+          stationName: 'M/S CHANDRA PRATIMA PETROLEUM, VANGAON, 401103, MAHARASHTRA',
+          registerDate: '2026-11-09',
+          msLiters: 0,
+          msRate: 112.50,
+          hsdLiters: 0,
+          hsdRate: 99.09,
+          oilSale: 0,
+          autoSyncRecovery: true,
+          recoveryManual: 0,
+          extraInflows: [],
+          digitalReceipts: [
+            { id: 'db1', label: 'Phone Pe', amount: 0 },
+            { id: 'db2', label: 'Paytm', amount: 0 }
+          ],
+          acOpening: 0,
+          bankCredits: [],
+          bankDebits: [],
+          sbiBalance: 0,
+          ioclOpening: 0,
+          ioclCredits: [],
+          ioclDebits: [],
+          cashOpening: 0,
+          cashOutflows: [],
+          expenseItems: [],
+          expenseOpening: 0,
+          creditMode: 'single',
+          creditSingleAmount: 0,
+          creditItems: [],
+          creditOpening: 0,
+          creditRecoveries: [],
+          oilOpening: 0,
+          oilAdded: 0,
+          partners: [
+            { id: 'pb1', name: 'Sanjay Bhai', balance: 1074560 },
+            { id: 'pb2', name: 'Dhiru Bhai', balance: 465625 }
+          ]
+        }
+      };
+
+      function clonePreset(key) {
+        return JSON.parse(JSON.stringify(PRESETS[key] || PRESETS['08-NOV-26']));
+      }
+
+      // Initialize default in-memory state (Cloud Server hydrates & syncs immediately after auth)
+      let state = clonePreset('08-NOV-26');
+
+      // Exact Excel Formula Calculator
+      function computeRegister(s) {
+        const sumArr = function (arr) {
+          return (arr || []).reduce(function (acc, item) {
+            return acc + (Number(item.amount) || 0);
+          }, 0);
+        };
+
+        // Section 1: Product Sales & Inflows
+        const msLiters = Number(s.msLiters) || 0;
+        const msRate = Number(s.msRate) || 0;
+        const msAmount = msLiters * msRate;
+
+        const hsdLiters = Number(s.hsdLiters) || 0;
+        const hsdRate = Number(s.hsdRate) || 0;
+        const hsdAmount = hsdLiters * hsdRate;
+
+        const oilSale = Number(s.oilSale) || 0;
+        const creditRecoverySum = sumArr(s.creditRecoveries);
+        const recoveryAmount = s.autoSyncRecovery ? creditRecoverySum : (Number(s.recoveryManual) || 0);
+        const extraInflowsTotal = sumArr(s.extraInflows);
+
+        const grossInflows = msAmount + hsdAmount + oilSale + recoveryAmount + extraInflowsTotal;
+        const totalLiters = msLiters + hsdLiters;
+        const fuelSalesSub = msAmount + hsdAmount;
+
+        // Section 2: A/c Details & IOCL Tracker
+        const digitalTotal = sumArr(s.digitalReceipts);
+        const acOpening = Number(s.acOpening) || 0;
+        const bankCreditsTotal = sumArr(s.bankCredits);
+        const bankDebitsTotal = sumArr(s.bankDebits);
+        const acClTotal = digitalTotal + acOpening + bankCreditsTotal - bankDebitsTotal;
+
+        const sbiBalance = Number(s.sbiBalance) || 0;
+        const ioclOpening = Number(s.ioclOpening) || 0;
+        const ioclCreditsTotal = sumArr(s.ioclCredits);
+        const ioclDebitsTotal = sumArr(s.ioclDebits);
+        const ioclClTotal = ioclOpening + ioclCreditsTotal - ioclDebitsTotal;
+
+        // Section 4: Expense Ledger
+        const todaysExpenseTotal = sumArr(s.expenseItems);
+        const expenseOpening = Number(s.expenseOpening) || 0;
+        const expenseClTotal = todaysExpenseTotal + expenseOpening;
+
+        // Section 5: Credit (Udhaar) Ledger
+        const todaysCreditTotal = s.creditMode === 'itemized'
+          ? sumArr(s.creditItems)
+          : (Number(s.creditSingleAmount) || 0);
+        const creditOpening = Number(s.creditOpening) || 0;
+        const totalCredit = todaysCreditTotal + creditOpening;
+        const creditClTotal = totalCredit - creditRecoverySum;
+
+        // Section 3: Cash Ledger (=E10 - C14 - F29 - C38)
+        const todaysCash = grossInflows - digitalTotal - todaysExpenseTotal - todaysCreditTotal;
+        const cashOpening = Number(s.cashOpening) || 0;
+        const totalCashAvailable = todaysCash + cashOpening;
+        const cashOutflowsTotal = sumArr(s.cashOutflows);
+        const cashClTotal = totalCashAvailable - cashOutflowsTotal;
+
+        // Section 6: Oil / Lubricants Ledger
+        const oilOpening = Number(s.oilOpening) || 0;
+        const oilAdded = Number(s.oilAdded) || 0;
+        const oilClTotal = oilOpening - oilSale + oilAdded;
+
+        // Section 7: Partner Summary
+        const totalPartnerCapital = (s.partners || []).reduce(function (acc, p) {
+          return acc + (Number(p.balance) || 0);
+        }, 0);
+
+        return {
+          msLiters: msLiters,
+          msRate: msRate,
+          msAmount: msAmount,
+          hsdLiters: hsdLiters,
+          hsdRate: hsdRate,
+          hsdAmount: hsdAmount,
+          oilSale: oilSale,
+          recoveryAmount: recoveryAmount,
+          extraInflowsTotal: extraInflowsTotal,
+          grossInflows: grossInflows,
+          totalLiters: totalLiters,
+          fuelSalesSub: fuelSalesSub,
+          digitalTotal: digitalTotal,
+          acOpening: acOpening,
+          bankCreditsTotal: bankCreditsTotal,
+          bankDebitsTotal: bankDebitsTotal,
+          acClTotal: acClTotal,
+          sbiBalance: sbiBalance,
+          ioclOpening: ioclOpening,
+          ioclCreditsTotal: ioclCreditsTotal,
+          ioclDebitsTotal: ioclDebitsTotal,
+          ioclClTotal: ioclClTotal,
+          todaysCash: todaysCash,
+          cashOpening: cashOpening,
+          totalCashAvailable: totalCashAvailable,
+          cashOutflowsTotal: cashOutflowsTotal,
+          cashClTotal: cashClTotal,
+          todaysExpenseTotal: todaysExpenseTotal,
+          expenseOpening: expenseOpening,
+          expenseClTotal: expenseClTotal,
+          todaysCreditTotal: todaysCreditTotal,
+          creditOpening: creditOpening,
+          totalCredit: totalCredit,
+          creditRecoverySum: creditRecoverySum,
+          creditClTotal: creditClTotal,
+          oilOpening: oilOpening,
+          oilAdded: oilAdded,
+          oilClTotal: oilClTotal,
+          totalPartnerCapital: totalPartnerCapital
+        };
+      }
+
+      // Date Increment / Decrement Helpers
+      function incrementIsoDate(isoDate) {
+        if (!isoDate || !/^\d{4}-\d{2}-\d{2}$/.test(isoDate)) return '2026-11-09';
+        const parts = isoDate.split('-').map(Number);
+        const dt = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2] + 1));
+        return dt.toISOString().slice(0, 10);
+      }
+
+      function decrementIsoDate(isoDate) {
+        if (!isoDate || !/^\d{4}-\d{2}-\d{2}$/.test(isoDate)) return '2026-11-07';
+        const parts = isoDate.split('-').map(Number);
+        const dt = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2] - 1));
+        return dt.toISOString().slice(0, 10);
+      }
+
+      // Build Next-Day State from a Previous Day's Register (CL Total -> Next Day Opening Balance)
+      function buildCarriedForwardState(prevReg, targetDateIso) {
+        const c = computeRegister(prevReg);
+        const preservedDigital = (prevReg.digitalReceipts && prevReg.digitalReceipts.length > 0)
+          ? prevReg.digitalReceipts.map(function (d) { return { id: uid(), label: d.label || 'UPI', amount: 0 }; })
+          : [{ id: uid(), label: 'Phone Pe', amount: 0 }, { id: uid(), label: 'Paytm', amount: 0 }];
+
+        const preservedPartners = (prevReg.partners && prevReg.partners.length > 0)
+          ? prevReg.partners.map(function (p) { return { id: uid(), name: p.name, balance: Number(p.balance) || 0 }; })
+          : [{ id: uid(), name: 'Sanjay Bhai', balance: 1074560 }, { id: uid(), name: 'Dhiru Bhai', balance: 465625 }];
+
+        return {
+          stationName: prevReg.stationName || 'M/S CHANDRA PRATIMA PETROLEUM, VANGAON, 401103, MAHARASHTRA',
+          registerDate: targetDateIso,
+          msLiters: 0,
+          msRate: Number(prevReg.msRate) || 112.50,
+          hsdLiters: 0,
+          hsdRate: Number(prevReg.hsdRate) || 99.09,
+          oilSale: 0,
+          autoSyncRecovery: true,
+          recoveryManual: 0,
+          extraInflows: [],
+          digitalReceipts: preservedDigital,
+          acOpening: Number(c.acClTotal.toFixed(2)),
+          bankCredits: [],
+          bankDebits: [],
+          sbiBalance: Number(prevReg.sbiBalance) || 0,
+          ioclOpening: Number(c.ioclClTotal.toFixed(2)),
+          ioclCredits: [],
+          ioclDebits: [],
+          cashOpening: Number(c.cashClTotal.toFixed(2)),
+          cashOutflows: [],
+          expenseItems: [],
+          expenseOpening: Number(c.expenseClTotal.toFixed(2)),
+          creditMode: prevReg.creditMode || 'single',
+          creditSingleAmount: 0,
+          creditItems: [],
+          creditOpening: Number(c.creditClTotal.toFixed(2)),
+          creditRecoveries: [],
+          oilOpening: Number(c.oilClTotal.toFixed(2)),
+          oilAdded: 0,
+          partners: preservedPartners
+        };
+      }
+
+      // Render Saved Daily Registers Strip in Header
+      function renderSavedDatesStrip() {
+        const strip = document.getElementById('saved-dates-strip');
+        const countBadge = document.getElementById('saved-dates-count');
+        if (!strip) return;
+
+        const sortedDates = Object.keys(savedRegistersMap).sort();
+        if (countBadge) {
+          countBadge.textContent = sortedDates.length + (sortedDates.length === 1 ? ' Date' : ' Dates');
+        }
+
+        if (sortedDates.length === 0) {
+          strip.innerHTML = '<span class="text-xs text-slate-400 italic">No saved dates yet — start entering data to auto-save.</span>';
+          return;
+        }
+
+        strip.innerHTML = sortedDates.map(function (dateIso) {
+          const reg = savedRegistersMap[dateIso];
+          const calc = computeRegister(reg);
+          const dFmt = formatDates(dateIso);
+          const isActive = dateIso === state.registerDate;
+          const activeClass = isActive
+            ? 'bg-gradient-to-r from-ioclOrange/30 to-cyan-500/25 border-orange-400/70 text-white shadow-lg shadow-orange-500/15'
+            : 'bg-white/[0.04] hover:bg-white/[0.10] border-white/15 text-slate-300';
+
+          return (
+            '<button type="button" data-select-saved-date="' + esc(dateIso) + '" class="shrink-0 px-3 py-1.5 rounded-xl border text-left transition cursor-pointer flex items-center gap-2.5 ' + activeClass + '">' +
+              '<div>' +
+                '<div class="text-[11px] font-mono font-bold leading-tight">' + esc(dFmt.shortMonth) + '</div>' +
+                '<div class="text-[10px] font-mono opacity-80">CL Cash: ' + formatINR(calc.cashClTotal) + '</div>' +
+              '</div>' +
+              (isActive ? '<span class="w-2 h-2 rounded-full bg-emerald-400"></span>' : '') +
+            '</button>'
+          );
+        }).join('');
+      }
+
+      // Cloud Server Auto-Save (Firestore + Optional Google Drive Auto-Sync)
+      let saveTimer = null;
+      function saveState(immediate) {
+        if (isApplyingRemoteUpdate) return;
+        const badge = document.getElementById('save-status-badge');
+        if (badge) {
+          badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span> Syncing to Server...';
+        }
+
+        const dateKey = state.registerDate || '2026-11-08';
+        const snapshotCopy = JSON.parse(JSON.stringify(state));
+        snapshotCopy.updatedAt = new Date().toISOString();
+        snapshotCopy.computedSummary = computeRegister(snapshotCopy);
+        savedRegistersMap[dateKey] = snapshotCopy;
+        renderSavedDatesStrip();
+
+        clearTimeout(saveTimer);
+        const delay = immediate ? 10 : 350;
+        saveTimer = setTimeout(async function () {
+          try {
+            if (db && currentUser) {
+              const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'iocl_registers', dateKey);
+              await setDoc(docRef, snapshotCopy);
+            }
+            if (gdriveAccessToken) {
+              await uploadSingleRegisterToGoogleDrive(snapshotCopy);
+            }
+            if (badge) {
+              badge.innerHTML = '<svg class="w-3 h-3 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Cloud Auto-Saved';
+            }
+          } catch (e) {
+            console.error('Cloud save error:', e);
+            if (badge) {
+              badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-rose-400"></span> Retry Sync';
+            }
+          }
+        }, delay);
+      }
+
+      // Initialize Real-Time Cloud Server (Rule 3: Auth FIRST before any Firestore query)
+      async function initCloudServer() {
+        const badge = document.getElementById('save-status-badge');
+        try {
+          if (typeof __firebase_config === 'undefined' || !__firebase_config) {
+            if (badge) {
+              badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-cyan-400"></span> Session Mode';
+            }
+            return;
+          }
+
+          const firebaseConfig = JSON.parse(__firebase_config);
+          const app = initializeApp(firebaseConfig);
+          auth = getAuth(app);
+          db = getFirestore(app);
+
+          // RULE 3: Authenticate FIRST and await completion
+          if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+            await signInWithCustomToken(auth, __initial_auth_token);
+          } else {
+            await signInAnonymously(auth);
+          }
+          currentUser = auth.currentUser;
+          if (!currentUser) return;
+
+          // Load optional saved Google Drive client ID from cloud settings
+          const settingsRef = doc(db, 'artifacts', appId, 'public', 'data', 'iocl_settings', 'cloud_config');
+          onSnapshot(settingsRef, function (snap) {
+            if (snap.exists() && snap.data().gdriveClientId) {
+              gdriveClientId = snap.data().gdriveClientId;
+              const cidInput = document.getElementById('input-gdrive-client-id');
+              if (cidInput && !cidInput.value) cidInput.value = gdriveClientId;
+            }
+          }, function (err) {
+            console.warn('Settings listener warning:', err);
+          });
+
+          // RULE 1 & RULE 2: Strict path & simple collection query without orderBy/where/limit
+          const registersCol = collection(db, 'artifacts', appId, 'public', 'data', 'iocl_registers');
+          let initialSeedChecked = false;
+
+          onSnapshot(registersCol, async function (snapshot) {
+            snapshot.forEach(function (docSnap) {
+              const data = docSnap.data();
+              if (data && data.registerDate) {
+                savedRegistersMap[data.registerDate] = data;
+              }
+            });
+
+            // Seed initial Excel sheets once if cloud server is completely empty
+            if (!initialSeedChecked) {
+              initialSeedChecked = true;
+              if (snapshot.empty) {
+                const seedKeys = ['01-NOV-26', '02-NOV-26', '04-NOV-26', '08-NOV-26'];
+                for (let i = 0; i < seedKeys.length; i++) {
+                  const pObj = clonePreset(seedKeys[i]);
+                  pObj.updatedAt = new Date().toISOString();
+                  pObj.computedSummary = computeRegister(pObj);
+                  savedRegistersMap[pObj.registerDate] = pObj;
+                  await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'iocl_registers', pObj.registerDate), pObj);
+                }
+              } else {
+                // Load latest saved date or currently active date from cloud
+                const allDates = Object.keys(savedRegistersMap).sort();
+                const latestDate = savedRegistersMap[state.registerDate]
+                  ? state.registerDate
+                  : allDates[allDates.length - 1];
+                if (latestDate && savedRegistersMap[latestDate]) {
+                  isApplyingRemoteUpdate = true;
+                  state = JSON.parse(JSON.stringify(savedRegistersMap[latestDate]));
+                  syncAllInputsFromState();
+                  isApplyingRemoteUpdate = false;
+                }
+              }
+            } else if (savedRegistersMap[state.registerDate]) {
+              // Sync remote edits if another device updated the active date
+              const remoteDoc = savedRegistersMap[state.registerDate];
+              if (JSON.stringify(remoteDoc.computedSummary) !== JSON.stringify(computeRegister(state))) {
+                isApplyingRemoteUpdate = true;
+                state = JSON.parse(JSON.stringify(remoteDoc));
+                syncAllInputsFromState();
+                isApplyingRemoteUpdate = false;
+              }
+            }
+
+            cloudReady = true;
+            renderSavedDatesStrip();
+            if (badge) {
+              badge.innerHTML = '<svg class="w-3 h-3 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Cloud Auto-Saved';
+            }
+          }, function (error) {
+            console.error('Firestore onSnapshot error:', error);
+            if (badge) {
+              badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-amber-400"></span> Offline Buffer';
+            }
+          });
+        } catch (err) {
+          console.error('Cloud Server init error:', err);
+        }
+      }
+
+      // Google Drive REST API Integration (Direct Folder Creation & Auto-File Upload)
+      function loadGoogleIdentityScript() {
+        return new Promise(function (resolve, reject) {
+          if (window.google && window.google.accounts && window.google.accounts.oauth2) {
+            resolve();
+            return;
+          }
+          const script = document.createElement('script');
+          script.src = 'https://accounts.google.com/gsi/client';
+          script.async = true;
+          script.defer = true;
+          script.onload = resolve;
+          script.onerror = function () { reject(new Error('Failed to load Google Identity Services')); };
+          document.head.appendChild(script);
+        });
+      }
+
+      async function ensureGdriveFolder() {
+        if (gdriveFolderId) return gdriveFolderId;
+        const q = encodeURIComponent("name='IOCL_Daily_Sale_Register' and mimeType='application/vnd.google-apps.folder' and trashed=false");
+        const searchRes = await fetch('https://www.googleapis.com/drive/v3/files?q=' + q + '&fields=files(id,name)', {
+          headers: { Authorization: 'Bearer ' + gdriveAccessToken }
+        });
+        const searchData = await searchRes.json();
+        if (searchData.files && searchData.files.length > 0) {
+          gdriveFolderId = searchData.files[0].id;
+          return gdriveFolderId;
+        }
+        const createRes = await fetch('https://www.googleapis.com/drive/v3/files', {
+          method: 'POST',
+          headers: {
+            Authorization: 'Bearer ' + gdriveAccessToken,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name: 'IOCL_Daily_Sale_Register',
+            mimeType: 'application/vnd.google-apps.folder'
+          })
+        });
+        const folderData = await createRes.json();
+        gdriveFolderId = folderData.id;
+        return gdriveFolderId;
+      }
+
+      async function uploadSingleRegisterToGoogleDrive(regObj) {
+        if (!gdriveAccessToken || !regObj || !regObj.registerDate) return;
+        const folderId = await ensureGdriveFolder();
+        const fileName = 'IOCL_DSR_' + regObj.registerDate + '.json';
+        const q = encodeURIComponent("name='" + fileName + "' and '" + folderId + "' in parents and trashed=false");
+        const findRes = await fetch('https://www.googleapis.com/drive/v3/files?q=' + q + '&fields=files(id)', {
+          headers: { Authorization: 'Bearer ' + gdriveAccessToken }
+        });
+        const findData = await findRes.json();
+        const existingId = findData.files && findData.files.length > 0 ? findData.files[0].id : null;
+
+        const metadata = existingId
+          ? { name: fileName, mimeType: 'application/json' }
+          : { name: fileName, parents: [folderId], mimeType: 'application/json' };
+
+        const boundary = '-------iocl_dsr_boundary_9921';
+        const body =
+          '--' + boundary + '\r\n' +
+          'Content-Type: application/json; charset=UTF-8\r\n\r\n' +
+          JSON.stringify(metadata) + '\r\n' +
+          '--' + boundary + '\r\n' +
+          'Content-Type: application/json\r\n\r\n' +
+          JSON.stringify(regObj, null, 2) + '\r\n' +
+          '--' + boundary + '--';
+
+        const url = existingId
+          ? 'https://www.googleapis.com/upload/drive/v3/files/' + existingId + '?uploadType=multipart'
+          : 'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart';
+
+        await fetch(url, {
+          method: existingId ? 'PATCH' : 'POST',
+          headers: {
+            Authorization: 'Bearer ' + gdriveAccessToken,
+            'Content-Type': 'multipart/related; boundary=' + boundary
+          },
+          body: body
+        });
+
+        const pill = document.getElementById('gdrive-status-pill');
+        if (pill) pill.classList.remove('hidden');
+      }
+
+      async function connectGoogleDriveOAuth() {
+        const inputEl = document.getElementById('input-gdrive-client-id');
+        const clientId = inputEl ? inputEl.value.trim() : '';
+        if (!clientId) {
+          showToast('Please paste your Google OAuth Client ID first', 'orange');
+          return;
+        }
+        gdriveClientId = clientId;
+        if (db && currentUser) {
+          setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'iocl_settings', 'cloud_config'), {
+            gdriveClientId: clientId
+          }, { merge: true }).catch(function () {});
+        }
+        try {
+          await loadGoogleIdentityScript();
+          const tokenClient = window.google.accounts.oauth2.initTokenClient({
+            client_id: clientId,
+            scope: 'https://www.googleapis.com/auth/drive.file',
+            callback: async function (resp) {
+              if (resp && resp.access_token) {
+                gdriveAccessToken = resp.access_token;
+                const connBadge = document.getElementById('gdrive-conn-badge');
+                if (connBadge) {
+                  connBadge.textContent = 'Connected ✓';
+                  connBadge.className = 'px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/25 text-emerald-200 border border-emerald-400/40';
+                }
+                const pill = document.getElementById('gdrive-status-pill');
+                if (pill) pill.classList.remove('hidden');
+                await uploadSingleRegisterToGoogleDrive(state);
+                showToast('Connected to Google Drive! Folder: IOCL_Daily_Sale_Register', 'emerald');
+              }
+            }
+          });
+          tokenClient.requestAccessToken({ prompt: 'consent' });
+        } catch (err) {
+          console.error('Google Drive OAuth error:', err);
+          showToast('Could not initialize Google Drive OAuth', 'orange');
+        }
+      }
+
+      // Smart Date Switcher: Loads saved date OR auto-carries forward previous day's CL Totals
+      function switchToRegisterDate(targetIsoDate) {
+        if (!targetIsoDate) return;
+
+        // Save current date before switching away
+        saveState(true);
+
+        if (savedRegistersMap[targetIsoDate]) {
+          state = JSON.parse(JSON.stringify(savedRegistersMap[targetIsoDate]));
+          syncAllInputsFromState();
+          renderSavedDatesStrip();
+          showToast('Loaded saved register for ' + formatDates(targetIsoDate).shortMonth, 'cyan');
+          return;
+        }
+
+        // Check if previous day exists in Cloud Server to auto-carry forward CL -> Opening
+        const prevDate = decrementIsoDate(targetIsoDate);
+        if (savedRegistersMap[prevDate]) {
+          state = buildCarriedForwardState(savedRegistersMap[prevDate], targetIsoDate);
+          syncAllInputsFromState();
+          saveState(true);
+          showToast('New date ' + formatDates(targetIsoDate).shortMonth + ' initialized with ' + formatDates(prevDate).shortMonth + ' CL Totals!', 'emerald');
+        } else {
+          state.registerDate = targetIsoDate;
+          syncAllInputsFromState();
+          saveState(true);
+          showToast('Created register for ' + formatDates(targetIsoDate).shortMonth, 'cyan');
+        }
+      }
+
+      function pullOpeningFromPreviousDay() {
+        const prevDate = decrementIsoDate(state.registerDate);
+        const prevReg = savedRegistersMap[prevDate];
+        if (!prevReg) {
+          showToast('No saved register found for previous date (' + formatDates(prevDate).shortMonth + ')', 'orange');
+          return;
+        }
+        const c = computeRegister(prevReg);
+        state.acOpening = Number(c.acClTotal.toFixed(2));
+        state.ioclOpening = Number(c.ioclClTotal.toFixed(2));
+        state.cashOpening = Number(c.cashClTotal.toFixed(2));
+        state.expenseOpening = Number(c.expenseClTotal.toFixed(2));
+        state.creditOpening = Number(c.creditClTotal.toFixed(2));
+        state.oilOpening = Number(c.oilClTotal.toFixed(2));
+        syncAllInputsFromState();
+        saveState(true);
+        showToast('Synced Opening Balances from ' + formatDates(prevDate).shortMonth + ' CL Totals!', 'emerald');
+      }
+
+      function showToast(message, accent) {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+        const colors = {
+          cyan: 'border-cyan-400/40 bg-slate-950/90 text-cyan-100',
+          emerald: 'border-emerald-400/40 bg-slate-950/90 text-emerald-100',
+          orange: 'border-orange-400/40 bg-slate-950/90 text-orange-100'
+        };
+        const el = document.createElement('div');
+        el.className = 'pointer-events-auto px-4 py-2.5 rounded-xl border backdrop-blur-xl shadow-2xl text-xs font-semibold flex items-center gap-2 transition-all duration-300 translate-y-2 opacity-0 ' + (colors[accent] || colors.cyan);
+        el.innerHTML = '<span class="w-2 h-2 rounded-full bg-current"></span><span>' + esc(message) + '</span>';
+        container.appendChild(el);
+        requestAnimationFrame(function () {
+          el.classList.remove('translate-y-2', 'opacity-0');
+        });
+        setTimeout(function () {
+          el.classList.add('translate-y-2', 'opacity-0');
+          setTimeout(function () { el.remove(); }, 300);
+        }, 2800);
+      }
+
+      // In-Place Formula Update (Zero Focus Loss)
+      function updateCalculatedDisplay() {
+        const c = computeRegister(state);
+        const dates = formatDates(state.registerDate);
+
+        const pill = document.getElementById('formatted-date-pill');
+        if (pill) pill.textContent = dates.shortNum;
+        const refBadge = document.getElementById('header-ref-badge');
+        if (refBadge) refBadge.textContent = 'REF: DSR-' + dates.shortMonth;
+        const cloudDateLbl = document.getElementById('cloud-active-date-label');
+        if (cloudDateLbl) cloudDateLbl.textContent = state.registerDate;
+
+        // Sync Recovery input if Auto-Sync is active
+        const recInput = document.getElementById('input-recovery-amount');
+        const recToggle = document.getElementById('btn-toggle-recovery-sync');
+        const recHint = document.getElementById('recovery-sync-hint');
+        if (recInput && recToggle) {
+          if (state.autoSyncRecovery) {
+            recInput.value = c.recoveryAmount;
+            recInput.readOnly = true;
+            recInput.classList.add('opacity-75', 'cursor-not-allowed');
+            recToggle.textContent = 'Auto-Synced with Sec 05';
+            recToggle.className = 'px-2 py-0.5 rounded-full text-[10px] font-semibold bg-cyan-500/20 text-cyan-200 border border-cyan-400/40 hover:bg-cyan-500/30 transition cursor-pointer';
+            if (recHint) recHint.textContent = 'Automatically equals sum of Credit Recovery items in Section 05';
+          } else {
+            recInput.readOnly = false;
+            recInput.classList.remove('opacity-75', 'cursor-not-allowed');
+            recToggle.textContent = 'Manual Entry (Click to Sync)';
+            recToggle.className = 'px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-500/20 text-amber-200 border border-amber-400/40 hover:bg-amber-500/30 transition cursor-pointer';
+            if (recHint) recHint.textContent = 'Manual override active (Sec 05 Recoveries sum: ' + formatINR(c.creditRecoverySum) + ')';
+          }
+        }
+
+        // Credit mode toggle UI
+        const singleBox = document.getElementById('credit-single-box');
+        const itemizedBox = document.getElementById('credit-itemized-box');
+        const btnSingle = document.getElementById('btn-credit-mode-single');
+        const btnItemized = document.getElementById('btn-credit-mode-itemized');
+        if (singleBox && itemizedBox && btnSingle && btnItemized) {
+          if (state.creditMode === 'itemized') {
+            singleBox.classList.add('hidden');
+            itemizedBox.classList.remove('hidden');
+            btnItemized.className = 'px-2.5 py-1 rounded-lg text-[11px] font-bold bg-purple-500/30 text-white border border-purple-400/40 cursor-pointer';
+            btnSingle.className = 'px-2.5 py-1 rounded-lg text-[11px] font-semibold text-slate-400 hover:text-white cursor-pointer';
+          } else {
+            singleBox.classList.remove('hidden');
+            itemizedBox.classList.add('hidden');
+            btnSingle.className = 'px-2.5 py-1 rounded-lg text-[11px] font-bold bg-purple-500/30 text-white border border-purple-400/40 cursor-pointer';
+            btnItemized.className = 'px-2.5 py-1 rounded-lg text-[11px] font-semibold text-slate-400 hover:text-white cursor-pointer';
+          }
+        }
+
+        // Update all [data-calc] elements
+        const map = {
+          msAmount: formatINR(c.msAmount),
+          hsdAmount: formatINR(c.hsdAmount),
+          grossInflows: formatINR(c.grossInflows),
+          totalLiters: formatLiters(c.totalLiters),
+          fuelSalesSub: formatINR(c.fuelSalesSub),
+          digitalTotal: formatINR(c.digitalTotal),
+          acClTotal: formatINR(c.acClTotal),
+          ioclClTotal: formatINR(c.ioclClTotal),
+          todaysCash: formatINR(c.todaysCash),
+          totalCashAvailable: formatINR(c.totalCashAvailable),
+          cashClTotal: formatINR(c.cashClTotal),
+          todaysExpenseTotal: formatINR(c.todaysExpenseTotal),
+          expenseClTotal: formatINR(c.expenseClTotal),
+          todaysCreditTotal: formatINR(c.todaysCreditTotal),
+          totalCredit: formatINR(c.totalCredit),
+          creditClTotal: formatINR(c.creditClTotal),
+          linkedOilSale: formatINR(c.oilSale),
+          oilClTotal: formatINR(c.oilClTotal),
+          totalPartnerCapital: formatINR(c.totalPartnerCapital)
+        };
+
+        document.querySelectorAll('[data-calc]').forEach(function (el) {
+          const key = el.getAttribute('data-calc');
+          if (Object.prototype.hasOwnProperty.call(map, key)) {
+            el.textContent = map[key];
+            if (key === 'ioclClTotal') {
+              el.classList.toggle('text-rose-300', c.ioclClTotal < 0);
+              el.classList.toggle('text-emerald-300', c.ioclClTotal >= 0);
+            }
+          }
+        });
+
+        if (document.body.classList.contains('preview-mode')) {
+          renderA4PrintSheet();
+        }
+      }
+
+      // Dynamic List Renderers
+      function renderDynamicRows(containerId, listKey, placeholderText) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        const items = state[listKey] || [];
+
+        if (items.length === 0) {
+          container.innerHTML = '<div class="text-[11px] text-slate-500 italic px-2 py-1">No entries added</div>';
+          return;
+        }
+
+        container.innerHTML = items.map(function (item, idx) {
+          const amtVal = item.amount === 0 ? '' : item.amount;
+          return (
+            '<div class="flex items-center gap-2 group" data-row-id="' + esc(item.id) + '">' +
+              '<input type="text" data-list="' + listKey + '" data-idx="' + idx + '" data-field="label" placeholder="' + esc(placeholderText) + '" value="' + esc(item.label) + '" class="glass-input flex-1 px-3 py-1.5 text-xs sm:text-sm text-white min-w-0" />' +
+              '<div class="relative w-36 sm:w-40 shrink-0">' +
+                '<span class="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs text-slate-400 font-mono">₹</span>' +
+                '<input type="number" step="any" data-list="' + listKey + '" data-idx="' + idx + '" data-field="amount" value="' + amtVal + '" placeholder="0.00" class="glass-input w-full pl-6 pr-2.5 py-1.5 text-right font-mono text-xs sm:text-sm tabular-nums" />' +
+              '</div>' +
+              '<button type="button" data-delete-list="' + listKey + '" data-idx="' + idx + '" title="Remove row" class="w-7 h-7 rounded-lg flex items-center justify-center text-slate-400 hover:text-rose-300 hover:bg-rose-500/20 transition cursor-pointer shrink-0">✕</button>' +
+            '</div>'
+          );
+        }).join('');
+      }
+
+      function renderExtraInflowsTable() {
+        const tbody = document.getElementById('list-extra-inflows');
+        if (!tbody) return;
+        const items = state.extraInflows || [];
+        tbody.innerHTML = items.map(function (item, idx) {
+          const amtVal = item.amount === 0 ? '' : item.amount;
+          return (
+            '<tr class="hover:bg-white/[0.02] transition-colors">' +
+              '<td class="py-2 px-3" colspan="3">' +
+                '<div class="flex items-center gap-2">' +
+                  '<span class="w-2 h-2 rounded-full bg-orange-400"></span>' +
+                  '<input type="text" data-list="extraInflows" data-idx="' + idx + '" data-field="label" placeholder="Inflow Description (e.g., Pramod Bhai, Pandit ji Card)" value="' + esc(item.label) + '" class="glass-input flex-1 max-w-md px-3 py-1 text-xs sm:text-sm font-medium text-white" />' +
+                  '<span class="text-[10px] font-mono text-slate-400">EXTRA INFLOW</span>' +
+                '</div>' +
+              '</td>' +
+              '<td class="py-2 px-3 text-right">' +
+                '<div class="inline-flex items-center gap-1.5">' +
+                  '<div class="relative inline-flex items-center w-44">' +
+                    '<span class="absolute left-3 text-xs text-slate-400 font-mono">₹</span>' +
+                    '<input type="number" step="any" data-list="extraInflows" data-idx="' + idx + '" data-field="amount" value="' + amtVal + '" placeholder="0.00" class="glass-input w-full pl-7 pr-3 py-1.5 text-right font-mono text-sm tabular-nums" />' +
+                  '</div>' +
+                  '<button type="button" data-delete-list="extraInflows" data-idx="' + idx + '" title="Remove inflow" class="w-7 h-7 rounded-lg flex items-center justify-center text-slate-400 hover:text-rose-300 hover:bg-rose-500/20 transition cursor-pointer shrink-0">✕</button>' +
+                '</div>' +
+              '</td>' +
+            '</tr>'
+          );
+        }).join('');
+      }
+
+      // Render Partner / Capital Cards
+      function renderPartners() {
+        const container = document.getElementById('list-partners');
+        if (!container) return;
+        const partners = state.partners || [];
+        container.innerHTML = partners.map(function (p, idx) {
+          const balVal = p.balance === 0 ? '' : p.balance;
+          const delBtn = partners.length > 1
+            ? '<button type="button" data-delete-partner="' + idx + '" title="Remove partner" class="w-6 h-6 rounded-lg flex items-center justify-center text-slate-400 hover:text-rose-300 hover:bg-rose-500/20 transition cursor-pointer text-xs">✕</button>'
+            : '';
+          return (
+            '<div class="glass-subcard p-4 space-y-2.5">' +
+              '<div class="flex items-center justify-between gap-2">' +
+                '<span class="text-[10px] font-mono uppercase tracking-wider text-blue-300/80">Partner Capital A/c #' + (idx + 1) + '</span>' +
+                delBtn +
+              '</div>' +
+              '<input type="text" data-partner-idx="' + idx + '" data-partner-field="name" value="' + esc(p.name) + '" placeholder="Partner Name" class="glass-input w-full px-3 py-1.5 text-sm font-bold text-white" />' +
+              '<div class="relative">' +
+                '<span class="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 font-mono">₹</span>' +
+                '<input type="number" step="any" data-partner-idx="' + idx + '" data-partner-field="balance" value="' + balVal + '" placeholder="0.00" class="glass-input w-full pl-7 pr-3 py-1.5 text-right font-mono text-sm font-semibold text-blue-200 tabular-nums" />' +
+              '</div>' +
+            '</div>'
+          );
+        }).join('');
+      }
+
+      // Sync All Static Inputs & Dynamic Lists from Current State
+      function syncAllInputsFromState() {
+        const stationInput = document.getElementById('input-station-name');
+        if (stationInput) stationInput.value = state.stationName || '';
+
+        const dateInput = document.getElementById('input-register-date');
+        if (dateInput) dateInput.value = state.registerDate || '2026-11-08';
+
+        const numericBindings = [
+          ['input-ms-liters', 'msLiters'],
+          ['input-ms-rate', 'msRate'],
+          ['input-hsd-liters', 'hsdLiters'],
+          ['input-hsd-rate', 'hsdRate'],
+          ['input-oil-sale', 'oilSale'],
+          ['input-recovery-amount', 'recoveryManual'],
+          ['input-ac-opening', 'acOpening'],
+          ['input-sbi-balance', 'sbiBalance'],
+          ['input-iocl-opening', 'ioclOpening'],
+          ['input-cash-opening', 'cashOpening'],
+          ['input-expense-opening', 'expenseOpening'],
+          ['input-credit-single', 'creditSingleAmount'],
+          ['input-credit-opening', 'creditOpening'],
+          ['input-oil-opening', 'oilOpening'],
+          ['input-oil-added', 'oilAdded']
+        ];
+
+        numericBindings.forEach(function (pair) {
+          const el = document.getElementById(pair[0]);
+          if (el) {
+            const val = Number(state[pair[1]]) || 0;
+            el.value = val;
+          }
+        });
+
+        renderExtraInflowsTable();
+        renderDynamicRows('list-digital-receipts', 'digitalReceipts', 'e.g., Phone Pe, Paytm, ICICI Card');
+        renderDynamicRows('list-bank-credits', 'bankCredits', 'e.g., Cash Deposit, Pramod Bhai Tr');
+        renderDynamicRows('list-bank-debits', 'bankDebits', 'e.g., IOCL RTGS, Paytm Charges');
+        renderDynamicRows('list-iocl-credits', 'ioclCredits', 'e.g., RTGS / Receipt');
+        renderDynamicRows('list-iocl-debits', 'ioclDebits', 'e.g., Tanker Load');
+        renderDynamicRows('list-cash-outflows', 'cashOutflows', 'e.g., Cash Deposit To Bank, Return');
+        renderDynamicRows('list-expenses', 'expenseItems', 'e.g., Fitter Diesel, Watchman, Canteen');
+        renderDynamicRows('list-credit-items', 'creditItems', 'Party Name');
+        renderDynamicRows('list-credit-recoveries', 'creditRecoveries', 'Party Name (e.g., Ajay Baniya)');
+        renderPartners();
+        updateCalculatedDisplay();
+      }
+
+      // Executive A4 PDF Print Sheet Renderer (Zero-Gap Auto-Fill Architecture + Official IOCL Logo)
+      function renderA4PrintSheet() {
+        const container = document.getElementById('a4-dynamic-content');
+        if (!container) return;
+        const c = computeRegister(state);
+        const dates = formatDates(state.registerDate);
+
+        // Calculate total dynamic rows to auto-tune vertical density so page fills 100% without overflow
+        const totalDynamicRows =
+          (state.extraInflows || []).length +
+          (state.digitalReceipts || []).length +
+          (state.bankCredits || []).length +
+          (state.bankDebits || []).length +
+          (state.ioclCredits || []).length +
+          (state.ioclDebits || []).length +
+          (state.cashOutflows || []).length +
+          (state.expenseItems || []).length +
+          (state.creditItems || []).length +
+          (state.creditRecoveries || []).length;
+
+        if (totalDynamicRows > 22) {
+          container.style.setProperty('--p-font', '7.2pt');
+          container.style.setProperty('--p-pad-y', '2px');
+        } else if (totalDynamicRows > 14) {
+          container.style.setProperty('--p-font', '7.7pt');
+          container.style.setProperty('--p-pad-y', '2.8px');
+        } else {
+          container.style.setProperty('--p-font', '8.2pt');
+          container.style.setProperty('--p-pad-y', '3.8px');
+        }
+
+        // Authentic Crisp Vector IndianOil (IOCL) Emblem SVG
+        const ioclLogoSVG =
+          '<svg viewBox="0 0 120 120" width="46" height="46" style="display:block; shrink-0;" xmlns="http://www.w3.org/2000/svg">' +
+            '<defs>' +
+              '<linearGradient id="ioclSaffronGrad" x1="0%" y1="0%" x2="100%" y2="100%">' +
+                '<stop offset="0%" stop-color="#FF8533"/>' +
+                '<stop offset="55%" stop-color="#F37021"/>' +
+                '<stop offset="100%" stop-color="#C84E06"/>' +
+              '</linearGradient>' +
+              '<linearGradient id="ioclNavyGrad" x1="0%" y1="0%" x2="100%" y2="0%">' +
+                '<stop offset="0%" stop-color="#062152"/>' +
+                '<stop offset="50%" stop-color="#0A3D91"/>' +
+                '<stop offset="100%" stop-color="#062152"/>' +
+              '</linearGradient>' +
+            '</defs>' +
+            '<circle cx="60" cy="60" r="55" fill="url(#ioclSaffronGrad)" stroke="#062152" stroke-width="3"/>' +
+            '<circle cx="60" cy="60" r="48" fill="none" stroke="#FFFFFF" stroke-width="2"/>' +
+            '<path d="M48 24 C54 17, 66 17, 72 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" opacity="0.85"/>' +
+            '<rect x="4" y="44" width="112" height="32" rx="4" fill="url(#ioclNavyGrad)" stroke="#FFFFFF" stroke-width="2.4"/>' +
+            '<text x="60" y="65.5" text-anchor="middle" fill="#FFFFFF" font-family="Plus Jakarta Sans, Arial, sans-serif" font-weight="800" font-size="16.5" letter-spacing="0.4">IndianOil</text>' +
+            '<text x="60" y="95" text-anchor="middle" fill="#FFFFFF" font-family="JetBrains Mono, monospace" font-weight="800" font-size="9.5" letter-spacing="1.4">IOCL</text>' +
+          '</svg>';
+
+        function buildRowsHTML(items, emptyLabel) {
+          if (!items || items.length === 0) {
+            return '<tr><td style="color:#64748B; font-style:italic;">' + esc(emptyLabel) + '</td><td class="print-mono" style="color:#64748B;">₹0.00</td></tr>';
+          }
+          return items.map(function (it) {
+            return '<tr><td>' + esc(it.label || 'Entry') + '</td><td class="print-mono">' + formatINR(it.amount) + '</td></tr>';
+          }).join('');
+        }
+
+        function buildPrefixedRows(items, prefix, fallbackLabel, colspan, badgeColor) {
+          return (items || []).map(function (it) {
+            const colAttr = colspan ? ' colspan="' + colspan + '"' : '';
+            const tag = prefix
+              ? '<span style="font-weight:800; color:' + (badgeColor || '#0A3D91') + ';">' + prefix + '</span> '
+              : '';
+            return '<tr><td' + colAttr + '>' + tag + esc(it.label || fallbackLabel) + '</td><td class="print-mono">' + formatINR(it.amount) + '</td></tr>';
+          }).join('');
+        }
+
+        const extraInflowsHTML = buildPrefixedRows(state.extraInflows, '(+)', 'Extra Inflow', 3, '#B45309');
+        const ioclCreditsHTML = buildPrefixedRows(state.ioclCredits, '(+) CR:', 'RTGS / Receipt', 0, '#047857');
+        const ioclDebitsHTML = buildPrefixedRows(state.ioclDebits, '(-) DR:', 'Tanker Load', 0, '#B91C1C');
+        const bankCreditsHTML = buildPrefixedRows(state.bankCredits, '(+) CR:', 'Deposit', 0, '#047857');
+        const bankDebitsHTML = buildPrefixedRows(state.bankDebits, '(-) DR:', 'Outflow', 0, '#B91C1C');
+        const cashOutflowsHTML = buildPrefixedRows(state.cashOutflows, '(-)', 'Cash Outflow', 0, '#B91C1C');
+        const creditRecoveriesHTML = buildPrefixedRows(state.creditRecoveries, '(-) RCV:', 'Party Recovery', 0, '#047857');
+
+        const creditGivenHTML = (state.creditMode === 'itemized' && (state.creditItems || []).length > 0)
+          ? buildPrefixedRows(state.creditItems, '(+) CR:', 'Party Credit', 0, '#5B21B6')
+          : '<tr><td>Today\'s Credit Given <span style="font-family:\'JetBrains Mono\',monospace; font-size:6.6pt; color:#64748B;">(C38)</span></td><td class="print-mono">' + formatINR(c.todaysCreditTotal) + '</td></tr>';
+
+        const partnersHTML = (state.partners || []).map(function (p, i) {
+          const borderRight = i < (state.partners.length - 1) ? 'border-right: 1pt solid #CBD5E1;' : '';
+          return (
+            '<div style="flex:1; padding: 4px 9px; display:flex; justify-content:space-between; align-items:center; ' + borderRight + ' background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);">' +
+              '<div>' +
+                '<div style="font-size:6.2pt; text-transform:uppercase; letter-spacing:0.06em; color:#64748B; font-weight:800;">Partner Capital Standing</div>' +
+                '<div style="font-size:8.3pt; font-weight:800; color:#062152;">' + esc(p.name || 'Partner') + '</div>' +
+              '</div>' +
+              '<div class="print-mono" style="font-size:8.9pt; font-weight:800; color:#062152;">' + formatINR(p.balance) + '</div>' +
+            '</div>'
+          );
+        }).join('');
+
+        const ioclColor = c.ioclClTotal < 0 ? '#991B1B' : '#065F46';
+
+        container.innerHTML = [
+          // 1. SOVEREIGN INDIANOIL EXECUTIVE MASTHEAD & FLUSH 4-KPI RIBBON (CRISP EXECUTIVE PAPER)
+          '<div style="border-bottom: 1.35pt solid #062152;">',
+            // Top Corporate Bar
+            '<div style="background: linear-gradient(90deg, #D9580C 0%, #F37021 30%, #051B44 30.3%, #0A3D91 100%); color: #FFFFFF; padding: 4px 9px; display: flex; justify-content: space-between; align-items: center;">',
+              '<div style="display:flex; align-items:center; gap:7px;">',
+                '<span style="font-weight: 800; font-size: 8.2pt; letter-spacing: 0.11em; text-transform: uppercase;">INDIANOIL CORPORATION LTD. &bull; DAILY SALE REGISTER</span>',
+              '</div>',
+              '<div style="font-family: \'JetBrains Mono\', monospace; font-size: 7.5pt; font-weight: 700; letter-spacing:0.04em;">REF: DSR-' + dates.shortMonth + ' &nbsp;|&nbsp; DATE: ' + dates.shortMonth + ' (' + dates.shortNum + ')</div>',
+            '</div>',
+
+            // Station Masthead with Official-Style Vector IOCL Emblem
+            '<div style="padding: 6px 10px; background: radial-gradient(circle at 0% 50%, #FFF7ED 0%, #FFFFFF 38%, #F8FAFC 100%); display: flex; justify-content: space-between; align-items: center; gap: 12px; border-bottom: 1.1pt solid #062152;">',
+              '<div style="display:flex; align-items:center; gap: 10px;">',
+                ioclLogoSVG,
+                '<div>',
+                  '<div style="display:flex; align-items:center; gap:6px; margin-bottom: 1.5px;">',
+                    '<span style="font-size: 6.4pt; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #C2410C; background: #FFEDD5; border: 0.6pt solid #FB923C; padding: 1px 5px; border-radius: 2px;">AUTHORIZED INDIANOIL DEALER</span>',
+                    '<span style="font-size: 6.4pt; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #0A3D91;">MS &bull; HSD &bull; SERVO LUBRICANTS</span>',
+                  '</div>',
+                  '<div style="font-size: 11.4pt; font-weight: 800; color: #062152; letter-spacing: 0.015em; line-height: 1.15;">' + esc(state.stationName) + '</div>',
+                  '<div style="font-size: 7pt; color: #475569; font-weight: 600; margin-top: 1.5px;">Consolidated Shift Accounting Statement: Nozzle Sales, Digital POS, Cash Book, Expenses, Udhaar &amp; Lube Inventory</div>',
+                '</div>',
+              '</div>',
+
+              // Right Audit Metadata Box
+              '<div style="border: 1pt solid #062152; border-radius: 3px; overflow: hidden; min-width: 126px; background: #FFFFFF; shrink-0;">',
+                '<div style="background: #062152; color: #FFFFFF; font-size: 6.3pt; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 6px; text-align: center;">REGISTER AUDIT SLIP</div>',
+                '<div style="padding: 3.5px 6px; font-family: \'JetBrains Mono\', monospace; font-size: 6.8pt; line-height: 1.35; color: #0F172A;">',
+                  '<div style="display:flex; justify-content:space-between; gap:8px;"><span style="color:#64748B;">DATE:</span><strong>' + dates.shortNum + '</strong></div>',
+                  '<div style="display:flex; justify-content:space-between; gap:8px;"><span style="color:#64748B;">FUEL:</span><strong>' + formatLiters(c.totalLiters) + '</strong></div>',
+                  '<div style="display:flex; justify-content:space-between; gap:8px;"><span style="color:#64748B;">STATUS:</span><strong style="color:#047857;">VERIFIED</strong></div>',
+                '</div>',
+              '</div>',
+            '</div>',
+
+            // Flush 4-Column KPI Ribbon
+            '<div style="display: grid; grid-template-columns: repeat(4, 1fr);">',
+              '<div style="padding: 4px 8px; border-right: 1pt solid #CBD5E1; border-top: 2pt solid #F37021; background: linear-gradient(180deg, #FFF7ED 0%, #FFEDD5 100%);">',
+                '<div style="font-size: 6.2pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #9A3412;">1. Gross Sale &amp; Inflows (E10)</div>',
+                '<div class="print-mono" style="text-align:left; font-size: 9.3pt; font-weight: 800; color: #7C2D12;">' + formatINR(c.grossInflows) + '</div>',
+              '</div>',
+              '<div style="padding: 4px 8px; border-right: 1pt solid #CBD5E1; border-top: 2pt solid #059669; background: linear-gradient(180deg, #ECFDF5 0%, #D1FAE5 100%);">',
+                '<div style="font-size: 6.2pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #065F46;">2. Cash Closing Bal (C30)</div>',
+                '<div class="print-mono" style="text-align:left; font-size: 9.3pt; font-weight: 800; color: #064E3B;">' + formatINR(c.cashClTotal) + '</div>',
+              '</div>',
+              '<div style="padding: 4px 8px; border-right: 1pt solid #CBD5E1; border-top: 2pt solid #0A3D91; background: linear-gradient(180deg, #EFF6FF 0%, #DBEAFE 100%);">',
+                '<div style="font-size: 6.2pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #1E40AF;">3. Bank A/c Closing (CL)</div>',
+                '<div class="print-mono" style="text-align:left; font-size: 9.3pt; font-weight: 800; color: #062152;">' + formatINR(c.acClTotal) + '</div>',
+              '</div>',
+              '<div style="padding: 4px 8px; border-top: 2pt solid #475569; background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);">',
+                '<div style="font-size: 6.2pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #334155;">4. IOCL Company Bal (CL)</div>',
+                '<div class="print-mono" style="text-align:left; font-size: 9.3pt; font-weight: 800; color: ' + ioclColor + ';">' + formatINR(c.ioclClTotal) + '</div>',
+              '</div>',
+            '</div>',
+          '</div>',
+
+          // 2. ZERO-GAP AUTO-EXPANDING ARCHITECTURAL LEDGER STACK
+          '<div class="a4-body-stack">',
+
+            // ROW 1: Section 01 + 02B (Left) | Section 02A (Right)
+            '<div class="a4-grid-row grow-1">',
+              '<div class="a4-cell-left">',
+                '<div class="print-section-header orange-accent"><span><span class="print-sec-badge">01</span>Product Sales &amp; Inflows</span><span style="font-family:\'JetBrains Mono\',monospace; font-size:6.6pt;">CELL E10</span></div>',
+                '<table class="print-table">',
+                  '<thead><tr><th>Product / Head</th><th style="text-align:right;">Liters</th><th style="text-align:right;">Rate</th><th style="text-align:right;">Amount (₹)</th></tr></thead>',
+                  '<tbody>',
+                    '<tr><td><strong>MS (Petrol)</strong></td><td class="print-mono">' + c.msLiters.toLocaleString('en-IN') + '</td><td class="print-mono">' + c.msRate.toFixed(2) + '</td><td class="print-mono"><strong>' + formatINR(c.msAmount) + '</strong></td></tr>',
+                    '<tr><td><strong>HSD (Diesel)</strong></td><td class="print-mono">' + c.hsdLiters.toLocaleString('en-IN') + '</td><td class="print-mono">' + c.hsdRate.toFixed(2) + '</td><td class="print-mono"><strong>' + formatINR(c.hsdAmount) + '</strong></td></tr>',
+                    '<tr><td colspan="3">Oil Sale (SERVO Lubricants)</td><td class="print-mono">' + formatINR(c.oilSale) + '</td></tr>',
+                    '<tr><td colspan="3">Credit Recovery Inflow</td><td class="print-mono">' + formatINR(c.recoveryAmount) + '</td></tr>',
+                    extraInflowsHTML,
+                  '</tbody>',
+                '</table>',
+                '<div class="print-cl-bar amber" style="border-bottom: 1.25pt solid #062152;"><span>TOTAL GROSS SALE &amp; INFLOWS (E10)</span><span class="print-mono">' + formatINR(c.grossInflows) + '</span></div>',
+
+                // Section 02B seamlessly stacked below Section 01
+                '<div class="a4-panel-fill">',
+                  '<div>',
+                    '<div class="print-section-header"><span><span class="print-sec-badge">02B</span>SBI &amp; IOCL Company Account</span><span style="font-family:\'JetBrains Mono\',monospace; font-size:6.6pt;">IOCL CL</span></div>',
+                    '<table class="print-table"><tbody>',
+                      '<tr><td><strong>SBI Bank Account Balance</strong></td><td class="print-mono"><strong>' + formatINR(c.sbiBalance) + '</strong></td></tr>',
+                      '<tr><td>IOCL Opening Balance</td><td class="print-mono">' + formatINR(c.ioclOpening) + '</td></tr>',
+                      ioclCreditsHTML,
+                      ioclDebitsHTML,
+                    '</tbody></table>',
+                  '</div>',
+                  '<div class="a4-flex-spacer"></div>',
+                  '<div class="print-cl-bar"><span>IOCL CLOSING TOTAL (CL TOTAL)</span><span class="print-mono" style="color:' + ioclColor + ';">' + formatINR(c.ioclClTotal) + '</span></div>',
+                '</div>',
+              '</div>',
+
+              '<div class="a4-cell-right">',
+                '<div class="print-section-header"><span><span class="print-sec-badge">02A</span>A/c Details (Card / UPI &amp; Bank)</span><span style="font-family:\'JetBrains Mono\',monospace; font-size:6.6pt;">A/C CL</span></div>',
+                '<div class="a4-panel-fill">',
+                  '<table class="print-table">',
+                    '<thead><tr><th>Digital POS / Bank Ledger Particulars</th><th style="text-align:right;">Amount (₹)</th></tr></thead>',
+                    '<tbody>',
+                      buildRowsHTML(state.digitalReceipts, 'No Digital Receipts'),
+                      '<tr style="background:#EFF6FF;"><td><strong>Today\'s Digital / Card Total (C14)</strong></td><td class="print-mono"><strong>' + formatINR(c.digitalTotal) + '</strong></td></tr>',
+                      '<tr><td><strong>(+) A/c Opening Balance</strong></td><td class="print-mono">' + formatINR(c.acOpening) + '</td></tr>',
+                      bankCreditsHTML,
+                      bankDebitsHTML,
+                    '</tbody>',
+                  '</table>',
+                  '<div class="a4-flex-spacer"></div>',
+                  '<div class="print-cl-bar"><span>A/C CLOSING TOTAL (CL TOTAL)</span><span class="print-mono">' + formatINR(c.acClTotal) + '</span></div>',
+                '</div>',
+              '</div>',
+            '</div>',
+
+            // ROW 2: Section 03 Cash Ledger (Left) | Section 04 Expense Ledger (Right)
+            '<div class="a4-grid-row grow-2">',
+              '<div class="a4-cell-left">',
+                '<div class="print-section-header emerald-accent"><span><span class="print-sec-badge">03</span>Cash Ledger &amp; Reconciliation</span><span style="font-family:\'JetBrains Mono\',monospace; font-size:6.6pt;">CELL C25–C30</span></div>',
+                '<div class="a4-panel-fill">',
+                  '<table class="print-table"><tbody>',
+                    '<tr style="background:#ECFDF5;"><td><strong>Today\'s Net Cash (C25)</strong> <span style="font-size:6.4pt; color:#047857;">[=E10−C14−F29−C38]</span></td><td class="print-mono"><strong>' + formatINR(c.todaysCash) + '</strong></td></tr>',
+                    '<tr><td>(+) Opening Cash Balance</td><td class="print-mono">' + formatINR(c.cashOpening) + '</td></tr>',
+                    '<tr style="background:#F1F5F9;"><td><strong>(=) Total Cash Available</strong></td><td class="print-mono"><strong>' + formatINR(c.totalCashAvailable) + '</strong></td></tr>',
+                    cashOutflowsHTML,
+                  '</tbody></table>',
+                  '<div class="a4-flex-spacer"></div>',
+                  '<div class="print-cl-bar emerald"><span>CASH CLOSING TOTAL (CL TOTAL)</span><span class="print-mono">' + formatINR(c.cashClTotal) + '</span></div>',
+                '</div>',
+              '</div>',
+
+              '<div class="a4-cell-right">',
+                '<div class="print-section-header"><span><span class="print-sec-badge">04</span>Daily &amp; Cumulative Expense Ledger</span><span style="font-family:\'JetBrains Mono\',monospace; font-size:6.6pt;">CELL F29</span></div>',
+                '<div class="a4-panel-fill">',
+                  '<table class="print-table">',
+                    '<thead><tr><th>Expense Voucher Head</th><th style="text-align:right;">Amount (₹)</th></tr></thead>',
+                    '<tbody>',
+                      buildRowsHTML(state.expenseItems, 'No Daily Expenses'),
+                      '<tr style="background:#FFF1F2;"><td><strong>Today\'s Expense Total (F29)</strong></td><td class="print-mono"><strong>' + formatINR(c.todaysExpenseTotal) + '</strong></td></tr>',
+                      '<tr><td>(+) Opening Expense (Cumulative)</td><td class="print-mono">' + formatINR(c.expenseOpening) + '</td></tr>',
+                    '</tbody>',
+                  '</table>',
+                  '<div class="a4-flex-spacer"></div>',
+                  '<div class="print-cl-bar"><span>EXPENSE CLOSING TOTAL (CL TOTAL)</span><span class="print-mono">' + formatINR(c.expenseClTotal) + '</span></div>',
+                '</div>',
+              '</div>',
+            '</div>',
+
+            // ROW 3: Section 05 Credit Ledger (Left) | Section 06 Oil Ledger (Right)
+            '<div class="a4-grid-row grow-3">',
+              '<div class="a4-cell-left">',
+                '<div class="print-section-header purple-accent"><span><span class="print-sec-badge">05</span>Credit (Udhaar) Ledger</span><span style="font-family:\'JetBrains Mono\',monospace; font-size:6.6pt;">CELL C38–C43</span></div>',
+                '<div class="a4-panel-fill">',
+                  '<table class="print-table"><tbody>',
+                    creditGivenHTML,
+                    '<tr><td>(+) Opening Credit Balance</td><td class="print-mono">' + formatINR(c.creditOpening) + '</td></tr>',
+                    '<tr style="background:#F1F5F9;"><td><strong>(=) Total Credit Outstanding</strong></td><td class="print-mono"><strong>' + formatINR(c.totalCredit) + '</strong></td></tr>',
+                    creditRecoveriesHTML,
+                  '</tbody></table>',
+                  '<div class="a4-flex-spacer"></div>',
+                  '<div class="print-cl-bar purple"><span>CREDIT CLOSING TOTAL (CL TOTAL)</span><span class="print-mono">' + formatINR(c.creditClTotal) + '</span></div>',
+                '</div>',
+              '</div>',
+
+              '<div class="a4-cell-right">',
+                '<div class="print-section-header orange-accent"><span><span class="print-sec-badge">06</span>Oil / Lubricants Stock Ledger</span><span style="font-family:\'JetBrains Mono\',monospace; font-size:6.6pt;">CELL F40</span></div>',
+                '<div class="a4-panel-fill">',
+                  '<table class="print-table"><tbody>',
+                    '<tr><td>Opening Oil Stock Valuation</td><td class="print-mono">' + formatINR(c.oilOpening) + '</td></tr>',
+                    '<tr><td>(-) Today\'s Oil Sale <span style="font-size:6.4pt; color:#64748B;">(Auto-Linked Sec 01)</span></td><td class="print-mono">' + formatINR(c.oilSale) + '</td></tr>',
+                    '<tr><td>(+) Oil Stock Added / Adjustment</td><td class="print-mono">' + formatINR(c.oilAdded) + '</td></tr>',
+                  '</tbody></table>',
+                  '<div class="a4-flex-spacer"></div>',
+                  '<div class="print-cl-bar amber"><span>OIL CLOSING TOTAL (CL TOTAL)</span><span class="print-mono">' + formatINR(c.oilClTotal) + '</span></div>',
+                '</div>',
+              '</div>',
+            '</div>',
+
+          '</div>',
+
+          // 3. FLUSH BOTTOM PARTNER CAPITAL & EXECUTIVE 4-COLUMN SIGNATORY + STAMP FOOTER
+          '<div>',
+            '<div class="print-section-header"><span><span class="print-sec-badge">07</span>Partner / Capital Account Standing Summary</span><span style="font-family:\'JetBrains Mono\',monospace; font-size:6.9pt;">COMBINED CAPITAL: ' + formatINR(c.totalPartnerCapital) + '</span></div>',
+            '<div style="display:flex; border-bottom: 1.25pt solid #062152;">' + partnersHTML + '</div>',
+
+            '<div style="padding: 6px 10px 5px 10px; background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%); display: grid; grid-template-columns: 1fr 1fr 1.15fr 0.72fr; gap: 14px; align-items: end; font-size: 7.2pt; color: #334155;">',
+              '<div style="text-align:center;"><div style="height: 22px; border-bottom: 1pt solid #64748B; margin: 0 6px 3px 6px;"></div><div style="font-weight: 800; color: #0F172A; text-transform: uppercase;">Shift Supervisor</div><div style="font-size: 6.2pt; color: #64748B;">Meter &amp; Cash Verified</div></div>',
+              '<div style="text-align:center;"><div style="height: 22px; border-bottom: 1pt solid #64748B; margin: 0 6px 3px 6px;"></div><div style="font-weight: 800; color: #0F172A; text-transform: uppercase;">Accountant / Manager</div><div style="font-size: 6.2pt; color: #64748B;">POS &amp; Bank Audited</div></div>',
+              '<div style="text-align:center;"><div style="height: 22px; border-bottom: 1.1pt solid #062152; margin: 0 6px 3px 6px;"></div><div style="font-weight: 800; color: #062152; text-transform: uppercase;">Authorized Proprietor</div><div style="font-size: 6.2pt; color: #64748B;">M/S Chandra Pratima Petroleum</div></div>',
+              '<div style="border: 0.9pt dashed #94A3B8; border-radius: 3px; height: 36px; display:flex; align-items:center; justify-content:center; text-align:center; font-size: 5.8pt; font-weight: 800; letter-spacing: 0.06em; color: #64748B; text-transform: uppercase; background: #FFFFFF;">DEALER<br/>STAMP &amp; SEAL</div>',
+            '</div>',
+          '</div>'
+        ].join('');
+      }
+
+      // Carry Forward to Next Day Logic
+      function incrementIsoDate(isoDate) {
+        if (!isoDate || !/^\d{4}-\d{2}-\d{2}$/.test(isoDate)) return '2026-11-09';
+        const parts = isoDate.split('-').map(Number);
+        const dt = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2] + 1));
+        return dt.toISOString().slice(0, 10);
+      }
+      // Carry Forward to Next Day Logic (Saves today -> Creates/Updates Tomorrow with CL Totals as Opening -> Auto-Saves Tomorrow)
+      function openCarryForwardModal() {
+        const c = computeRegister(state);
+        const nextDate = incrementIsoDate(state.registerDate);
+        const nextDates = formatDates(nextDate);
+
+        const summaryEl = document.getElementById('modal-rollover-summary');
+        if (summaryEl) {
+          summaryEl.innerHTML = [
+            '<div class="flex justify-between text-cyan-200"><span>New Register Date:</span><strong>' + nextDates.shortMonth + ' (' + nextDates.shortNum + ')</strong></div>',
+            '<div class="flex justify-between text-slate-200"><span>A/c CL → Next A/c Opening:</span><strong>' + formatINR(c.acClTotal) + '</strong></div>',
+            '<div class="flex justify-between text-slate-200"><span>IOCL CL → Next IOCL Opening:</span><strong>' + formatINR(c.ioclClTotal) + '</strong></div>',
+            '<div class="flex justify-between text-emerald-300"><span>Cash CL → Next Cash Opening:</span><strong>' + formatINR(c.cashClTotal) + '</strong></div>',
+            '<div class="flex justify-between text-rose-200"><span>Expense CL → Next Expense Opening:</span><strong>' + formatINR(c.expenseClTotal) + '</strong></div>',
+            '<div class="flex justify-between text-purple-200"><span>Credit CL → Next Credit Opening:</span><strong>' + formatINR(c.creditClTotal) + '</strong></div>',
+            '<div class="flex justify-between text-amber-200"><span>Oil CL → Next Oil Opening:</span><strong>' + formatINR(c.oilClTotal) + '</strong></div>'
+          ].join('');
+        }
+
+        const backdrop = document.getElementById('modal-backdrop');
+        if (backdrop) {
+          backdrop.classList.remove('hidden');
+          backdrop.classList.add('flex');
+        }
+      }
+
+      function closeCarryForwardModal() {
+        const backdrop = document.getElementById('modal-backdrop');
+        if (backdrop) {
+          backdrop.classList.add('hidden');
+          backdrop.classList.remove('flex');
+        }
+      }
+
+      function executeCarryForward() {
+        // 1. Ensure current day's final state is saved on server first
+        saveState(true);
+
+        const nextDate = incrementIsoDate(state.registerDate);
+        state = buildCarriedForwardState(state, nextDate);
+
+        closeCarryForwardModal();
+        syncAllInputsFromState();
+        // 2. Immediately save new day with carried-forward Opening Balances to Cloud Server
+        saveState(true);
+        showToast('Saved & Carried Forward CL Totals to ' + formatDates(nextDate).shortMonth + '!', 'emerald');
+      }
+
+      // Event Wiring
+      function bindEvents() {
+        const numericBindings = [
+          ['input-ms-liters', 'msLiters'],
+          ['input-ms-rate', 'msRate'],
+          ['input-hsd-liters', 'hsdLiters'],
+          ['input-hsd-rate', 'hsdRate'],
+          ['input-oil-sale', 'oilSale'],
+          ['input-recovery-amount', 'recoveryManual'],
+          ['input-ac-opening', 'acOpening'],
+          ['input-sbi-balance', 'sbiBalance'],
+          ['input-iocl-opening', 'ioclOpening'],
+          ['input-cash-opening', 'cashOpening'],
+          ['input-expense-opening', 'expenseOpening'],
+          ['input-credit-single', 'creditSingleAmount'],
+          ['input-credit-opening', 'creditOpening'],
+          ['input-oil-opening', 'oilOpening'],
+          ['input-oil-added', 'oilAdded']
+        ];
+
+        numericBindings.forEach(function (pair) {
+          const el = document.getElementById(pair[0]);
+          if (!el) return;
+          el.addEventListener('input', function (e) {
+            state[pair[1]] = e.target.value === '' ? 0 : parseFloat(e.target.value);
+            updateCalculatedDisplay();
+            saveState();
+          });
+        });
+
+        const stationInput = document.getElementById('input-station-name');
+        if (stationInput) {
+          stationInput.addEventListener('input', function (e) {
+            state.stationName = e.target.value;
+            saveState();
+            if (document.body.classList.contains('preview-mode')) renderA4PrintSheet();
+          });
+        }
+
+        const dateInput = document.getElementById('input-register-date');
+        if (dateInput) {
+          dateInput.addEventListener('change', function (e) {
+            if (e.target.value) {
+              switchToRegisterDate(e.target.value);
+            }
+          });
+        }
+
+        const btnPullPrevCl = document.getElementById('btn-pull-prev-cl');
+        if (btnPullPrevCl) {
+          btnPullPrevCl.addEventListener('click', pullOpeningFromPreviousDay);
+        }
+
+        // Saved Daily Dates Strip Click Delegation
+        const savedStrip = document.getElementById('saved-dates-strip');
+        if (savedStrip) {
+          savedStrip.addEventListener('click', function (e) {
+            const btn = e.target.closest('[data-select-saved-date]');
+            if (btn) {
+              const targetDate = btn.getAttribute('data-select-saved-date');
+              if (targetDate && targetDate !== state.registerDate) {
+                switchToRegisterDate(targetDate);
+              }
+            }
+          });
+        }
+
+        // Google Drive & Cloud Server Modal Handlers
+        const cloudModal = document.getElementById('cloud-modal-backdrop');
+        const btnOpenCloud = document.getElementById('btn-open-cloud-modal');
+        const btnCloseCloud = document.getElementById('btn-cloud-modal-close');
+        const btnDoneCloud = document.getElementById('btn-cloud-modal-done');
+
+        function closeCloudModal() {
+          if (cloudModal) {
+            cloudModal.classList.add('hidden');
+            cloudModal.classList.remove('flex');
+          }
+        }
+
+        if (btnOpenCloud && cloudModal) {
+          btnOpenCloud.addEventListener('click', function () {
+            const lbl = document.getElementById('cloud-active-date-label');
+            if (lbl) lbl.textContent = state.registerDate;
+            cloudModal.classList.remove('hidden');
+            cloudModal.classList.add('flex');
+          });
+        }
+        if (btnCloseCloud) btnCloseCloud.addEventListener('click', closeCloudModal);
+        if (btnDoneCloud) btnDoneCloud.addEventListener('click', closeCloudModal);
+
+        const btnConnectGdrive = document.getElementById('btn-connect-gdrive');
+        if (btnConnectGdrive) btnConnectGdrive.addEventListener('click', connectGoogleDriveOAuth);
+
+        const btnGdriveSyncNow = document.getElementById('btn-gdrive-sync-now');
+        if (btnGdriveSyncNow) {
+          btnGdriveSyncNow.addEventListener('click', async function () {
+            if (!gdriveAccessToken) {
+              showToast('Connect your Google Drive Client ID first', 'orange');
+              return;
+            }
+            const keys = Object.keys(savedRegistersMap);
+            for (let i = 0; i < keys.length; i++) {
+              await uploadSingleRegisterToGoogleDrive(savedRegistersMap[keys[i]]);
+            }
+            showToast('All ' + keys.length + ' daily registers synced to Google Drive!', 'emerald');
+          });
+        }
+
+        const btnDownloadJson = document.getElementById('btn-download-json-backup');
+        if (btnDownloadJson) {
+          btnDownloadJson.addEventListener('click', function () {
+            saveState(true);
+            const blob = new Blob([JSON.stringify(savedRegistersMap, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'IOCL_Daily_Sale_Register_CloudBackup_' + state.registerDate + '.json';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
+            showToast('Downloaded full multi-date register backup (.JSON)', 'cyan');
+          });
+        }
+
+        const inputImportJson = document.getElementById('input-import-json-backup');
+        if (inputImportJson) {
+          inputImportJson.addEventListener('change', function (e) {
+            const file = e.target.files && e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = async function (ev) {
+              try {
+                const parsed = JSON.parse(ev.target.result);
+                const keys = Object.keys(parsed || {});
+                let importedCount = 0;
+                for (let i = 0; i < keys.length; i++) {
+                  const rec = parsed[keys[i]];
+                  if (rec && rec.registerDate) {
+                    savedRegistersMap[rec.registerDate] = rec;
+                    if (db && currentUser) {
+                      await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'iocl_registers', rec.registerDate), rec);
+                    }
+                    importedCount++;
+                  }
+                }
+                if (importedCount > 0) {
+                  const sorted = Object.keys(savedRegistersMap).sort();
+                  const latest = sorted[sorted.length - 1];
+                  state = JSON.parse(JSON.stringify(savedRegistersMap[latest]));
+                  syncAllInputsFromState();
+                  renderSavedDatesStrip();
+                  showToast('Restored ' + importedCount + ' daily registers to Cloud Server!', 'emerald');
+                }
+              } catch (err) {
+                showToast('Invalid JSON backup file', 'orange');
+              }
+            };
+            reader.readAsText(file);
+            e.target.value = '';
+          });
+        }
+
+        const btnDeleteDate = document.getElementById('btn-delete-current-date');
+        if (btnDeleteDate) {
+          btnDeleteDate.addEventListener('click', async function () {
+            const delDate = state.registerDate;
+            delete savedRegistersMap[delDate];
+            if (db && currentUser) {
+              await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'iocl_registers', delDate));
+            }
+            const remaining = Object.keys(savedRegistersMap).sort();
+            if (remaining.length > 0) {
+              state = JSON.parse(JSON.stringify(savedRegistersMap[remaining[remaining.length - 1]]));
+            } else {
+              state = clonePreset('BLANK');
+            }
+            syncAllInputsFromState();
+            renderSavedDatesStrip();
+            closeCloudModal();
+            showToast('Deleted register for ' + formatDates(delDate).shortMonth, 'orange');
+          });
+        }
+
+        document.addEventListener('input', function (e) {
+          const target = e.target;
+          const listKey = target.getAttribute('data-list');
+          if (listKey) {
+            const idx = parseInt(target.getAttribute('data-idx'), 10);
+            const field = target.getAttribute('data-field');
+            if (state[listKey] && state[listKey][idx]) {
+              state[listKey][idx][field] = field === 'amount'
+                ? (target.value === '' ? 0 : parseFloat(target.value))
+                : target.value;
+              updateCalculatedDisplay();
+              saveState();
+            }
+            return;
+          }
+
+          const partnerIdx = target.getAttribute('data-partner-idx');
+          if (partnerIdx !== null) {
+            const idx = parseInt(partnerIdx, 10);
+            const field = target.getAttribute('data-partner-field');
+            if (state.partners && state.partners[idx]) {
+              state.partners[idx][field] = field === 'balance'
+                ? (target.value === '' ? 0 : parseFloat(target.value))
+                : target.value;
+              updateCalculatedDisplay();
+              saveState();
+            }
+          }
+        });
+
+        document.addEventListener('click', function (e) {
+          const delBtn = e.target.closest('[data-delete-list]');
+          if (delBtn) {
+            const listKey = delBtn.getAttribute('data-delete-list');
+            const idx = parseInt(delBtn.getAttribute('data-idx'), 10);
+            if (state[listKey]) {
+              state[listKey].splice(idx, 1);
+              if (listKey === 'extraInflows') {
+                renderExtraInflowsTable();
+              } else {
+                const mapId = {
+                  digitalReceipts: ['list-digital-receipts', 'e.g., Phone Pe, Paytm, ICICI Card'],
+                  bankCredits: ['list-bank-credits', 'e.g., Cash Deposit, Pramod Bhai Tr'],
+                  bankDebits: ['list-bank-debits', 'e.g., IOCL RTGS, Paytm Charges'],
+                  ioclCredits: ['list-iocl-credits', 'e.g., RTGS / Receipt'],
+                  ioclDebits: ['list-iocl-debits', 'e.g., Tanker Load'],
+                  cashOutflows: ['list-cash-outflows', 'e.g., Cash Deposit To Bank, Return'],
+                  expenseItems: ['list-expenses', 'e.g., Fitter Diesel, Watchman, Canteen'],
+                  creditItems: ['list-credit-items', 'Party Name'],
+                  creditRecoveries: ['list-credit-recoveries', 'Party Name (e.g., Ajay Baniya)']
+                };
+                if (mapId[listKey]) {
+                  renderDynamicRows(mapId[listKey][0], listKey, mapId[listKey][1]);
+                }
+              }
+              updateCalculatedDisplay();
+              saveState();
+            }
+            return;
+          }
+
+          const delPartnerBtn = e.target.closest('[data-delete-partner]');
+          if (delPartnerBtn) {
+            const idx = parseInt(delPartnerBtn.getAttribute('data-delete-partner'), 10);
+            if (state.partners && state.partners.length > 1) {
+              state.partners.splice(idx, 1);
+              renderPartners();
+              updateCalculatedDisplay();
+              saveState();
+            }
+          }
+        });
+
+        const addHandlers = [
+          ['btn-add-extra-inflow', 'extraInflows', function () { renderExtraInflowsTable(); }],
+          ['btn-add-digital', 'digitalReceipts', function () { renderDynamicRows('list-digital-receipts', 'digitalReceipts', 'e.g., Phone Pe, Paytm, ICICI Card'); }],
+          ['btn-add-bank-credit', 'bankCredits', function () { renderDynamicRows('list-bank-credits', 'bankCredits', 'e.g., Cash Deposit, Pramod Bhai Tr'); }],
+          ['btn-add-bank-debit', 'bankDebits', function () { renderDynamicRows('list-bank-debits', 'bankDebits', 'e.g., IOCL RTGS, Paytm Charges'); }],
+          ['btn-add-iocl-credit', 'ioclCredits', function () { renderDynamicRows('list-iocl-credits', 'ioclCredits', 'e.g., RTGS / Receipt'); }],
+          ['btn-add-iocl-debit', 'ioclDebits', function () { renderDynamicRows('list-iocl-debits', 'ioclDebits', 'e.g., Tanker Load'); }],
+          ['btn-add-cash-outflow', 'cashOutflows', function () { renderDynamicRows('list-cash-outflows', 'cashOutflows', 'e.g., Cash Deposit To Bank, Return'); }],
+          ['btn-add-expense', 'expenseItems', function () { renderDynamicRows('list-expenses', 'expenseItems', 'e.g., Fitter Diesel, Watchman, Canteen'); }],
+          ['btn-add-credit-item', 'creditItems', function () { renderDynamicRows('list-credit-items', 'creditItems', 'Party Name'); }],
+          ['btn-add-recovery-item', 'creditRecoveries', function () { renderDynamicRows('list-credit-recoveries', 'creditRecoveries', 'Party Name (e.g., Ajay Baniya)'); }]
+        ];
+
+        addHandlers.forEach(function (item) {
+          const btn = document.getElementById(item[0]);
+          if (!btn) return;
+          btn.addEventListener('click', function () {
+            state[item[1]] = state[item[1]] || [];
+            state[item[1]].push({ id: uid(), label: '', amount: 0 });
+            item[2]();
+            updateCalculatedDisplay();
+            saveState();
+          });
+        });
+
+        const btnAddPartner = document.getElementById('btn-add-partner');
+        if (btnAddPartner) {
+          btnAddPartner.addEventListener('click', function () {
+            state.partners = state.partners || [];
+            state.partners.push({ id: uid(), name: 'New Partner', balance: 0 });
+            renderPartners();
+            updateCalculatedDisplay();
+            saveState();
+          });
+        }
+
+        const btnToggleRecovery = document.getElementById('btn-toggle-recovery-sync');
+        if (btnToggleRecovery) {
+          btnToggleRecovery.addEventListener('click', function () {
+            state.autoSyncRecovery = !state.autoSyncRecovery;
+            if (!state.autoSyncRecovery) {
+              const c = computeRegister(state);
+              state.recoveryManual = c.creditRecoverySum;
+            }
+            updateCalculatedDisplay();
+            saveState();
+            showToast(state.autoSyncRecovery ? 'Recovery synced with Section 05' : 'Manual recovery override enabled', 'cyan');
+          });
+        }
+
+        const btnCreditSingle = document.getElementById('btn-credit-mode-single');
+        const btnCreditItemized = document.getElementById('btn-credit-mode-itemized');
+        if (btnCreditSingle) {
+          btnCreditSingle.addEventListener('click', function () {
+            if (state.creditMode !== 'single') {
+              const c = computeRegister(state);
+              state.creditSingleAmount = Number(c.todaysCreditTotal.toFixed(2));
+              state.creditMode = 'single';
+              syncAllInputsFromState();
+              saveState();
+            }
+          });
+        }
+        if (btnCreditItemized) {
+          btnCreditItemized.addEventListener('click', function () {
+            if (state.creditMode !== 'itemized') {
+              if ((!state.creditItems || state.creditItems.length === 0) && Number(state.creditSingleAmount) > 0) {
+                state.creditItems = [{ id: uid(), label: 'Credit Party', amount: Number(state.creditSingleAmount) }];
+              }
+              state.creditMode = 'itemized';
+              syncAllInputsFromState();
+              saveState();
+            }
+          });
+        }
+
+        const presetSelect = document.getElementById('preset-selector');
+        if (presetSelect) {
+          presetSelect.addEventListener('change', function (e) {
+            const key = e.target.value;
+            state = clonePreset(key);
+            syncAllInputsFromState();
+            saveState();
+            showToast('Loaded register preset: ' + key, 'orange');
+          });
+        }
+
+        const btnCarry = document.getElementById('btn-carry-forward');
+        if (btnCarry) btnCarry.addEventListener('click', openCarryForwardModal);
+        const btnModalClose = document.getElementById('btn-modal-close');
+        if (btnModalClose) btnModalClose.addEventListener('click', closeCarryForwardModal);
+        const btnModalCancel = document.getElementById('btn-modal-cancel');
+        if (btnModalCancel) btnModalCancel.addEventListener('click', closeCarryForwardModal);
+        const btnModalConfirm = document.getElementById('btn-modal-confirm');
+        if (btnModalConfirm) btnModalConfirm.addEventListener('click', executeCarryForward);
+
+        const btnPrintPreview = document.getElementById('btn-print-preview');
+        if (btnPrintPreview) {
+          btnPrintPreview.addEventListener('click', function () {
+            renderA4PrintSheet();
+            document.body.classList.add('preview-mode');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        }
+
+        const btnExitPreview = document.getElementById('btn-exit-preview');
+        if (btnExitPreview) {
+          btnExitPreview.addEventListener('click', function () {
+            document.body.classList.remove('preview-mode');
+          });
+        }
+
+        function triggerPrint() {
+          renderA4PrintSheet();
+          setTimeout(function () { window.print(); }, 60);
+        }
+
+        const btnPrintPdf = document.getElementById('btn-print-pdf');
+        if (btnPrintPdf) btnPrintPdf.addEventListener('click', triggerPrint);
+        const btnPreviewPrintNow = document.getElementById('btn-preview-print-now');
+        if (btnPreviewPrintNow) btnPreviewPrintNow.addEventListener('click', triggerPrint);
+
+        // Interactive Liquid Glass Card Hover Sheen
+        document.addEventListener('mousemove', function (e) {
+          document.querySelectorAll('.glass-card').forEach(function (card) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', x + 'px');
+            card.style.setProperty('--mouse-y', y + 'px');
+          });
+        });
+      }
+
+      // Initialize App Safely
+      function initApp() {
+        try {
+          bindEvents();
+          syncAllInputsFromState();
+          renderSavedDatesStrip();
+          renderA4PrintSheet();
+          initCloudServer();
+        } catch (err) {
+          console.error('Initialization error:', err);
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initApp);
+      } else {
+        initApp();
+      }
+    })();
+  </script>
+</body>
+</html>
