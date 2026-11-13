@@ -1575,6 +1575,15 @@
                 Save ID
               </button>
             </div>
+            <!-- NEW ERROR 401 HELPER BOX FOR GITHUB PAGES -->
+            <div class="mt-2 p-2.5 rounded-lg bg-orange-500/15 border border-orange-500/30">
+              <p class="text-[10px] text-orange-200 mb-1 font-bold">Getting "Error 401: no registered origin"?</p>
+              <p class="text-[9px] text-slate-300 mb-1.5">Copy this URL and add it to <strong>Authorized JavaScript origins</strong> in your Google Cloud Console:</p>
+              <div class="flex items-center gap-2">
+                <code id="ui-origin-display" class="flex-1 px-2 py-1 rounded bg-black/40 text-cyan-300 font-mono text-[10px] overflow-hidden text-ellipsis whitespace-nowrap">https://your-github-url</code>
+                <button id="btn-copy-origin" type="button" class="px-2.5 py-1 bg-white/10 hover:bg-white/20 rounded border border-white/20 text-[10px] font-bold text-white cursor-pointer shrink-0 transition">Copy</button>
+              </div>
+            </div>
           </div>
 
           <div class="flex flex-wrap items-center gap-2 pt-2.5 border-t border-white/10">
@@ -2697,6 +2706,9 @@
             return;
           } catch (err) {
             console.warn('OAuth token error:', err);
+            openModal('modal-cloud-gdrive');
+            notify(`Google Blocked Access! Copy the Origin URL from the modal and add it to Google Cloud Console.`, 'orange');
+            return;
           }
         }
 
@@ -3283,6 +3295,21 @@
         document.getElementById('btn-close-cloud-1').addEventListener('click', () => closeModal('modal-cloud-gdrive'));
         document.getElementById('btn-close-cloud-2').addEventListener('click', () => closeModal('modal-cloud-gdrive'));
 
+        const btnCopyOrigin = document.getElementById('btn-copy-origin');
+        if (btnCopyOrigin) {
+          btnCopyOrigin.addEventListener('click', () => {
+            navigator.clipboard.writeText(window.location.origin).catch(() => {
+              const tmp = document.createElement('textarea');
+              tmp.value = window.location.origin;
+              document.body.appendChild(tmp);
+              tmp.select();
+              document.execCommand('copy');
+              document.body.removeChild(tmp);
+            });
+            notify('Copied! Now paste this into Authorized JavaScript origins in Google Cloud.', 'emerald');
+          });
+        }
+
         // Date switching & CL -> Opening Rollover
         document.getElementById('reg-date-picker').addEventListener('change', e => {
           const dt = e.target.value;
@@ -3576,6 +3603,9 @@
         wireEvents();
         loadArchiveLocally();
         hydrateAllInputs();
+        
+        const originEl = document.getElementById('ui-origin-display');
+        if (originEl) originEl.textContent = window.location.origin;
 
         if (fbAuth) {
           onAuthStateChanged(fbAuth, user => {
