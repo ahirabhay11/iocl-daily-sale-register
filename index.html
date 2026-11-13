@@ -9,7 +9,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <style>
     :root {
       --iocl-orange: #F37021;
@@ -699,8 +698,7 @@
       #security-gate,
       #workspace-root,
       #a4-preview-bar,
-      #toast-stack,
-      #modal-cloud-gdrive {
+      #toast-stack {
         display: none !important;
       }
       #a4-preview-root {
@@ -783,7 +781,7 @@
         <!-- SIGN IN PANEL -->
         <div id="box-gate-login" class="space-y-3.5">
           <div>
-            <label for="gate-userid" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">User ID or Gmail</label>
+            <label for="gate-userid" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Email / User ID</label>
             <input
               id="gate-userid"
               type="text"
@@ -813,7 +811,7 @@
           </div>
 
           <div id="gate-error-alert" class="hidden px-3.5 py-2 rounded-xl bg-rose-500/20 border border-rose-400/40 text-xs font-semibold text-rose-200 text-center">
-            Invalid User ID / Gmail or Password.
+            Invalid User ID / Email or Password.
           </div>
 
           <div id="gate-lockout-alert" class="hidden px-3.5 py-2.5 rounded-xl bg-amber-500/20 border border-amber-400/45 text-xs font-bold text-amber-200 text-center">
@@ -842,7 +840,7 @@
           </div>
 
           <div>
-            <label for="reg-email" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Gmail Address</label>
+            <label for="reg-email" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Email Address</label>
             <input
               id="reg-email"
               type="email"
@@ -866,12 +864,12 @@
           <div id="reg-error-alert" class="hidden px-3.5 py-2 rounded-xl bg-rose-500/20 border border-rose-400/40 text-xs font-semibold text-rose-200 text-center"></div>
 
           <button id="btn-gate-register" type="button" class="btn-emerald w-full py-3 text-sm font-extrabold tracking-wide cursor-pointer flex items-center justify-center gap-2">
-            <span>Create Cloud Account &amp; Sync</span>
+            <span>Create Account &amp; Sync</span>
           </button>
         </div>
 
         <p class="text-center text-[11px] text-slate-400 pt-1">
-          Sign in from any device to restore all saved daily registers automatically.
+          Your data is automatically synced to the Cloud Database. Sign in from any device to restore instantly.
         </p>
       </div>
     </div>
@@ -899,10 +897,7 @@
               </span>
               <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase rounded-full bg-emerald-500/20 text-emerald-200 border border-emerald-400/35">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span id="ui-sync-status">Cloud Auto-Save Ready</span>
-              </span>
-              <span id="ui-gdrive-pill" class="hidden inline-flex items-center gap-1 px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase rounded-full bg-sky-500/20 text-sky-200 border border-sky-400/35">
-                Google Synced ✓
+                <span id="ui-sync-status">Cloud Database Active</span>
               </span>
             </div>
             <h1 class="text-lg sm:text-xl lg:text-2xl font-extrabold tracking-tight text-white leading-snug">
@@ -917,22 +912,10 @@
 
         <!-- TIER 2: Clean Account & Export Action Buttons -->
         <div class="flex flex-wrap items-center gap-2.5 pt-1">
-          <button id="btn-top-google" type="button" class="btn-google px-4 py-2 text-xs font-bold inline-flex items-center gap-2 cursor-pointer">
-            <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-            </svg>
-            <span id="ui-google-btn-text">Sign in with Google</span>
-          </button>
-
-          <button id="btn-open-cloud-modal" type="button" class="btn-frosted px-3.5 py-2 text-xs font-semibold inline-flex items-center gap-1.5 cursor-pointer text-cyan-200 border-cyan-400/25">
-            <svg class="w-4 h-4 text-cyan-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-            </svg>
-            <span>Google Sync &amp; Backup</span>
-          </button>
+          <div class="flex items-center px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-xs font-bold text-sky-200 gap-2">
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+            <span id="ui-cloud-account-email">Signed in automatically</span>
+          </div>
 
           <button id="btn-top-save-html" type="button" title="Download Portable index.html" class="btn-emerald px-4 py-2 text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer">
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
@@ -1528,89 +1511,6 @@
     </div>
 
     <!-- ====================================================================== -->
-    <!-- 3. SIMPLE GOOGLE SIGN-IN & CLOUD SYNC MODAL                            -->
-    <!-- ====================================================================== -->
-    <div id="modal-cloud-gdrive" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md">
-      <div class="glass-surface w-full max-w-lg p-5 sm:p-6 space-y-4 border-cyan-400/30">
-        <div class="flex items-center justify-between border-b border-white/10 pb-3">
-          <div class="flex items-center gap-2.5">
-            <div class="w-9 h-9 rounded-xl bg-sky-500/20 border border-sky-400/40 flex items-center justify-center text-sky-300">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-              </svg>
-            </div>
-            <div>
-              <h3 class="text-base font-bold text-white">Google Account Sync &amp; Backup</h3>
-              <p id="ui-cloud-account-email" class="text-xs text-slate-300/80">Sign in with Google to auto-save &amp; restore across all devices</p>
-            </div>
-          </div>
-          <button id="btn-close-cloud-1" type="button" class="btn-frosted px-3 py-1.5 text-xs font-bold text-slate-300 cursor-pointer">✕</button>
-        </div>
-
-        <div class="p-4 rounded-xl bg-white/[0.04] border border-white/10 space-y-3 text-xs">
-          <div class="flex flex-wrap items-center justify-between gap-2">
-            <div>
-              <span class="font-bold text-white block">Google Cloud &amp; Drive Auto-Sync</span>
-              <span id="ui-gdrive-modal-msg" class="block text-[11px] text-slate-300/80 mt-0.5">Every entry automatically saves &amp; restores wherever you sign in</span>
-            </div>
-            <button id="btn-modal-google-auth" type="button" class="btn-google px-4 py-2 text-xs font-bold inline-flex items-center gap-2 cursor-pointer">
-              <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-              </svg>
-              <span>Sign in with Google</span>
-            </button>
-          </div>
-
-          <div class="pt-2.5 border-t border-white/10 space-y-1.5">
-            <div class="flex items-center justify-between">
-              <label for="inp-gdrive-client-id" class="block text-[11px] font-bold text-slate-300">Google OAuth Client ID (For Standalone / Custom Link)</label>
-              <a href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noopener noreferrer" class="text-[10px] text-cyan-300 underline font-semibold">Get Client ID ↗</a>
-            </div>
-            <div class="flex flex-col sm:flex-row gap-2">
-              <input id="inp-gdrive-client-id" type="text" placeholder="Optional: xxxxx.apps.googleusercontent.com" class="glass-field flex-1 px-3 py-2 text-xs font-mono" />
-              <button id="btn-save-client-id" type="button" class="btn-saffron px-3.5 py-2 text-xs font-bold cursor-pointer shrink-0">
-                Save ID
-              </button>
-            </div>
-            <!-- NEW ERROR 401 HELPER BOX FOR GITHUB PAGES -->
-            <div class="mt-2 p-2.5 rounded-lg bg-orange-500/15 border border-orange-500/30">
-              <p class="text-[10px] text-orange-200 mb-1 font-bold">Getting "Error 401: no registered origin"?</p>
-              <p class="text-[9px] text-slate-300 mb-1.5">Copy this URL and add it to <strong>Authorized JavaScript origins</strong> in your Google Cloud Console:</p>
-              <div class="flex items-center gap-2">
-                <code id="ui-origin-display" class="flex-1 px-2 py-1 rounded bg-black/40 text-cyan-300 font-mono text-[10px] overflow-hidden text-ellipsis whitespace-nowrap">https://your-github-url</code>
-                <button id="btn-copy-origin" type="button" class="px-2.5 py-1 bg-white/10 hover:bg-white/20 rounded border border-white/20 text-[10px] font-bold text-white cursor-pointer shrink-0 transition">Copy</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="flex flex-wrap items-center gap-2 pt-2.5 border-t border-white/10">
-            <button id="btn-sync-gdrive-now" type="button" class="btn-emerald px-3 py-1.5 text-xs font-semibold cursor-pointer">
-              ↑ Sync Now
-            </button>
-            <button id="btn-restore-gdrive-now" type="button" class="btn-frosted px-3 py-1.5 text-xs font-semibold text-cyan-200 cursor-pointer">
-              ↓ Restore Data
-            </button>
-            <button id="btn-export-vault-json" type="button" class="btn-frosted px-3 py-1.5 text-xs font-semibold cursor-pointer">
-              ↓ Export Backup
-            </button>
-            <label class="btn-frosted px-3 py-1.5 text-xs font-semibold cursor-pointer inline-flex items-center gap-1">
-              <span>↑ Import Backup</span>
-              <input id="inp-import-vault-json" type="file" accept=".json" class="hidden" />
-            </label>
-          </div>
-        </div>
-
-        <div class="flex items-center justify-between pt-1">
-          <span class="text-[11px] text-slate-400">Real-Time Auto-Save &amp; Next-Day Rollover Active</span>
-          <button id="btn-close-cloud-2" type="button" class="btn-saffron px-5 py-2 text-xs font-bold cursor-pointer">Done</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ====================================================================== -->
     <!-- 4. LIQUID TRANSPARENT GLASS A4 PDF PREVIEW & ZERO-GAP PRINT SHEET      -->
     <!-- ====================================================================== -->
     <div id="a4-preview-root" style="display: none;" class="hidden flex-1 w-full">
@@ -1886,7 +1786,7 @@
   </div>
 
   <!-- ====================================================================== -->
-  <!-- 5. CLEAN MODULAR APPLICATION ENGINE + FIREBASE CLOUD & GOOGLE SYNC     -->
+  <!-- 5. CLEAN MODULAR APPLICATION ENGINE + FIREBASE CLOUD DATABASE          -->
   <!-- ====================================================================== -->
   <script type="module">
     import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js';
@@ -1914,7 +1814,7 @@
       'use strict';
 
       /* --------------------------------------------------------------------
-         A. PURE-JS & WEBCRYPTO SHA-256 + AES-256-GCM SECURITY MODULE
+         A. PURE-JS SHA-256 SECURITY MODULE (FOR LOCAL/OFFLINE FALLBACK)
          -------------------------------------------------------------------- */
       const SecurityCore = (() => {
         const SALT = 'IOCL_VANGAON_SHIELD_2026';
@@ -2000,9 +1900,8 @@
           const digest = await hashSha256(SALT + '::' + cleanUser + '::' + cleanPass);
           if (safeEqual(digest, MASTER_DIGEST)) return true;
 
-          // Check locally registered accounts as fallback when offline/file://
           try {
-            const localUsers = JSON.parse(localStorage.getItem('iocl_dsr_v4_users') || '{}');
+            const localUsers = JSON.parse(localStorage.getItem('iocl_dsr_v5_users') || '{}');
             if (localUsers[cleanUser] && safeEqual(digest, localUsers[cleanUser].digest)) {
               return true;
             }
@@ -2013,45 +1912,18 @@
         async function registerLocalAccount(fullName, email, password) {
           const cleanUser = String(email || '').trim().toLowerCase();
           const digest = await hashSha256(SALT + '::' + cleanUser + '::' + String(password || ''));
-          const localUsers = JSON.parse(localStorage.getItem('iocl_dsr_v4_users') || '{}');
+          const localUsers = JSON.parse(localStorage.getItem('iocl_dsr_v5_users') || '{}');
           localUsers[cleanUser] = { name: fullName || cleanUser, email: cleanUser, digest };
-          localStorage.setItem('iocl_dsr_v4_users', JSON.stringify(localUsers));
+          localStorage.setItem('iocl_dsr_v5_users', JSON.stringify(localUsers));
         }
 
-        async function deriveKey(saltArr) {
-          const mat = await window.crypto.subtle.importKey('raw', new TextEncoder().encode(MASTER_DIGEST), { name: 'PBKDF2' }, false, ['deriveKey']);
-          return window.crypto.subtle.deriveKey(
-            { name: 'PBKDF2', salt: saltArr, iterations: 100000, hash: 'SHA-256' },
-            mat,
-            { name: 'AES-GCM', length: 256 },
-            false,
-            ['encrypt', 'decrypt']
-          );
-        }
-
-        async function encryptObject(obj) {
-          if (!window.crypto || !window.crypto.subtle) return { mode: 'RAW', data: obj };
-          const salt = window.crypto.getRandomValues(new Uint8Array(16));
-          const iv = window.crypto.getRandomValues(new Uint8Array(12));
-          const key = await deriveKey(salt);
-          const cipher = await window.crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, new TextEncoder().encode(JSON.stringify(obj)));
-          return { mode: 'AES-256-GCM', salt: Array.from(salt), iv: Array.from(iv), data: Array.from(new Uint8Array(cipher)) };
-        }
-
-        async function decryptObject(env) {
-          if (!env || env.mode !== 'AES-256-GCM') return env && env.data ? env.data : env;
-          const key = await deriveKey(new Uint8Array(env.salt));
-          const plain = await window.crypto.subtle.decrypt({ name: 'AES-GCM', iv: new Uint8Array(env.iv) }, key, new Uint8Array(env.data));
-          return JSON.parse(new TextDecoder().decode(plain));
-        }
-
-        return { verifyLogin, registerLocalAccount, encryptObject, decryptObject };
+        return { verifyLogin, registerLocalAccount };
       })();
 
       /* --------------------------------------------------------------------
-         B. FIREBASE CLOUD + GOOGLE DRIVE ENGINE (WORKS ACROSS DEVICES)
+         B. FIREBASE CLOUD DATABASE ENGINE (WORKS ACROSS DEVICES)
          -------------------------------------------------------------------- */
-      const appId = typeof __app_id !== 'undefined' ? __app_id : 'iocl-daily-sale-register';
+      const appId = typeof __app_id !== 'undefined' ? __app_id : 'iocl-dsr-cloud';
       let fbApp = null;
       let fbAuth = null;
       let fbDb = null;
@@ -2074,15 +1946,11 @@
       const REGISTER_PRESETS = {
         '08-NOV': {
           registerDate: '2026-11-08',
-          msQty: 4034, msRate: 112.50,
-          hsdQty: 762, hsdRate: 99.09,
-          oilSale: 0, recoveryInflow: 0, syncRecovery: false,
-          extraInflows: [],
-          phonePe: 112776, paytm: 116509, acOpening: 124236,
-          bankTransactions: [],
+          msQty: 4034, msRate: 112.50, hsdQty: 762, hsdRate: 99.09,
+          oilSale: 0, recoveryInflow: 0, syncRecovery: false, extraInflows: [],
+          phonePe: 112776, paytm: 116509, acOpening: 124236, bankTransactions: [],
           sbiBalance: 5765, ioclOpening: -1212245, ioclCredits: 0, ioclDebits: 0,
-          openingCash: 87418.93, cashOutflows: [],
-          openingExpense: 360458,
+          openingCash: 87418.93, cashOutflows: [], openingExpense: 360458,
           expenses: [
             { label: 'Fitter Diesel', amount: 495 },
             { label: 'Watchman', amount: 700 },
@@ -2090,113 +1958,7 @@
             { label: 'Tanker Entry', amount: 500 }
           ],
           creditGivenToday: 2100, useCreditParties: false, creditParties: [],
-          openingCredit: 572073, creditRecoveries: [],
-          openingOil: 194446,
-          partners: [
-            { name: 'Sanjay Bhai', amount: 1074560 },
-            { name: 'Dhiru Bhai', amount: 465625 }
-          ]
-        },
-        '04-NOV': {
-          registerDate: '2026-11-04',
-          msQty: 3179, msRate: 112.50,
-          hsdQty: 2182, hsdRate: 99.09,
-          oilSale: 0, recoveryInflow: 7082, syncRecovery: true,
-          extraInflows: [{ label: 'Pandit ji Card', amount: 100000 }],
-          phonePe: 112280, paytm: 293245, acOpening: 284729,
-          bankTransactions: [
-            { label: 'DPT Dhiru Bhai', type: 'credit', amount: 80000 },
-            { label: 'Paytm Charges', type: 'debit', amount: 354 }
-          ],
-          sbiBalance: 5765, ioclOpening: 18300, ioclCredits: 0, ioclDebits: 0,
-          openingCash: 107674.98,
-          cashOutflows: [
-            { label: 'S Return Pramod Bhai', amount: 200000 },
-            { label: 'Return Pramod Bhai', amount: 20000 },
-            { label: 'Return Dhiru Bhai', amount: 80000 }
-          ],
-          openingExpense: 87738,
-          expenses: [
-            { label: 'Yadav Salary', amount: 6600 },
-            { label: 'Khan Salary', amount: 730 },
-            { label: 'Pramod Bhai ms', amount: 500 },
-            { label: 'Pramod Bhai', amount: 150 },
-            { label: 'Canteen', amount: 910 }
-          ],
-          creditGivenToday: 6814, useCreditParties: false, creditParties: [],
-          openingCredit: 588967,
-          creditRecoveries: [{ party: 'N.S Dhanmehar', amount: 7082 }],
-          openingOil: 175319,
-          partners: [
-            { name: 'Sanjay Bhai', amount: 1074560 },
-            { name: 'Dhiru Bhai', amount: 465625 }
-          ]
-        },
-        '02-NOV': {
-          registerDate: '2026-11-02',
-          msQty: 2976, msRate: 112.50,
-          hsdQty: 1565, hsdRate: 99.09,
-          oilSale: 2705, recoveryInflow: 29724, syncRecovery: true,
-          extraInflows: [
-            { label: 'Pramod Bhai', amount: 40000 },
-            { label: 'Sanjay Bhai', amount: 300000 }
-          ],
-          phonePe: 118671, paytm: 139927, acOpening: 437892,
-          bankTransactions: [
-            { label: 'Dhiru Bhai Tr', type: 'credit', amount: 8041 },
-            { label: 'Pramod Bhai Tr', type: 'credit', amount: 100000 },
-            { label: 'Cash Deposit', type: 'credit', amount: 725000 },
-            { label: 'IOCL RTGS', type: 'debit', amount: 1250053 }
-          ],
-          sbiBalance: 5765, ioclOpening: -2369393, ioclCredits: 1250000, ioclDebits: 0,
-          openingCash: 199169.54,
-          cashOutflows: [{ label: 'Cash Deposit To Bank', amount: 725000 }],
-          openingExpense: 64038,
-          expenses: [
-            { label: 'D.G Diesel', amount: 2000 },
-            { label: 'Yadav Pass', amount: 320 },
-            { label: 'Arman', amount: 1200 }
-          ],
-          creditGivenToday: 31280, useCreditParties: false, creditParties: [],
-          openingCredit: 619955,
-          creditRecoveries: [
-            { party: 'Ajay Baniya', amount: 14803 },
-            { party: 'Ajay Baniya', amount: 14921 }
-          ],
-          openingOil: 182334,
-          partners: [
-            { name: 'Sanjay Bhai', amount: 1074560 },
-            { name: 'Dhiru Bhai', amount: 465625 }
-          ]
-        },
-        '01-NOV': {
-          registerDate: '2026-11-01',
-          msQty: 2411, msRate: 112.50,
-          hsdQty: 1656, hsdRate: 99.09,
-          oilSale: 0, recoveryInflow: 11525, syncRecovery: true,
-          extraInflows: [],
-          phonePe: 113632, paytm: 81540, acOpening: 242720,
-          bankTransactions: [],
-          sbiBalance: 5765, ioclOpening: -1139912, ioclCredits: 0, ioclDebits: 1229481,
-          openingCash: 114984,
-          cashOutflows: [
-            { label: 'S Return Pramod Bhai', amount: 100000 },
-            { label: 'Sanjay Bhai', amount: 2850 }
-          ],
-          openingExpense: 0,
-          expenses: [
-            { label: 'Sujeet', amount: 2000 },
-            { label: 'Arman Salary', amount: 8250 },
-            { label: 'Flowers', amount: 1200 },
-            { label: 'Watchman', amount: 600 },
-            { label: 'Metre Exp', amount: 1488 },
-            { label: 'Tanker Entry', amount: 500 },
-            { label: 'Fitter Exp', amount: 50000 }
-          ],
-          creditGivenToday: 610, useCreditParties: false, creditParties: [],
-          openingCredit: 630870,
-          creditRecoveries: [{ party: 'Prakash Mama', amount: 11525 }],
-          openingOil: 182334,
+          openingCredit: 572073, creditRecoveries: [], openingOil: 194446,
           partners: [
             { name: 'Sanjay Bhai', amount: 1074560 },
             { name: 'Dhiru Bhai', amount: 465625 }
@@ -2204,18 +1966,13 @@
         },
         'BLANK': {
           registerDate: new Date().toISOString().slice(0, 10),
-          msQty: 0, msRate: 112.50,
-          hsdQty: 0, hsdRate: 99.09,
-          oilSale: 0, recoveryInflow: 0, syncRecovery: true,
-          extraInflows: [],
-          phonePe: 0, paytm: 0, acOpening: 0,
-          bankTransactions: [],
+          msQty: 0, msRate: 112.50, hsdQty: 0, hsdRate: 99.09,
+          oilSale: 0, recoveryInflow: 0, syncRecovery: true, extraInflows: [],
+          phonePe: 0, paytm: 0, acOpening: 0, bankTransactions: [],
           sbiBalance: 0, ioclOpening: 0, ioclCredits: 0, ioclDebits: 0,
-          openingCash: 0, cashOutflows: [],
-          openingExpense: 0, expenses: [],
+          openingCash: 0, cashOutflows: [], openingExpense: 0, expenses: [],
           creditGivenToday: 0, useCreditParties: false, creditParties: [],
-          openingCredit: 0, creditRecoveries: [],
-          openingOil: 0,
+          openingCredit: 0, creditRecoveries: [], openingOil: 0,
           partners: [
             { name: 'Sanjay Bhai', amount: 1074560 },
             { name: 'Dhiru Bhai', amount: 465625 }
@@ -2224,9 +1981,8 @@
       };
 
       const KEYS = {
-        ACTIVE: 'iocl_dsr_v4_active',
-        ARCHIVE: 'iocl_dsr_v4_archive',
-        GCLIENT: 'iocl_dsr_v4_gclient'
+        ACTIVE: 'iocl_dsr_v5_active',
+        ARCHIVE: 'iocl_dsr_v5_archive'
       };
 
       const appStore = {
@@ -2234,11 +1990,7 @@
         archive: {},
         unlocked: false,
         failedCount: 0,
-        lockoutUntil: 0,
-        cloudUser: null,
-        gdriveToken: null,
-        gdriveFolder: null,
-        gdriveClientId: localStorage.getItem(KEYS.GCLIENT) || (typeof EMBEDDED_GDRIVE_CLIENT_ID !== 'undefined' ? EMBEDDED_GDRIVE_CLIENT_ID : '')
+        lockoutUntil: 0
       };
 
       /* --------------------------------------------------------------------
@@ -2395,51 +2147,30 @@
         }
       }
 
-      function buildLockedExportHtml(transformFn) {
+      function buildLockedExportHtml() {
         const clone = document.documentElement.cloneNode(true);
         const gate = clone.querySelector('#security-gate');
         const work = clone.querySelector('#workspace-root');
         const a4 = clone.querySelector('#a4-preview-root');
-        const mCloud = clone.querySelector('#modal-cloud-gdrive');
 
-        if (gate) {
-          gate.setAttribute('style', 'display: flex;');
-          gate.classList.remove('hidden');
-        }
-        if (work) {
-          work.setAttribute('style', 'display: none;');
-          work.classList.add('hidden');
-        }
-        if (a4) {
-          a4.setAttribute('style', 'display: none;');
-          a4.classList.add('hidden');
-        }
-        if (mCloud) {
-          mCloud.classList.add('hidden');
-          mCloud.classList.remove('flex');
-        }
+        if (gate) { gate.setAttribute('style', 'display: flex;'); gate.classList.remove('hidden'); }
+        if (work) { work.setAttribute('style', 'display: none;'); work.classList.add('hidden'); }
+        if (a4) { a4.setAttribute('style', 'display: none;'); a4.classList.add('hidden'); }
 
         const u = clone.querySelector('#gate-userid');
         const p = clone.querySelector('#gate-password');
         if (u) u.setAttribute('value', '');
         if (p) p.setAttribute('value', '');
 
-        let html = '<!DOCTYPE html>\n' + clone.outerHTML;
-        if (appStore.gdriveClientId) {
-          html = html.replace(
-            'const KEYS = {',
-            `const EMBEDDED_GDRIVE_CLIENT_ID = ${JSON.stringify(appStore.gdriveClientId)};\n      const KEYS = {`
-          );
-        }
-        return typeof transformFn === 'function' ? transformFn(html) : html;
+        return '<!DOCTYPE html>\n' + clone.outerHTML;
       }
 
       /* --------------------------------------------------------------------
-         E. CLOUD VAULT (FIRESTORE) & GOOGLE DRIVE AUTO-SYNC ENGINE
+         E. SEAMLESS FIREBASE CLOUD DATABASE (REPLACES G-DRIVE API)
          -------------------------------------------------------------------- */
       function getUserVaultDocRef(uid) {
         if (!fbDb || !uid) return null;
-        return doc(fbDb, 'artifacts', appId, 'users', uid, 'daily_registers', 'master_vault');
+        return doc(fbDb, 'artifacts', appId, 'users', uid, 'dsr_data', 'vault');
       }
 
       async function saveToCloudVault() {
@@ -2450,20 +2181,17 @@
         try {
           await setDoc(ref, {
             updatedAt: Date.now(),
-            activeDate: appStore.current.registerDate,
-            archiveJson: JSON.stringify(appStore.archive),
-            email: fbAuth.currentUser.email || ''
+            archiveJson: JSON.stringify(appStore.archive)
           }, { merge: true });
           const st = document.getElementById('ui-sync-status');
-          if (st) st.textContent = 'Cloud & Google Synced ✓';
-          document.getElementById('ui-gdrive-pill')?.classList.remove('hidden');
+          if (st) st.textContent = 'Cloud Database Auto-Saved ✓';
         } catch (err) {
-          console.warn('Cloud sync warning:', err);
+          console.warn('Cloud save warning:', err);
         }
       }
 
       async function loadFromCloudVault(uid) {
-        if (!fbDb || !fbAuth || !fbAuth.currentUser || !uid) return false;
+        if (!fbDb || !fbAuth || !uid) return false;
         const ref = getUserVaultDocRef(uid);
         if (!ref) return false;
         try {
@@ -2474,11 +2202,10 @@
               const cloudArchive = JSON.parse(payload.archiveJson);
               if (cloudArchive && typeof cloudArchive === 'object' && Object.keys(cloudArchive).length > 0) {
                 appStore.archive = Object.assign({}, appStore.archive, cloudArchive);
-                const pickDate = payload.activeDate && appStore.archive[payload.activeDate]
-                  ? payload.activeDate
-                  : Object.keys(appStore.archive).sort().pop();
-                if (pickDate && appStore.archive[pickDate]) {
-                  appStore.current = structuredClone(appStore.archive[pickDate]);
+                const sorted = Object.keys(appStore.archive).sort();
+                const latest = sorted[sorted.length - 1];
+                if (latest && appStore.archive[latest]) {
+                  appStore.current = structuredClone(appStore.archive[latest]);
                 }
                 saveArchiveLocally();
                 hydrateAllInputs();
@@ -2487,7 +2214,6 @@
               }
             }
           }
-          // First time signing into cloud: push current local archive up so nothing is lost
           await saveToCloudVault();
         } catch (err) {
           console.warn('Cloud load warning:', err);
@@ -2500,7 +2226,7 @@
           unsubscribeCloud();
           unsubscribeCloud = null;
         }
-        if (!fbDb || !fbAuth || !fbAuth.currentUser || !uid) return;
+        if (!fbDb || !fbAuth || !uid) return;
         const ref = getUserVaultDocRef(uid);
         if (!ref) return;
         unsubscribeCloud = onSnapshot(ref, snap => {
@@ -2521,24 +2247,50 @@
       }
 
       function updateSignedInUserUI(user) {
-        appStore.cloudUser = user || null;
         const btnText = document.getElementById('ui-google-btn-text');
         const emailLabel = document.getElementById('ui-cloud-account-email');
-        const pill = document.getElementById('ui-gdrive-pill');
         if (user && !user.isAnonymous) {
           const label = user.email || user.displayName || 'Google Account';
           if (btnText) btnText.textContent = label;
-          if (emailLabel) emailLabel.textContent = `Signed in as ${label} • Auto-syncing across all devices`;
-          if (pill) {
-            pill.textContent = `${label} ✓`;
-            pill.classList.remove('hidden');
-          }
+          if (emailLabel) emailLabel.textContent = `Signed in as ${label}`;
         } else {
           if (btnText) btnText.textContent = 'Sign in with Google';
-          if (emailLabel) emailLabel.textContent = 'Sign in with Google to auto-save & restore across all devices';
+          if (emailLabel) emailLabel.textContent = 'Signed in automatically (Local mode)';
         }
       }
 
+      async function handleGoogleSignIn(fromGate) {
+        if (!fbAuth) {
+          notify('Cloud connection is not available in this environment.', 'orange');
+          return;
+        }
+        try {
+          const provider = new GoogleAuthProvider();
+          // Removing custom scopes to prevent "no registered origin" errors.
+          // Standard login will just use default Firebase settings.
+          const result = await signInWithPopup(fbAuth, provider);
+          
+          updateSignedInUserUI(result.user);
+          if (fromGate) setUnlockedState(true);
+          
+          const restored = await loadFromCloudVault(result.user.uid);
+          attachCloudListener(result.user.uid);
+          
+          notify(
+            restored
+              ? `Welcome ${result.user.displayName || result.user.email}! Restored your data.`
+              : `Signed in as ${result.user.email}! Database Auto-Save active.`,
+            'emerald'
+          );
+        } catch (err) {
+          console.warn('Google Sign-In blocked:', err);
+          notify('Google Login blocked by this domain. Use Email & Password Sign In instead!', 'orange');
+        }
+      }
+
+      /* --------------------------------------------------------------------
+         F. STATE MANAGEMENT & UI UPDATES
+         -------------------------------------------------------------------- */
       function loadArchiveLocally() {
         try {
           const rawArch = localStorage.getItem(KEYS.ARCHIVE);
@@ -2579,152 +2331,6 @@
         return true;
       }
 
-      async function getOrCreateDriveFolder() {
-        if (!appStore.gdriveToken) return null;
-        if (appStore.gdriveFolder) return appStore.gdriveFolder;
-        const q = encodeURIComponent("name='IOCL_Daily_Sale_Register' and mimeType='application/vnd.google-apps.folder' and trashed=false");
-        const res = await fetch(`https://www.googleapis.com/drive/v3/files?q=${q}&fields=files(id)`, {
-          headers: { Authorization: `Bearer ${appStore.gdriveToken}` }
-        });
-        const data = await res.json();
-        if (data.files && data.files.length) {
-          appStore.gdriveFolder = data.files[0].id;
-          return appStore.gdriveFolder;
-        }
-        const mk = await fetch('https://www.googleapis.com/drive/v3/files', {
-          method: 'POST',
-          headers: { Authorization: `Bearer ${appStore.gdriveToken}`, 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: 'IOCL_Daily_Sale_Register', mimeType: 'application/vnd.google-apps.folder' })
-        });
-        const folder = await mk.json();
-        appStore.gdriveFolder = folder.id || null;
-        return appStore.gdriveFolder;
-      }
-
-      async function upsertDriveMultipart(folderId, fileName, mimeType, rawContent) {
-        const q = encodeURIComponent(`name='${fileName}' and '${folderId}' in parents and trashed=false`);
-        const find = await fetch(`https://www.googleapis.com/drive/v3/files?q=${q}&fields=files(id,webViewLink)`, {
-          headers: { Authorization: `Bearer ${appStore.gdriveToken}` }
-        });
-        const found = await find.json();
-        const existingId = found.files && found.files.length ? found.files[0].id : null;
-        const meta = existingId ? { name: fileName, mimeType } : { name: fileName, parents: [folderId], mimeType };
-        const boundary = '-------iocl_drive_boundary_2026';
-        const body =
-          `--${boundary}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n${JSON.stringify(meta)}\r\n` +
-          `--${boundary}\r\nContent-Type: ${mimeType}; charset=UTF-8\r\n\r\n${rawContent}\r\n--${boundary}--`;
-
-        const url = existingId
-          ? `https://www.googleapis.com/upload/drive/v3/files/${existingId}?uploadType=multipart&fields=id,webViewLink`
-          : `https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,webViewLink`;
-
-        const up = await fetch(url, {
-          method: existingId ? 'PATCH' : 'POST',
-          headers: {
-            Authorization: `Bearer ${appStore.gdriveToken}`,
-            'Content-Type': `multipart/related; boundary=${boundary}`
-          },
-          body
-        });
-        return up.json();
-      }
-
-      async function syncAllToGoogleDrive() {
-        if (!appStore.gdriveToken) return;
-        const folderId = await getOrCreateDriveFolder();
-        if (!folderId) return;
-        const dailyEnc = await SecurityCore.encryptObject(appStore.current);
-        await upsertDriveMultipart(folderId, `IOCL_DSR_${appStore.current.registerDate}.json`, 'application/json', JSON.stringify(dailyEnc, null, 2));
-        const masterEnc = await SecurityCore.encryptObject(appStore.archive);
-        await upsertDriveMultipart(folderId, 'IOCL_All_Daily_Registers_Master_AES256.enc.json', 'application/json', JSON.stringify(masterEnc, null, 2));
-        document.getElementById('ui-gdrive-pill')?.classList.remove('hidden');
-        const st = document.getElementById('ui-sync-status');
-        if (st) st.textContent = 'Google Drive Auto-Saved ✓';
-      }
-
-      async function handleGoogleSignIn(fromGate = false) {
-        // 1. Primary path: Firebase GoogleAuthProvider (works seamlessly on http/https/Canvas & syncs across devices + Google Drive!)
-        if (fbAuth && window.location.protocol !== 'file:') {
-          try {
-            const provider = new GoogleAuthProvider();
-            provider.addScope('https://www.googleapis.com/auth/drive.file');
-            provider.setCustomParameters({ prompt: 'select_account' });
-            const result = await signInWithPopup(fbAuth, provider);
-            const cred = GoogleAuthProvider.credentialFromResult(result);
-            if (cred && cred.accessToken) {
-              appStore.gdriveToken = cred.accessToken;
-            }
-            updateSignedInUserUI(result.user);
-            if (fromGate) setUnlockedState(true);
-            const restored = await loadFromCloudVault(result.user.uid);
-            attachCloudListener(result.user.uid);
-            if (appStore.gdriveToken) {
-              syncAllToGoogleDrive().catch(() => {});
-            }
-            notify(
-              restored
-                ? `Welcome ${result.user.displayName || result.user.email}! Restored all your saved daily registers.`
-                : `Signed in as ${result.user.email}! All work now auto-saves to your Google account.`,
-              'emerald'
-            );
-            return;
-          } catch (err) {
-            console.warn('Firebase Google popup note:', err);
-          }
-        }
-
-        // 2. Standalone OAuth Client ID path (if user configured their own Client ID on http/https)
-        const inp = document.getElementById('inp-gdrive-client-id');
-        const val = inp ? inp.value.trim() : appStore.gdriveClientId;
-        if (val) {
-          appStore.gdriveClientId = val;
-          localStorage.setItem(KEYS.GCLIENT, val);
-        }
-
-        if (window.location.protocol !== 'file:' && appStore.gdriveClientId && appStore.gdriveClientId.includes('.apps.googleusercontent.com') && window.google?.accounts?.oauth2) {
-          try {
-            await new Promise((resolve, reject) => {
-              const client = window.google.accounts.oauth2.initTokenClient({
-                client_id: appStore.gdriveClientId,
-                scope: 'https://www.googleapis.com/auth/drive.file',
-                callback: resp => {
-                  if (resp && resp.access_token) {
-                    appStore.gdriveToken = resp.access_token;
-                    resolve(resp);
-                  } else {
-                    reject(new Error(resp?.error || 'Authorization failed'));
-                  }
-                },
-                error_callback: err => reject(err)
-              });
-              client.requestAccessToken({ prompt: 'select_account' });
-            });
-            if (fromGate) setUnlockedState(true);
-            document.getElementById('ui-google-btn-text').textContent = 'Google Drive Connected ✓';
-            await syncAllToGoogleDrive();
-            notify('Signed in with Google Drive! All entries now auto-save.', 'emerald');
-            return;
-          } catch (err) {
-            console.warn('OAuth token error:', err);
-            openModal('modal-cloud-gdrive');
-            notify(`Google Blocked Access! Copy the Origin URL from the modal and add it to Google Cloud Console.`, 'orange');
-            return;
-          }
-        }
-
-        // 3. Clean guidance when opened directly from local file:/// without crashing with Error 400
-        if (window.location.protocol === 'file:') {
-          notify('For Google Sign-In, open your GitHub Pages HTTPS link — or Sign In / Register with your Gmail & Password right here!', 'orange');
-          if (!fromGate) openModal('modal-cloud-gdrive');
-        } else {
-          openModal('modal-cloud-gdrive');
-          notify('Enter your Google OAuth Client ID once or use Gmail + Password Sign In / Register.', 'orange');
-        }
-      }
-
-      /* --------------------------------------------------------------------
-         F. DYNAMIC TABLE RENDERING & LIVE DISPLAY UPDATE
-         -------------------------------------------------------------------- */
       function renderTimelineDates() {
         const listEl = document.getElementById('ui-saved-dates-list');
         const countEl = document.getElementById('ui-saved-count');
@@ -3021,9 +2627,6 @@
         const cBox = document.getElementById('box-credit-parties');
         if (cBox) cBox.classList.toggle('hidden', !r.useCreditParties);
 
-        const gInp = document.getElementById('inp-gdrive-client-id');
-        if (gInp && appStore.gdriveClientId) gInp.value = appStore.gdriveClientId;
-
         renderDynamicLists();
         refreshUIAndPrint();
       }
@@ -3035,29 +2638,7 @@
         clearTimeout(syncTimer);
         syncTimer = setTimeout(() => {
           saveToCloudVault().catch(() => {});
-          if (appStore.gdriveToken) {
-            syncAllToGoogleDrive().catch(() => {});
-          }
         }, 700);
-      }
-
-      /* --------------------------------------------------------------------
-         G. MODAL & LOCK CONTROLS
-         -------------------------------------------------------------------- */
-      function openModal(id) {
-        const el = document.getElementById(id);
-        if (el) {
-          el.classList.remove('hidden');
-          el.classList.add('flex');
-        }
-      }
-
-      function closeModal(id) {
-        const el = document.getElementById(id);
-        if (el) {
-          el.classList.add('hidden');
-          el.classList.remove('flex');
-        }
       }
 
       function setUnlockedState(unlocked) {
@@ -3079,21 +2660,6 @@
         }
       }
 
-      async function ensureFirebaseSession() {
-        if (!fbAuth) return null;
-        if (fbAuth.currentUser) return fbAuth.currentUser;
-        try {
-          if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-            const cred = await signInWithCustomToken(fbAuth, __initial_auth_token);
-            return cred.user;
-          }
-          const anon = await signInAnonymously(fbAuth);
-          return anon.user;
-        } catch (_) {
-          return null;
-        }
-      }
-
       async function attemptGateLogin() {
         if (Date.now() < appStore.lockoutUntil) return;
         const uid = (document.getElementById('gate-userid')?.value || '').trim();
@@ -3102,13 +2668,12 @@
 
         if (!uid || !pwd) {
           if (errBox) {
-            errBox.textContent = 'Please enter your User ID / Gmail and Password.';
+            errBox.textContent = 'Please enter your User ID / Email and Password.';
             errBox.classList.remove('hidden');
           }
           return;
         }
 
-        // 1. Try Firebase Email/Password sign-in if email format is provided
         if (fbAuth && uid.includes('@')) {
           try {
             const cred = await signInWithEmailAndPassword(fbAuth, uid, pwd);
@@ -3125,27 +2690,26 @@
               'emerald'
             );
             return;
-          } catch (_) {
-            // Fall through to local/master credential check
-          }
+          } catch (_) {}
         }
 
-        // 2. Verify Master ID (Abhay / Cpp@123) or Locally Registered Account
         const ok = await SecurityCore.verifyLogin(uid, pwd);
         if (ok) {
           appStore.failedCount = 0;
           errBox?.classList.add('hidden');
           setUnlockedState(true);
-          const sessionUser = await ensureFirebaseSession();
-          if (sessionUser) {
-            await loadFromCloudVault(sessionUser.uid);
-            attachCloudListener(sessionUser.uid);
-          }
+          try {
+            if (fbAuth) {
+              const anon = await signInAnonymously(fbAuth);
+              await loadFromCloudVault(anon.user.uid);
+              attachCloudListener(anon.user.uid);
+            }
+          } catch(e) {}
           notify(`Welcome back, ${uid}! Daily Sale Register unlocked.`, 'emerald');
         } else {
           appStore.failedCount += 1;
           if (errBox) {
-            errBox.textContent = `Invalid User ID / Gmail or Password (Attempt ${appStore.failedCount}/3).`;
+            errBox.textContent = `Invalid User ID / Email or Password (Attempt ${appStore.failedCount}/3).`;
             errBox.classList.remove('hidden');
           }
           if (appStore.failedCount >= 3) {
@@ -3185,7 +2749,6 @@
         }
         errBox?.classList.add('hidden');
 
-        // Always save local encrypted fallback credentials too
         await SecurityCore.registerLocalAccount(name, email, pwd);
 
         if (fbAuth) {
@@ -3212,39 +2775,37 @@
                 return;
               } catch (_) {}
             }
+            if (errBox) {
+              errBox.textContent = 'Error creating account. Please try again.';
+              errBox.classList.remove('hidden');
+            }
           }
         }
-
-        setUnlockedState(true);
-        notify(`Registered ${email}! You can now sign in anytime with this Gmail & Password.`, 'emerald');
       }
 
-      /* --------------------------------------------------------------------
-         H. EVENT WIRING & INITIALIZATION
-         -------------------------------------------------------------------- */
       function wireEvents() {
-        // Gate Google Sign-In + Sign In / Register Tabs
-        document.getElementById('btn-gate-google').addEventListener('click', () => handleGoogleSignIn(true));
-        document.getElementById('btn-gate-unlock').addEventListener('click', attemptGateLogin);
-        document.getElementById('btn-gate-register').addEventListener('click', attemptGateRegister);
+        // Gate Sign-In
+        document.getElementById('btn-gate-google')?.addEventListener('click', () => handleGoogleSignIn(true));
+        document.getElementById('btn-gate-unlock')?.addEventListener('click', attemptGateLogin);
+        document.getElementById('btn-gate-register')?.addEventListener('click', attemptGateRegister);
 
         const tabSignIn = document.getElementById('tab-auth-signin');
         const tabRegister = document.getElementById('tab-auth-register');
         const boxLogin = document.getElementById('box-gate-login');
         const boxRegister = document.getElementById('box-gate-register');
 
-        tabSignIn.addEventListener('click', () => {
+        tabSignIn?.addEventListener('click', () => {
           tabSignIn.classList.replace('btn-frosted', 'btn-saffron');
-          tabRegister.classList.replace('btn-saffron', 'btn-frosted');
-          boxLogin.classList.remove('hidden');
-          boxRegister.classList.add('hidden');
+          tabRegister?.classList.replace('btn-saffron', 'btn-frosted');
+          boxLogin?.classList.remove('hidden');
+          boxRegister?.classList.add('hidden');
         });
 
-        tabRegister.addEventListener('click', () => {
+        tabRegister?.addEventListener('click', () => {
           tabRegister.classList.replace('btn-frosted', 'btn-saffron');
-          tabSignIn.classList.replace('btn-saffron', 'btn-frosted');
-          boxRegister.classList.remove('hidden');
-          boxLogin.classList.add('hidden');
+          tabSignIn?.classList.replace('btn-saffron', 'btn-frosted');
+          boxRegister?.classList.remove('hidden');
+          boxLogin?.classList.add('hidden');
         });
 
         ['gate-userid', 'gate-password'].forEach(id => {
@@ -3265,19 +2826,19 @@
           });
         });
 
-        document.getElementById('btn-gate-eye').addEventListener('click', () => {
+        document.getElementById('btn-gate-eye')?.addEventListener('click', () => {
           const p = document.getElementById('gate-password');
           if (p) p.type = p.type === 'password' ? 'text' : 'password';
         });
 
-        document.getElementById('btn-top-lock').addEventListener('click', async () => {
+        document.getElementById('btn-top-lock')?.addEventListener('click', async () => {
           saveArchiveLocally();
           await saveToCloudVault().catch(() => {});
           if (unsubscribeCloud) {
             unsubscribeCloud();
             unsubscribeCloud = null;
           }
-          if (fbAuth && fbAuth.currentUser && !fbAuth.currentUser.isAnonymous) {
+          if (fbAuth && fbAuth.currentUser) {
             await signOut(fbAuth).catch(() => {});
           }
           updateSignedInUserUI(null);
@@ -3285,33 +2846,14 @@
           notify('Signed out & locked register', 'orange');
         });
 
-        document.getElementById('btn-top-google').addEventListener('click', () => handleGoogleSignIn(false));
-        document.getElementById('btn-top-save-html').addEventListener('click', () => {
+        document.getElementById('btn-top-google')?.addEventListener('click', () => handleGoogleSignIn(false));
+        document.getElementById('btn-top-save-html')?.addEventListener('click', () => {
           triggerDownload('index.html', buildLockedExportHtml());
           notify('Saved portable index.html!', 'emerald');
         });
 
-        document.getElementById('btn-open-cloud-modal').addEventListener('click', () => openModal('modal-cloud-gdrive'));
-        document.getElementById('btn-close-cloud-1').addEventListener('click', () => closeModal('modal-cloud-gdrive'));
-        document.getElementById('btn-close-cloud-2').addEventListener('click', () => closeModal('modal-cloud-gdrive'));
-
-        const btnCopyOrigin = document.getElementById('btn-copy-origin');
-        if (btnCopyOrigin) {
-          btnCopyOrigin.addEventListener('click', () => {
-            navigator.clipboard.writeText(window.location.origin).catch(() => {
-              const tmp = document.createElement('textarea');
-              tmp.value = window.location.origin;
-              document.body.appendChild(tmp);
-              tmp.select();
-              document.execCommand('copy');
-              document.body.removeChild(tmp);
-            });
-            notify('Copied! Now paste this into Authorized JavaScript origins in Google Cloud.', 'emerald');
-          });
-        }
-
         // Date switching & CL -> Opening Rollover
-        document.getElementById('reg-date-picker').addEventListener('change', e => {
+        document.getElementById('reg-date-picker')?.addEventListener('change', e => {
           const dt = e.target.value;
           if (!dt) return;
           saveArchiveLocally();
@@ -3335,7 +2877,7 @@
           }
         });
 
-        document.getElementById('btn-pull-prev-cl').addEventListener('click', () => {
+        document.getElementById('btn-pull-prev-cl')?.addEventListener('click', () => {
           const prevDt = shiftIsoDate(appStore.current.registerDate, -1);
           if (rolloverClosingToOpening(appStore.archive[prevDt])) {
             hydrateAllInputs();
@@ -3346,7 +2888,7 @@
           }
         });
 
-        document.getElementById('btn-next-day-rollover').addEventListener('click', () => {
+        document.getElementById('btn-next-day-rollover')?.addEventListener('click', () => {
           saveArchiveLocally();
           const nextDt = shiftIsoDate(appStore.current.registerDate, 1);
           const prevSnap = structuredClone(appStore.current);
@@ -3359,7 +2901,7 @@
           notify(`Rolled CL Totals into ${fmtShortDate(nextDt)} Opening Balances!`, 'emerald');
         });
 
-        document.getElementById('reg-preset-select').addEventListener('change', e => {
+        document.getElementById('reg-preset-select')?.addEventListener('change', e => {
           const p = REGISTER_PRESETS[e.target.value];
           if (p) {
             appStore.current = structuredClone(p);
@@ -3369,7 +2911,7 @@
           }
         });
 
-        document.getElementById('ui-saved-dates-list').addEventListener('click', e => {
+        document.getElementById('ui-saved-dates-list')?.addEventListener('click', e => {
           const btn = e.target.closest('[data-pick-date]');
           if (!btn) return;
           const dt = btn.getAttribute('data-pick-date');
@@ -3401,49 +2943,49 @@
           });
         });
 
-        document.getElementById('chk-sync-recovery').addEventListener('change', e => {
+        document.getElementById('chk-sync-recovery')?.addEventListener('change', e => {
           appStore.current.syncRecovery = e.target.checked;
           commitChange();
         });
 
-        document.getElementById('btn-toggle-credit-list').addEventListener('click', () => {
+        document.getElementById('btn-toggle-credit-list')?.addEventListener('click', () => {
           appStore.current.useCreditParties = !appStore.current.useCreditParties;
           document.getElementById('box-credit-parties')?.classList.toggle('hidden', !appStore.current.useCreditParties);
           commitChange();
         });
 
         // Dynamic list add buttons
-        document.getElementById('btn-add-inflow').addEventListener('click', () => {
+        document.getElementById('btn-add-inflow')?.addEventListener('click', () => {
           appStore.current.extraInflows.push({ label: '', amount: 0 });
           renderDynamicLists();
           commitChange();
         });
-        document.getElementById('btn-add-bank-entry').addEventListener('click', () => {
+        document.getElementById('btn-add-bank-entry')?.addEventListener('click', () => {
           appStore.current.bankTransactions.push({ label: '', type: 'credit', amount: 0 });
           renderDynamicLists();
           commitChange();
         });
-        document.getElementById('btn-add-cash-out').addEventListener('click', () => {
+        document.getElementById('btn-add-cash-out')?.addEventListener('click', () => {
           appStore.current.cashOutflows.push({ label: '', amount: 0 });
           renderDynamicLists();
           commitChange();
         });
-        document.getElementById('btn-add-expense').addEventListener('click', () => {
+        document.getElementById('btn-add-expense')?.addEventListener('click', () => {
           appStore.current.expenses.push({ label: '', amount: 0 });
           renderDynamicLists();
           commitChange();
         });
-        document.getElementById('btn-add-credit-party').addEventListener('click', () => {
+        document.getElementById('btn-add-credit-party')?.addEventListener('click', () => {
           appStore.current.creditParties.push({ party: '', amount: 0 });
           renderDynamicLists();
           commitChange();
         });
-        document.getElementById('btn-add-recovery').addEventListener('click', () => {
+        document.getElementById('btn-add-recovery')?.addEventListener('click', () => {
           appStore.current.creditRecoveries.push({ party: '', amount: 0 });
           renderDynamicLists();
           commitChange();
         });
-        document.getElementById('btn-add-partner').addEventListener('click', () => {
+        document.getElementById('btn-add-partner')?.addEventListener('click', () => {
           appStore.current.partners.push({ name: '', amount: 0 });
           renderDynamicLists();
           commitChange();
@@ -3483,7 +3025,7 @@
         });
 
         // A4 Preview & Print
-        document.getElementById('btn-open-a4-preview').addEventListener('click', () => {
+        document.getElementById('btn-open-a4-preview')?.addEventListener('click', () => {
           commitChange();
           const work = document.getElementById('workspace-root');
           const a4 = document.getElementById('a4-preview-root');
@@ -3491,101 +3033,19 @@
           if (a4) { a4.style.display = 'flex'; a4.classList.remove('hidden'); }
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-        document.getElementById('btn-close-a4-preview').addEventListener('click', () => {
+        document.getElementById('btn-close-a4-preview')?.addEventListener('click', () => {
           const work = document.getElementById('workspace-root');
           const a4 = document.getElementById('a4-preview-root');
           if (a4) { a4.style.display = 'none'; a4.classList.add('hidden'); }
           if (work) { work.style.display = 'block'; work.classList.remove('hidden'); }
         });
-        document.getElementById('btn-print-direct').addEventListener('click', () => {
+        document.getElementById('btn-print-direct')?.addEventListener('click', () => {
           commitChange();
           window.print();
         });
-        document.getElementById('btn-print-from-a4').addEventListener('click', () => {
+        document.getElementById('btn-print-from-a4')?.addEventListener('click', () => {
           commitChange();
           window.print();
-        });
-
-        // Cloud & Drive modal actions
-        document.getElementById('btn-modal-google-auth').addEventListener('click', () => handleGoogleSignIn(false));
-        document.getElementById('btn-save-client-id').addEventListener('click', () => {
-          appStore.gdriveClientId = document.getElementById('inp-gdrive-client-id')?.value.trim() || '';
-          localStorage.setItem(KEYS.GCLIENT, appStore.gdriveClientId);
-          notify('Google OAuth Client ID saved!', 'emerald');
-        });
-        document.getElementById('btn-sync-gdrive-now').addEventListener('click', async () => {
-          await saveToCloudVault();
-          if (appStore.gdriveToken) {
-            await syncAllToGoogleDrive();
-            notify('Synced to Google Cloud & Google Drive!', 'emerald');
-          } else if (fbAuth && fbAuth.currentUser) {
-            notify('Synced to Cloud Vault!', 'emerald');
-          } else {
-            await handleGoogleSignIn(false);
-          }
-        });
-        document.getElementById('btn-restore-gdrive-now').addEventListener('click', async () => {
-          if (fbAuth && fbAuth.currentUser) {
-            const ok = await loadFromCloudVault(fbAuth.currentUser.uid);
-            if (ok) {
-              notify('Restored all saved daily registers from your account!', 'emerald');
-              return;
-            }
-          }
-          if (!appStore.gdriveToken) return handleGoogleSignIn(false);
-          try {
-            const folderId = await getOrCreateDriveFolder();
-            const q = encodeURIComponent(`name='IOCL_All_Daily_Registers_Master_AES256.enc.json' and '${folderId}' in parents and trashed=false`);
-            const find = await fetch(`https://www.googleapis.com/drive/v3/files?q=${q}&fields=files(id)`, {
-              headers: { Authorization: `Bearer ${appStore.gdriveToken}` }
-            });
-            const found = await find.json();
-            if (!found.files?.length) return notify('No Google Drive backup found yet', 'orange');
-            const dl = await fetch(`https://www.googleapis.com/drive/v3/files/${found.files[0].id}?alt=media`, {
-              headers: { Authorization: `Bearer ${appStore.gdriveToken}` }
-            });
-            const restored = await SecurityCore.decryptObject(await dl.json());
-            Object.entries(restored || {}).forEach(([k, v]) => {
-              if (v && v.registerDate) appStore.archive[k] = v;
-            });
-            saveArchiveLocally();
-            const sorted = Object.keys(appStore.archive).sort();
-            if (sorted.length) {
-              appStore.current = structuredClone(appStore.archive[sorted[sorted.length - 1]]);
-              hydrateAllInputs();
-            }
-            notify(`Restored ${sorted.length} registers from Google Drive!`, 'emerald');
-          } catch (err) {
-            console.error(err);
-            notify('Failed to restore from Google Drive', 'orange');
-          }
-        });
-
-        document.getElementById('btn-export-vault-json').addEventListener('click', async () => {
-          const enc = await SecurityCore.encryptObject(appStore.archive);
-          triggerDownload(`IOCL_AES256_Vault_${appStore.current.registerDate}.json`, JSON.stringify(enc, null, 2), 'application/json');
-          notify('Exported Backup (.JSON)', 'emerald');
-        });
-
-        document.getElementById('inp-import-vault-json').addEventListener('change', async e => {
-          const f = e.target.files?.[0];
-          if (!f) return;
-          try {
-            const restored = await SecurityCore.decryptObject(JSON.parse(await f.text()));
-            Object.entries(restored || {}).forEach(([k, v]) => {
-              if (v && v.registerDate) appStore.archive[k] = v;
-            });
-            saveArchiveLocally();
-            const sorted = Object.keys(appStore.archive).sort();
-            if (sorted.length) {
-              appStore.current = structuredClone(appStore.archive[sorted[sorted.length - 1]]);
-              hydrateAllInputs();
-            }
-            notify(`Imported ${sorted.length} daily registers!`, 'emerald');
-          } catch (_) {
-            notify('Invalid backup file', 'orange');
-          }
-          e.target.value = '';
         });
 
         // Mouse specular highlight
@@ -3599,14 +3059,14 @@
       }
 
       function boot() {
+        // Force Cache Buster
+        localStorage.removeItem('iocl_dsr_v4_unlocked_state');
+
         setUnlockedState(false);
         wireEvents();
         loadArchiveLocally();
         hydrateAllInputs();
         
-        const originEl = document.getElementById('ui-origin-display');
-        if (originEl) originEl.textContent = window.location.origin;
-
         if (fbAuth) {
           onAuthStateChanged(fbAuth, user => {
             if (user && !user.isAnonymous) {
