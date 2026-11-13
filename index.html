@@ -18,7 +18,9 @@
       --text-main: #F8FAFC;
     }
 
-    *, *::before, *::after { box-sizing: border-box; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
 
     html, body {
       margin: 0;
@@ -61,24 +63,42 @@
     }
 
     .blob-saffron {
-      width: 540px; height: 540px; top: -120px; left: -100px;
+      width: 540px;
+      height: 540px;
+      top: -120px;
+      left: -100px;
       background: radial-gradient(circle, rgba(243, 112, 33, 0.56), rgba(243, 112, 33, 0.05));
       animation-duration: 24s;
     }
+
     .blob-cyan {
-      width: 620px; height: 620px; top: 24%; right: -160px;
+      width: 620px;
+      height: 620px;
+      top: 24%;
+      right: -160px;
       background: radial-gradient(circle, rgba(14, 165, 233, 0.46), rgba(10, 61, 145, 0.12));
-      animation-duration: 29s; animation-delay: -6s;
+      animation-duration: 29s;
+      animation-delay: -6s;
     }
+
     .blob-emerald {
-      width: 500px; height: 500px; bottom: -140px; left: 22%;
+      width: 500px;
+      height: 500px;
+      bottom: -140px;
+      left: 22%;
       background: radial-gradient(circle, rgba(16, 185, 129, 0.36), rgba(6, 182, 212, 0.06));
-      animation-duration: 26s; animation-delay: -11s;
+      animation-duration: 26s;
+      animation-delay: -11s;
     }
+
     .blob-indigo {
-      width: 380px; height: 380px; top: 52%; left: 48%;
+      width: 380px;
+      height: 380px;
+      top: 52%;
+      left: 48%;
       background: radial-gradient(circle, rgba(99, 102, 241, 0.36), transparent);
-      animation-duration: 20s; animation-delay: -4s;
+      animation-duration: 20s;
+      animation-delay: -4s;
     }
 
     @keyframes fluidDrift {
@@ -99,10 +119,34 @@
       border-top-color: var(--glass-highlight);
       border-left-color: rgba(255, 255, 255, 0.24);
       border-radius: 24px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.46), inset 0 1px 0 0 rgba(255, 255, 255, 0.24);
+      box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.46),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.24);
       transition: border-color 0.25s ease, box-shadow 0.25s ease;
     }
-    .glass-surface:hover { border-color: rgba(255, 255, 255, 0.26); }
+
+    .glass-surface::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background: radial-gradient(
+        520px circle at var(--gx, 50%) var(--gy, 0%),
+        rgba(255, 255, 255, 0.12),
+        transparent 60%
+      );
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .glass-surface:hover::before {
+      opacity: 1;
+    }
+
+    .glass-surface:hover {
+      border-color: rgba(255, 255, 255, 0.26);
+    }
 
     .glass-toolbar-strip {
       background: rgba(5, 10, 24, 0.52);
@@ -110,6 +154,7 @@
       border-radius: 16px;
       backdrop-filter: blur(14px);
     }
+
     .glass-kpi-card {
       background: linear-gradient(160deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.03) 100%);
       backdrop-filter: blur(24px) saturate(180%);
@@ -130,15 +175,39 @@
       color: #F8FAFC;
       font-family: inherit;
       outline: none;
-      transition: all 0.2s ease;
+      transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
     }
-    .glass-field:hover { border-color: rgba(255, 255, 255, 0.3); background: rgba(10, 18, 38, 0.72); }
-    .glass-field:focus { border-color: #38BDF8; background: rgba(10, 20, 42, 0.88); box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.22); }
-    .glass-field-num { font-family: 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; text-align: right; }
 
-    input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
-    input[type="number"] { -moz-appearance: textfield; }
-    select.glass-field option { background-color: #0b132b; color: #f8fafc; }
+    .glass-field:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      background: rgba(10, 18, 38, 0.72);
+    }
+
+    .glass-field:focus {
+      border-color: #38BDF8;
+      background: rgba(10, 20, 42, 0.88);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.22);
+    }
+
+    .glass-field-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-variant-numeric: tabular-nums;
+      text-align: right;
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
+    select.glass-field option {
+      background-color: #0b132b;
+      color: #f8fafc;
+    }
 
     .btn-frosted {
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.05));
@@ -150,68 +219,500 @@
       font-weight: 600;
       transition: all 0.2s ease;
     }
+
     .btn-frosted:hover {
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.09));
-      transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
+
     .btn-saffron {
       background: linear-gradient(135deg, #F37021 0%, #d9580c 100%);
       border: 1px solid rgba(255, 255, 255, 0.35);
-      border-radius: 12px; color: #FFFFFF; font-weight: 700;
+      border-radius: 12px;
+      color: #FFFFFF;
+      font-weight: 700;
       box-shadow: 0 8px 24px rgba(243, 112, 33, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.4);
       transition: all 0.2s ease;
     }
-    .btn-saffron:hover { filter: brightness(1.08); transform: translateY(-1px); box-shadow: 0 12px 28px rgba(243, 112, 33, 0.5); }
+
+    .btn-saffron:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(243, 112, 33, 0.5);
+    }
+
     .btn-emerald {
       background: linear-gradient(135deg, rgba(16, 185, 129, 0.28), rgba(5, 150, 105, 0.16));
-      border: 1px solid rgba(52, 211, 153, 0.42); border-radius: 12px; color: #A7F3D0; font-weight: 600;
+      border: 1px solid rgba(52, 211, 153, 0.42);
+      border-radius: 12px;
+      color: #A7F3D0;
+      font-weight: 600;
       transition: all 0.2s ease;
     }
-    .btn-emerald:hover { background: linear-gradient(135deg, rgba(16, 185, 129, 0.44), rgba(5, 150, 105, 0.26)); color: #FFFFFF; }
-    .btn-row-del {
-      background: rgba(244, 63, 94, 0.16); border: 1px solid rgba(251, 113, 133, 0.3); border-radius: 9px; color: #FDA4AF; transition: all 0.18s ease;
+
+    .btn-emerald:hover {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.44), rgba(5, 150, 105, 0.26));
+      color: #FFFFFF;
     }
-    .btn-row-del:hover { background: rgba(244, 63, 94, 0.34); color: #FFFFFF; }
+
+    .btn-google {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(241, 245, 249, 0.9));
+      border: 1px solid rgba(255, 255, 255, 0.92);
+      border-radius: 12px;
+      color: #0F172A;
+      font-weight: 700;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
+      transition: all 0.2s ease;
+    }
+
+    .btn-google:hover {
+      background: #FFFFFF;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 26px rgba(56, 189, 248, 0.35);
+    }
+
+    .btn-row-del {
+      background: rgba(244, 63, 94, 0.16);
+      border: 1px solid rgba(251, 113, 133, 0.3);
+      border-radius: 9px;
+      color: #FDA4AF;
+      transition: all 0.18s ease;
+    }
+
+    .btn-row-del:hover {
+      background: rgba(244, 63, 94, 0.34);
+      color: #FFFFFF;
+    }
+
     .formula-banner {
       background: linear-gradient(135deg, rgba(14, 165, 233, 0.18), rgba(10, 61, 145, 0.26));
-      border: 1px solid rgba(56, 189, 248, 0.32); border-radius: 12px;
+      border: 1px solid rgba(56, 189, 248, 0.32);
+      border-radius: 12px;
     }
+
     .closing-banner {
       background: linear-gradient(90deg, rgba(243, 112, 33, 0.22) 0%, rgba(10, 61, 145, 0.28) 100%);
-      border: 1px solid rgba(243, 112, 33, 0.38); border-radius: 14px;
+      border: 1px solid rgba(243, 112, 33, 0.38);
+      border-radius: 14px;
     }
 
     /* =========================================================================
-       A4 PDF PREVIEW STYLES
+       LIQUID TRANSPARENT GLASS A4 PDF PREVIEW & ZERO-GAP PRINT SHEET
        ========================================================================= */
-    #a4-preview-root { flex-direction: column; align-items: center; padding: 20px 12px 48px; position: relative; z-index: 20; }
-    .a4-glass-sheet {
-      width: 210mm; height: 297mm; position: relative; overflow: hidden; color: #091326; font-family: 'Plus Jakarta Sans', sans-serif;
-      display: flex; flex-direction: column; padding: 5.5mm 6.5mm;
-      background: linear-gradient(135deg, rgba(255,255,255,0.80) 0%, rgba(241,247,255,0.70) 48%, rgba(255,247,240,0.78) 100%);
-      backdrop-filter: blur(28px) saturate(190%); border: 1.5px solid rgba(255,255,255,0.92);
-      box-shadow: 0 32px 85px rgba(0,0,0,0.65), inset 0 1.5px 0 rgba(255,255,255,0.98), inset 0 -1.5px 0 rgba(10,61,145,0.24);
+    #a4-preview-root {
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 12px 48px;
+      position: relative;
+      z-index: 20;
     }
-    .a4-outer-border { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; border: 1.5px solid rgba(10,61,145,0.45); border-radius: 5px; overflow: hidden; background: rgba(255,255,255,0.34); backdrop-filter: blur(18px) saturate(165%); }
-    .a4-masthead { background: linear-gradient(105deg, rgba(7,43,102,0.92) 0%, rgba(10,61,145,0.88) 62%, rgba(18,86,196,0.86) 100%); color: #ffffff; padding: 6.5px 10px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2.5px solid #F37021; flex-shrink: 0; }
-    .a4-kpi-bar { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1.5px solid rgba(10,61,145,0.4); background: rgba(255,255,255,0.45); backdrop-filter: blur(12px); flex-shrink: 0; }
-    .a4-kpi-box { padding: 4.5px 8px; border-right: 1px solid rgba(10,61,145,0.25); display: flex; flex-direction: column; justify-content: center; }
-    .a4-ledger-stack { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; min-height: 0; }
-    .a4-tier { display: flex; flex-direction: column; border-bottom: 1.5px solid rgba(10,61,145,0.38); min-height: 0; }
-    .a4-pane-title { background: linear-gradient(90deg, rgba(10,61,145,0.16) 0%, rgba(56,189,248,0.08) 65%, rgba(255,255,255,0.45) 100%); border-bottom: 1px solid rgba(10,61,145,0.28); border-left: 3.5px solid #0A3D91; padding: 3.2px 7px; font-size: 7.4pt; font-weight: 800; text-transform: uppercase; color: #072B66; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
-    .a4-ledger-tbl { width: 100%; border-collapse: collapse; font-size: 7.5pt; }
-    .a4-ledger-tbl th { background: rgba(241,245,252,0.62); color: #1E3A6D; font-weight: 800; text-align: left; padding: 2.5px 6px; border-bottom: 1px solid rgba(10,61,145,0.24); font-size: 6.7pt; text-transform: uppercase; }
-    .a4-ledger-tbl td { padding: 2.5px 6px; border-bottom: 1px solid rgba(148,163,184,0.26); background: rgba(255,255,255,0.22); }
-    .a4-cl-strip { background: linear-gradient(90deg, rgba(219,234,254,0.72) 0%, rgba(255,237,213,0.72) 100%); border-top: 1.2px solid rgba(10,61,145,0.45); padding: 3.5px 6px; display: flex; justify-content: space-between; align-items: center; font-size: 7.7pt; font-weight: 800; color: #072B66; }
-    .a4-right-num { text-align: right; font-family: 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; }
-    .a4-signatures { display: grid; grid-template-columns: 1fr 1fr 1fr 1.15fr; background: linear-gradient(180deg, rgba(255,255,255,0.42), rgba(235,244,255,0.68)); border-top: 1.5px solid rgba(10,61,145,0.45); flex-shrink: 0; }
-    .a4-sig-cell { padding: 16px 8px 4px; text-align: center; border-right: 1px solid rgba(10,61,145,0.25); display: flex; flex-direction: column; justify-content: flex-end; }
+
+    .a4-glass-sheet {
+      width: 210mm;
+      height: 297mm;
+      position: relative;
+      overflow: hidden;
+      color: #091326;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      display: flex;
+      flex-direction: column;
+      padding: 5.5mm 6.5mm;
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.80) 0%,
+        rgba(241, 247, 255, 0.70) 48%,
+        rgba(255, 247, 240, 0.78) 100%
+      );
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1.5px solid rgba(255, 255, 255, 0.92);
+      box-shadow:
+        0 32px 85px rgba(0, 0, 0, 0.65),
+        inset 0 1.5px 0 rgba(255, 255, 255, 0.98),
+        inset 0 -1.5px 0 rgba(10, 61, 145, 0.24);
+    }
+
+    .a4-glass-aura {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 8% 10%, rgba(243, 112, 33, 0.22) 0%, transparent 44%),
+        radial-gradient(circle at 92% 16%, rgba(14, 165, 233, 0.22) 0%, transparent 46%),
+        radial-gradient(circle at 18% 88%, rgba(16, 185, 129, 0.18) 0%, transparent 46%),
+        radial-gradient(circle at 86% 84%, rgba(10, 61, 145, 0.22) 0%, transparent 48%),
+        linear-gradient(145deg, rgba(248, 251, 255, 0.88), rgba(235, 244, 255, 0.82));
+    }
+
+    .a4-glass-aura::before {
+      content: "";
+      position: absolute;
+      top: -35%;
+      left: -20%;
+      width: 140%;
+      height: 65%;
+      transform: rotate(-14deg);
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.65) 0%,
+        rgba(255, 255, 255, 0.14) 60%,
+        transparent 100%
+      );
+    }
+
+    .a4-outer-border {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      border: 1.5px solid rgba(10, 61, 145, 0.45);
+      border-radius: 5px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.34);
+      backdrop-filter: blur(18px) saturate(165%);
+      -webkit-backdrop-filter: blur(18px) saturate(165%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92);
+    }
+
+    .a4-bg-watermark {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .a4-bg-watermark span {
+      transform: rotate(-28deg);
+      font-size: 38pt;
+      font-weight: 800;
+      letter-spacing: 5px;
+      color: rgba(10, 61, 145, 0.05);
+      text-transform: uppercase;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .a4-masthead {
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(
+        105deg,
+        rgba(7, 43, 102, 0.92) 0%,
+        rgba(10, 61, 145, 0.88) 62%,
+        rgba(18, 86, 196, 0.86) 100%
+      );
+      backdrop-filter: blur(14px);
+      color: #ffffff;
+      padding: 6.5px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2.5px solid #F37021;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      flex-shrink: 0;
+    }
+
+    .a4-kpi-bar {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1.5px solid rgba(10, 61, 145, 0.4);
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(12px);
+      flex-shrink: 0;
+    }
+
+    .a4-kpi-box {
+      padding: 4.5px 8px;
+      border-right: 1px solid rgba(10, 61, 145, 0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.15));
+    }
+
+    .a4-kpi-box:last-child {
+      border-right: none;
+    }
+
+    .a4-ledger-stack {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .a4-tier {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1.5px solid rgba(10, 61, 145, 0.38);
+      min-height: 0;
+    }
+
+    .a4-tier-flex {
+      flex: 1;
+    }
+
+    .a4-grid-asymmetric {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .a4-grid-symmetric {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .a4-pane {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    .a4-pane-divider {
+      border-right: 1.5px solid rgba(10, 61, 145, 0.35);
+    }
+
+    .a4-pane-title {
+      background: linear-gradient(
+        90deg,
+        rgba(10, 61, 145, 0.16) 0%,
+        rgba(56, 189, 248, 0.08) 65%,
+        rgba(255, 255, 255, 0.45) 100%
+      );
+      border-bottom: 1px solid rgba(10, 61, 145, 0.28);
+      border-left: 3.5px solid #0A3D91;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+      padding: 3.2px 7px;
+      font-size: 7.4pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #072B66;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .a4-pane-title.saffron {
+      background: linear-gradient(
+        90deg,
+        rgba(243, 112, 33, 0.18) 0%,
+        rgba(251, 146, 60, 0.08) 65%,
+        rgba(255, 255, 255, 0.45) 100%
+      );
+      border-left-color: #F37021;
+      color: #8A3300;
+    }
+
+    .a4-pane-title.emerald {
+      background: linear-gradient(
+        90deg,
+        rgba(16, 185, 129, 0.18) 0%,
+        rgba(52, 211, 153, 0.08) 65%,
+        rgba(255, 255, 255, 0.45) 100%
+      );
+      border-left-color: #0D9488;
+      color: #064E3B;
+    }
+
+    .a4-sec-tag {
+      display: inline-block;
+      background: rgba(10, 61, 145, 0.9);
+      color: #ffffff;
+      font-size: 6.2pt;
+      font-weight: 800;
+      padding: 0.5px 4px;
+      border-radius: 2px;
+      margin-right: 4px;
+      letter-spacing: 0.3px;
+    }
+
+    .a4-sec-tag.saffron { background: rgba(243, 112, 33, 0.92); }
+    .a4-sec-tag.emerald { background: rgba(13, 148, 136, 0.92); }
+
+    .a4-ledger-tbl {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 7.5pt;
+    }
+
+    .a4-ledger-tbl th {
+      background: rgba(241, 245, 252, 0.62);
+      color: #1E3A6D;
+      font-weight: 800;
+      text-align: left;
+      padding: 2.5px 6px;
+      border-bottom: 1px solid rgba(10, 61, 145, 0.24);
+      font-size: 6.7pt;
+      text-transform: uppercase;
+      letter-spacing: 0.25px;
+    }
+
+    .a4-ledger-tbl td {
+      padding: 2.5px 6px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.26);
+      color: #091326;
+      line-height: 1.24;
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .a4-ledger-tbl tbody tr:nth-child(even) td {
+      background: rgba(241, 247, 255, 0.44);
+    }
+
+    .a4-ledger-tbl tr.subtotal-line td {
+      background: rgba(226, 238, 255, 0.58);
+      font-weight: 700;
+      border-top: 1px solid rgba(10, 61, 145, 0.25);
+      border-bottom: 1px solid rgba(10, 61, 145, 0.25);
+    }
+
+    .a4-auto-fill {
+      flex: 1;
+      min-height: 2px;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.14) 0px,
+        rgba(255, 255, 255, 0.14) 15px,
+        rgba(148, 163, 184, 0.18) 16px
+      );
+    }
+
+    .a4-cl-strip {
+      background: linear-gradient(
+        90deg,
+        rgba(219, 234, 254, 0.72) 0%,
+        rgba(255, 237, 213, 0.72) 100%
+      );
+      backdrop-filter: blur(8px);
+      border-top: 1.2px solid rgba(10, 61, 145, 0.45);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
+      padding: 3.5px 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 7.7pt;
+      font-weight: 800;
+      color: #072B66;
+      flex-shrink: 0;
+    }
+
+    .a4-cl-strip.saffron {
+      background: linear-gradient(
+        90deg,
+        rgba(255, 237, 213, 0.78) 0%,
+        rgba(254, 215, 170, 0.65) 100%
+      );
+      border-top: 1.2px solid #F37021;
+      color: #7C2D12;
+    }
+
+    .a4-right-num {
+      text-align: right;
+      font-family: 'JetBrains Mono', monospace;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .a4-glass-sheet.compact-density .a4-ledger-tbl {
+      font-size: 6.8pt;
+    }
+    .a4-glass-sheet.compact-density .a4-ledger-tbl td,
+    .a4-glass-sheet.compact-density .a4-ledger-tbl th {
+      padding: 1.6px 5px;
+      line-height: 1.15;
+    }
+    .a4-glass-sheet.compact-density .a4-pane-title {
+      padding: 2.2px 6px;
+      font-size: 6.8pt;
+    }
+    .a4-glass-sheet.compact-density .a4-cl-strip {
+      padding: 2.5px 5px;
+      font-size: 7pt;
+    }
+
+    .a4-signatures {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1.15fr;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(235, 244, 255, 0.68));
+      backdrop-filter: blur(10px);
+      border-top: 1.5px solid rgba(10, 61, 145, 0.45);
+      flex-shrink: 0;
+    }
+
+    .a4-sig-cell {
+      padding: 16px 8px 4px;
+      text-align: center;
+      border-right: 1px solid rgba(10, 61, 145, 0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .a4-sig-cell:last-child {
+      border-right: none;
+    }
+
+    .a4-sig-rule {
+      border-top: 1px solid rgba(30, 58, 109, 0.55);
+      padding-top: 2px;
+      font-size: 6.6pt;
+      font-weight: 800;
+      color: #1E3A6D;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
     @media print {
-      @page { size: A4 portrait; margin: 0; }
-      html, body { width: 210mm; height: 297mm; margin: 0 !important; padding: 0 !important; background: #ffffff !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-      .liquid-backdrop, #security-gate, #workspace-root, #a4-preview-bar, #toast-stack { display: none !important; }
-      #a4-preview-root { display: block !important; padding: 0 !important; margin: 0 !important; }
-      .a4-glass-sheet { width: 210mm !important; height: 297mm !important; margin: 0 !important; box-shadow: none !important; border: none !important; }
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+      html, body {
+        width: 210mm;
+        height: 297mm;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #ffffff !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .liquid-backdrop,
+      #security-gate,
+      #workspace-root,
+      #a4-preview-bar,
+      #toast-stack {
+        display: none !important;
+      }
+      #a4-preview-root {
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .a4-glass-sheet {
+        width: 210mm !important;
+        height: 297mm !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
     }
   </style>
 </head>
@@ -229,10 +730,10 @@
     <div id="toast-stack" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
     <!-- ====================================================================== -->
-    <!-- 1. SECURITY LOCK SCREEN (HARDCODED VISIBLE)                            -->
+    <!-- 1. CLEAN GOOGLE SIGN-IN & ACCOUNT REGISTER SCREEN                      -->
     <!-- ====================================================================== -->
     <div id="security-gate" style="display: flex;" class="relative z-40 flex-1 flex items-center justify-center p-4">
-      <div class="glass-surface w-full max-w-md p-6 sm:p-8 space-y-5 shadow-2xl">
+      <div class="glass-surface w-full max-w-md p-6 sm:p-8 space-y-5 border-white/25 shadow-2xl">
         <div class="flex flex-col items-center text-center space-y-2.5">
           <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#F37021] via-[#e25c0e] to-[#b54100] p-0.5 shadow-xl shadow-orange-600/35 border border-white/40">
             <div class="w-full h-full rounded-[14px] bg-[#F37021] flex items-center justify-center">
@@ -243,269 +744,1204 @@
               </svg>
             </div>
           </div>
+
           <div>
             <h1 class="text-xl sm:text-2xl font-extrabold text-white tracking-tight">IOCL Daily Sale Register</h1>
             <p class="text-xs text-slate-300/85 mt-0.5">M/S Chandra Pratima Petroleum, Vangaon</p>
           </div>
         </div>
 
-        <div id="box-gate-login" class="space-y-3.5 mt-2">
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">User ID</label>
-            <input id="gate-userid" type="text" placeholder="Enter User ID (Abhay)" autocomplete="off" class="glass-field w-full px-3.5 py-2.5 text-sm font-semibold text-white" />
-          </div>
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Password</label>
-            <input id="gate-password" type="password" placeholder="Enter Password" autocomplete="new-password" class="glass-field w-full px-3.5 py-2.5 text-sm font-mono text-white" />
-          </div>
-          <div id="gate-error-alert" class="hidden px-3.5 py-2 rounded-xl bg-rose-500/20 border border-rose-400/40 text-xs font-semibold text-rose-200 text-center">
-            Invalid User ID or Password.
-          </div>
-          <button id="btn-gate-unlock" type="button" class="btn-saffron w-full py-3 text-sm font-extrabold tracking-wide cursor-pointer">
-            Unlock Daily Sale Register
+        <!-- Primary Google Sign-In Button -->
+        <button id="btn-gate-google" type="button" class="btn-google w-full py-3 px-4 text-sm font-bold flex items-center justify-center gap-2.5 cursor-pointer">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          <span>Sign in with Google</span>
+        </button>
+
+        <div class="relative flex items-center justify-center">
+          <div class="border-t border-white/15 w-full"></div>
+          <span class="px-3 text-[10px] uppercase tracking-widest font-bold text-slate-400 bg-transparent shrink-0">or use account</span>
+          <div class="border-t border-white/15 w-full"></div>
+        </div>
+
+        <!-- Sign In / Register Switch Tabs -->
+        <div class="grid grid-cols-2 gap-2 p-1 rounded-xl bg-slate-950/55 border border-white/10">
+          <button id="tab-auth-signin" type="button" class="btn-saffron py-2 text-xs font-bold cursor-pointer">
+            Sign In
+          </button>
+          <button id="tab-auth-register" type="button" class="btn-frosted py-2 text-xs font-bold text-slate-300 cursor-pointer border-transparent">
+            Register
           </button>
         </div>
+
+        <!-- SIGN IN PANEL -->
+        <div id="box-gate-login" class="space-y-3.5">
+          <div>
+            <label for="gate-userid" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Email / User ID</label>
+            <input
+              id="gate-userid"
+              type="text"
+              placeholder="Abhay or yourname@gmail.com"
+              autocomplete="off"
+              class="glass-field w-full px-3.5 py-2.5 text-sm font-semibold text-white"
+            />
+          </div>
+
+          <div>
+            <label for="gate-password" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Password</label>
+            <div class="relative">
+              <input
+                id="gate-password"
+                type="password"
+                placeholder="Enter Password"
+                autocomplete="new-password"
+                class="glass-field w-full pl-3.5 pr-11 py-2.5 text-sm font-mono text-white"
+              />
+              <button id="btn-gate-eye" type="button" aria-label="Show or Hide Password" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-1 cursor-pointer">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div id="gate-error-alert" class="hidden px-3.5 py-2 rounded-xl bg-rose-500/20 border border-rose-400/40 text-xs font-semibold text-rose-200 text-center">
+            Invalid User ID / Email or Password.
+          </div>
+
+          <div id="gate-lockout-alert" class="hidden px-3.5 py-2.5 rounded-xl bg-amber-500/20 border border-amber-400/45 text-xs font-bold text-amber-200 text-center">
+            Too many failed attempts. Wait <span id="gate-lockout-timer" class="font-mono text-white">60</span>s.
+          </div>
+
+          <button id="btn-gate-unlock" type="button" class="btn-saffron w-full py-3 text-sm font-extrabold tracking-wide cursor-pointer flex items-center justify-center gap-2">
+            <span>Sign In &amp; Open Register</span>
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.4">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- REGISTER PANEL -->
+        <div id="box-gate-register" class="hidden space-y-3.5">
+          <div>
+            <label for="reg-fullname" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Full Name</label>
+            <input
+              id="reg-fullname"
+              type="text"
+              placeholder="e.g. Abhay"
+              autocomplete="off"
+              class="glass-field w-full px-3.5 py-2.5 text-sm font-semibold text-white"
+            />
+          </div>
+
+          <div>
+            <label for="reg-email" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Email Address</label>
+            <input
+              id="reg-email"
+              type="email"
+              placeholder="yourname@gmail.com"
+              autocomplete="off"
+              class="glass-field w-full px-3.5 py-2.5 text-sm font-semibold text-white"
+            />
+          </div>
+
+          <div>
+            <label for="reg-password" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Create Password (Min 6 chars)</label>
+            <input
+              id="reg-password"
+              type="password"
+              placeholder="Create a secure password"
+              autocomplete="new-password"
+              class="glass-field w-full px-3.5 py-2.5 text-sm font-mono text-white"
+            />
+          </div>
+
+          <div id="reg-error-alert" class="hidden px-3.5 py-2 rounded-xl bg-rose-500/20 border border-rose-400/40 text-xs font-semibold text-rose-200 text-center"></div>
+
+          <button id="btn-gate-register" type="button" class="btn-emerald w-full py-3 text-sm font-extrabold tracking-wide cursor-pointer flex items-center justify-center gap-2">
+            <span>Create Account &amp; Sync</span>
+          </button>
+        </div>
+
+        <p class="text-center text-[11px] text-slate-400 pt-1">
+          Your data is automatically synced to the Cloud Database. Sign in from any device to restore instantly.
+        </p>
       </div>
     </div>
 
     <!-- ====================================================================== -->
     <!-- 2. MAIN LIQUID GLASS INTERACTIVE WORKSPACE                             -->
     <!-- ====================================================================== -->
-    <div id="workspace-root" style="display: none;" class="relative z-10 w-full max-w-7xl mx-auto px-4 py-5 space-y-5">
+    <div id="workspace-root" style="display: none;" class="hidden relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-7 space-y-5">
 
+      <!-- FULL-WIDTH TIERED EXECUTIVE HEADER -->
       <header class="glass-surface p-4 sm:p-5 space-y-4">
+        <!-- TIER 1: Brand Identity -->
         <div class="flex items-center gap-4">
-          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#F37021] to-[#b54100] flex items-center justify-center shrink-0">
-            <svg viewBox="0 0 64 64" class="w-11 h-11" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-[#F37021] via-[#e25c0e] to-[#b54100] flex items-center justify-center shadow-lg shadow-orange-600/30 border border-white/35 shrink-0">
+            <svg viewBox="0 0 64 64" class="w-11 h-11 sm:w-12 sm:h-12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="32" cy="32" r="24" fill="#F37021" stroke="#FFFFFF" stroke-width="2.5" />
               <rect x="6" y="25" width="52" height="14" rx="2" fill="#0A3D91" stroke="#FFFFFF" stroke-width="1.5" />
-              <text x="32" y="34.5" text-anchor="middle" fill="#FFFFFF" font-weight="800" font-size="8.5">IOCL</text>
+              <text x="32" y="34.5" text-anchor="middle" fill="#FFFFFF" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="8.5" letter-spacing="0.6">IOCL</text>
             </svg>
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-center gap-2 mb-1.5">
-              <span class="px-2.5 py-0.5 text-[10px] font-bold uppercase rounded-full bg-orange-500/20 text-orange-200 border border-orange-400/35">IndianOil Dealer Register</span>
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 text-[10px] font-bold uppercase rounded-full bg-emerald-500/20 text-emerald-200 border border-emerald-400/35">
+              <span class="px-2.5 py-0.5 text-[10px] font-bold tracking-widest uppercase rounded-full bg-orange-500/20 text-orange-200 border border-orange-400/35">
+                IndianOil Dealer Register
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase rounded-full bg-emerald-500/20 text-emerald-200 border border-emerald-400/35">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span id="ui-sync-status">Local Save Active</span>
+                <span id="ui-sync-status">Cloud Database Active</span>
               </span>
             </div>
-            <h1 class="text-xl font-extrabold text-white">M/S CHANDRA PRATIMA PETROLEUM, VANGAON</h1>
-            <p class="text-xs text-slate-300 mt-1">Daily Sale, Bank, Cash, Expense, Credit &amp; Lube Stock Ledger</p>
+            <h1 class="text-lg sm:text-xl lg:text-2xl font-extrabold tracking-tight text-white leading-snug">
+              M/S CHANDRA PRATIMA PETROLEUM, VANGAON, 401103, MAHARASHTRA
+            </h1>
+            <p class="text-xs sm:text-sm text-slate-300/80 mt-1">
+              Daily Sale, Bank, Cash, Expense, Credit &amp; Lube Stock Ledger •
+              <span id="ui-sheet-ref" class="mono-num text-cyan-300 font-semibold ml-1">REF: DSR-08-NOV-26</span>
+            </p>
           </div>
         </div>
 
+        <!-- TIER 2: Clean Account & Export Action Buttons -->
         <div class="flex flex-wrap items-center gap-2.5 pt-1">
-          <!-- PC G-Drive Auto-Sync Button -->
-          <button id="btn-link-gdrive" type="button" class="btn-frosted px-4 py-2 text-xs font-bold inline-flex items-center gap-2 cursor-pointer text-cyan-200 border-cyan-400/30">
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+          <div class="flex items-center px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-xs font-bold text-sky-200 gap-2">
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+            <span id="ui-cloud-account-email">Signed in automatically</span>
+          </div>
+
+          <button id="btn-top-save-html" type="button" title="Download Portable index.html" class="btn-emerald px-4 py-2 text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
-            <span id="ui-gdrive-status">Link G-Drive PC Folder</span>
+            <span>Save index.html</span>
           </button>
 
-          <button id="btn-top-save-html" type="button" class="btn-emerald px-4 py-2 text-xs font-bold cursor-pointer">
-            Save index.html
-          </button>
-          
-          <button id="btn-top-lock" type="button" class="btn-frosted px-3.5 py-2 text-xs font-semibold text-rose-200 cursor-pointer ml-auto">
-            Lock Register
+          <button id="btn-top-lock" type="button" title="Sign Out / Lock Register" class="btn-frosted px-3.5 py-2 text-xs font-semibold inline-flex items-center gap-1.5 cursor-pointer text-rose-200 border-rose-400/25 ml-auto sm:ml-0">
+            <svg class="w-3.5 h-3.5 text-rose-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+            <span>Sign Out</span>
           </button>
         </div>
 
-        <div class="glass-toolbar-strip p-2.5 flex flex-col lg:flex-row lg:items-center justify-between gap-3 mt-4">
-          <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/[0.05] border border-white/12">
-            <input id="reg-date-picker" type="date" class="bg-transparent text-sm font-semibold text-white outline-none mono-num cursor-pointer" />
-            <button id="btn-pull-prev-cl" type="button" class="px-2 py-1 text-[10px] font-bold rounded bg-emerald-500/20 text-emerald-200 cursor-pointer">↻ Prev CL</button>
-          </div>
-          <div class="flex items-center gap-2">
-            <select id="reg-preset-select" class="glass-field px-3 py-1.5 text-xs font-semibold cursor-pointer">
-              <option value="08-NOV">Preset: 08-NOV-26</option>
+        <!-- TIER 3: Date Picker, Presets & Primary Register Actions -->
+        <div class="glass-toolbar-strip p-2.5 sm:p-3 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 mt-4">
+          <div class="flex flex-wrap items-center gap-2.5">
+            <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/[0.05] border border-white/12">
+              <div>
+                <label for="reg-date-picker" class="block text-[9px] uppercase tracking-wider text-slate-400 font-bold">Register Date</label>
+                <input id="reg-date-picker" type="date" class="bg-transparent text-xs sm:text-sm font-semibold text-white outline-none mono-num cursor-pointer" />
+              </div>
+              <span id="ui-short-date" class="px-2 py-0.5 text-xs mono-num font-bold rounded-md bg-sky-500/20 text-sky-200 border border-sky-400/30">
+                08-11-26
+              </span>
+              <button id="btn-pull-prev-cl" type="button" title="Pull Previous Day Closing Totals into Opening Balances" class="px-2 py-1 text-[10px] font-bold rounded-lg bg-emerald-500/20 text-emerald-200 border border-emerald-400/35 hover:bg-emerald-500/35 transition cursor-pointer">
+                ↻ Prev CL
+              </button>
+            </div>
+
+            <select id="reg-preset-select" aria-label="Load Register Preset" class="glass-field px-3 py-2 text-xs sm:text-sm font-semibold cursor-pointer">
+              <option value="08-NOV">Preset: 08-NOV-26 (Latest)</option>
+              <option value="04-NOV">Preset: 04-NOV-26</option>
+              <option value="02-NOV">Preset: 02-NOV-26</option>
+              <option value="01-NOV">Preset: 01-NOV-26</option>
               <option value="BLANK">Blank New Register</option>
             </select>
-            <button id="btn-next-day-rollover" type="button" class="btn-emerald px-3 py-1.5 text-xs font-bold cursor-pointer">» Next Day (CL → Open)</button>
-            <button id="btn-open-a4-preview" type="button" class="btn-frosted px-3 py-1.5 text-xs font-bold cursor-pointer">A4 Preview</button>
-            <button id="btn-print-direct" type="button" class="btn-saffron px-3 py-1.5 text-xs font-bold cursor-pointer">Print PDF</button>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <button id="btn-next-day-rollover" type="button" title="Roll Closing Totals (CL) into Tomorrow's Opening Balances & Save New Date" class="btn-emerald px-3.5 py-2 text-xs sm:text-sm inline-flex items-center gap-1.5 cursor-pointer">
+              <span>» Next Day (CL → Open)</span>
+            </button>
+
+            <button id="btn-open-a4-preview" type="button" class="btn-frosted px-3.5 py-2 text-xs sm:text-sm inline-flex items-center gap-1.5 cursor-pointer">
+              <svg class="w-4 h-4 text-sky-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+              <span>A4 Preview</span>
+            </button>
+
+            <button id="btn-print-direct" type="button" class="btn-saffron px-4 py-2 text-xs sm:text-sm font-bold inline-flex items-center gap-1.5 cursor-pointer">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+              </svg>
+              <span>Print / PDF</span>
+            </button>
           </div>
         </div>
 
-        <div class="pt-2 border-t border-white/10 flex items-center gap-2">
-          <span class="text-[11px] font-bold text-cyan-300">Saved Dates:</span>
+        <!-- TIER 4: Saved Daily Dates Timeline -->
+        <div class="pt-2 border-t border-white/10 flex flex-wrap items-center justify-between gap-2 mt-2">
+          <div class="flex items-center gap-2 text-[11px] text-slate-300/80">
+            <span class="font-bold uppercase tracking-wider text-cyan-300">Saved Daily Sheets:</span>
+            <span id="ui-saved-count" class="px-2 py-0.5 rounded bg-white/10 mono-num text-[10px]">1 Date</span>
+          </div>
           <div id="ui-saved-dates-list" class="flex flex-wrap items-center gap-1.5 flex-1"></div>
         </div>
       </header>
 
-      <!-- KPI SUMMARY -->
+      <!-- TOP 4 KPI SUMMARY CARDS -->
       <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="glass-kpi-card p-4">
-          <div class="text-xs font-semibold text-orange-200/90">1. Gross Sale (E10)</div>
-          <div id="kpi-e10" class="mt-2 text-2xl font-extrabold mono-num text-white">₹0.00</div>
-        </div>
-        <div class="glass-kpi-card p-4">
-          <div class="text-xs font-semibold text-emerald-200/90">2. Cash Closing (C30)</div>
-          <div id="kpi-c30" class="mt-2 text-2xl font-extrabold mono-num text-emerald-300">₹0.00</div>
-        </div>
-        <div class="glass-kpi-card p-4">
-          <div class="text-xs font-semibold text-sky-200/90">3. Bank / IOCL CL</div>
-          <div id="kpi-ac-cl" class="mt-2 text-2xl font-extrabold mono-num text-sky-300">₹0.00</div>
-        </div>
-        <div class="glass-kpi-card p-4">
-          <div class="text-xs font-semibold text-indigo-200/90">4. Credit CL (C43)</div>
-          <div id="kpi-c43" class="mt-2 text-2xl font-extrabold mono-num text-indigo-200">₹0.00</div>
-        </div>
-      </section>
-
-      <!-- SEC 1: SALES -->
-      <section class="glass-surface p-5 space-y-4">
-        <h2 class="text-lg font-bold text-white border-b border-white/10 pb-2">01. Product Sales &amp; Inflows</h2>
-        <table class="w-full text-left text-sm">
-          <thead><tr><th>Product</th><th class="text-right">Volume (L)</th><th class="text-right">Rate (₹)</th><th class="text-right">Amount (₹)</th></tr></thead>
-          <tbody class="divide-y divide-white/[0.07]">
-            <tr>
-              <td class="py-2 font-bold text-white">MS (Petrol)</td>
-              <td class="text-right"><input id="inp-ms-qty" type="number" step="0.01" class="glass-field w-28 px-2 py-1 text-right" /></td>
-              <td class="text-right"><input id="inp-ms-rate" type="number" step="0.01" class="glass-field w-24 px-2 py-1 text-right" /></td>
-              <td class="text-right font-bold text-white" id="out-ms-amt">₹0.00</td>
-            </tr>
-            <tr>
-              <td class="py-2 font-bold text-white">HSD (Diesel)</td>
-              <td class="text-right"><input id="inp-hsd-qty" type="number" step="0.01" class="glass-field w-28 px-2 py-1 text-right" /></td>
-              <td class="text-right"><input id="inp-hsd-rate" type="number" step="0.01" class="glass-field w-24 px-2 py-1 text-right" /></td>
-              <td class="text-right font-bold text-white" id="out-hsd-amt">₹0.00</td>
-            </tr>
-            <tr>
-              <td class="py-2">Oil Sale</td><td></td><td></td>
-              <td class="text-right"><input id="inp-oil-sale" type="number" step="0.01" class="glass-field w-32 px-2 py-1 text-right" /></td>
-            </tr>
-            <tr>
-              <td class="py-2">Credit Recovery Inflow</td><td></td><td></td>
-              <td class="text-right"><input id="inp-recovery-inflow" type="number" step="0.01" class="glass-field w-32 px-2 py-1 text-right" /></td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr class="text-orange-200 font-bold bg-orange-500/10"><td colspan="3" class="py-2 text-right">Total Gross Sale (E10)</td><td class="text-right text-lg text-orange-300" id="out-total-sale">₹0.00</td></tr>
-          </tfoot>
-        </table>
-      </section>
-
-      <!-- SEC 2: BANK -->
-      <section class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <div class="glass-surface p-5 space-y-4">
-          <h2 class="text-lg font-bold text-white border-b border-white/10 pb-2">02A. Digital &amp; Bank A/c</h2>
-          <div class="flex gap-2">
-            <div class="flex-1"><label class="text-xs text-sky-200">PhonePe (C12)</label><input id="inp-phonepe" type="number" class="glass-field w-full px-2 py-1 text-right mt-1"/></div>
-            <div class="flex-1"><label class="text-xs text-sky-200">Paytm (C13)</label><input id="inp-paytm" type="number" class="glass-field w-full px-2 py-1 text-right mt-1"/></div>
+        <div class="glass-kpi-card p-4 sm:p-5">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold uppercase tracking-wider text-orange-200/90">1. Gross Sale &amp; Inflows</span>
+            <span class="text-[11px] mono-num px-2 py-0.5 rounded bg-orange-500/20 text-orange-200 border border-orange-400/30">CELL E10</span>
           </div>
-          <div class="flex justify-between font-bold text-sky-300 bg-white/5 p-2 rounded"><span>Digital Total (C14)</span><span id="out-c14-total">₹0.00</span></div>
-          <div><label class="text-xs text-amber-200">A/c Opening Balance</label><input id="inp-ac-open" type="number" class="glass-field w-full px-2 py-1 text-right mt-1"/></div>
-          <div class="flex justify-between font-bold text-white bg-orange-500/20 p-2 rounded"><span>A/c Closing Total</span><span id="out-ac-cl">₹0.00</span></div>
+          <div id="kpi-e10" class="mt-2.5 text-2xl sm:text-3xl font-extrabold mono-num text-white tracking-tight">₹0.00</div>
+          <div class="mt-1.5 flex items-center justify-between text-xs text-slate-300/75">
+            <span>Fuel Volume: <strong id="kpi-liters" class="mono-num text-white">0 L</strong></span>
+            <span id="kpi-fuel-val" class="mono-num text-orange-300">₹0.00</span>
+          </div>
         </div>
 
-        <div class="glass-surface p-5 space-y-4">
-          <h2 class="text-lg font-bold text-white border-b border-white/10 pb-2">02B. IOCL Ledger</h2>
-          <div><label class="text-xs text-blue-200">SBI Balance (D12)</label><input id="inp-sbi-bal" type="number" class="glass-field w-full px-2 py-1 text-right mt-1"/></div>
-          <div><label class="text-xs">IOCL Opening Balance</label><input id="inp-iocl-open" type="number" class="glass-field w-full px-2 py-1 text-right mt-1"/></div>
-          <div><label class="text-xs text-emerald-300">(+) RTGS Credits</label><input id="inp-iocl-cred" type="number" class="glass-field w-full px-2 py-1 text-right mt-1"/></div>
-          <div><label class="text-xs text-rose-300">(-) Tanker Load</label><input id="inp-iocl-deb" type="number" class="glass-field w-full px-2 py-1 text-right mt-1"/></div>
-          <div class="flex justify-between font-bold text-amber-300 bg-orange-500/20 p-2 rounded"><span>IOCL Closing Total</span><span id="out-iocl-cl">₹0.00</span></div>
+        <div class="glass-kpi-card p-4 sm:p-5">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold uppercase tracking-wider text-emerald-200/90">2. Cash Closing (CL)</span>
+            <span class="text-[11px] mono-num px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-200 border border-emerald-400/30">CELL C30</span>
+          </div>
+          <div id="kpi-c30" class="mt-2.5 text-2xl sm:text-3xl font-extrabold mono-num text-emerald-300 tracking-tight">₹0.00</div>
+          <div class="mt-1.5 flex items-center justify-between text-xs text-slate-300/75">
+            <span>Today's Cash (C25):</span>
+            <span id="kpi-c25" class="mono-num text-white font-semibold">₹0.00</span>
+          </div>
+        </div>
+
+        <div class="glass-kpi-card p-4 sm:p-5">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold uppercase tracking-wider text-sky-200/90">3. Bank A/c &amp; IOCL CL</span>
+            <span class="text-[11px] mono-num px-2 py-0.5 rounded bg-sky-500/20 text-sky-200 border border-sky-400/30">A/C &amp; IOCL</span>
+          </div>
+          <div id="kpi-ac-cl" class="mt-2.5 text-2xl sm:text-3xl font-extrabold mono-num text-sky-300 tracking-tight">₹0.00</div>
+          <div class="mt-1.5 flex items-center justify-between text-xs text-slate-300/75">
+            <span>IOCL CL Bal:</span>
+            <span id="kpi-iocl-cl" class="mono-num font-semibold text-amber-300">₹0.00</span>
+          </div>
+        </div>
+
+        <div class="glass-kpi-card p-4 sm:p-5">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold uppercase tracking-wider text-indigo-200/90">4. Credit &amp; Lube Oil CL</span>
+            <span class="text-[11px] mono-num px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-200 border border-indigo-400/30">C43 &amp; F40</span>
+          </div>
+          <div id="kpi-c43" class="mt-2.5 text-2xl sm:text-3xl font-extrabold mono-num text-indigo-200 tracking-tight">₹0.00</div>
+          <div class="mt-1.5 flex items-center justify-between text-xs text-slate-300/75">
+            <span>Oil Stock CL (F40):</span>
+            <span id="kpi-f40" class="mono-num text-amber-200 font-semibold">₹0.00</span>
+          </div>
         </div>
       </section>
 
-      <!-- SEC 3 & 4: CASH & EXPENSE -->
-      <section class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <div class="glass-surface p-5 space-y-4">
-          <h2 class="text-lg font-bold text-white border-b border-white/10 pb-2">03. Cash Ledger</h2>
-          <div class="flex justify-between text-emerald-200 bg-emerald-500/10 p-2 rounded"><span>Today's Net Cash (C25)</span><span id="out-c25-cash" class="font-bold">₹0.00</span></div>
-          <div><label class="text-xs text-amber-200">Opening Cash (C26)</label><input id="inp-open-cash" type="number" class="glass-field w-full px-2 py-1 text-right mt-1"/></div>
-          <div class="flex justify-between font-bold text-emerald-300 bg-orange-500/20 p-2 rounded"><span>Cash Closing Total (C30)</span><span id="out-c30-cl">₹0.00</span></div>
+      <!-- SECTION 01: PRODUCT SALES & DIRECT INFLOWS -->
+      <section class="glass-surface p-5 sm:p-6 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
+          <div class="flex items-center gap-2.5">
+            <span class="w-7 h-7 rounded-lg bg-orange-500/25 border border-orange-400/40 flex items-center justify-center text-xs font-bold text-orange-200">01</span>
+            <div>
+              <h2 class="text-base sm:text-lg font-bold text-white">Product Sales &amp; Inflows</h2>
+              <p class="text-xs text-slate-300/70">Fuel nozzle sales, lubricant oil sale, credit recovery &amp; direct inflows</p>
+            </div>
+          </div>
+          <button id="btn-add-inflow" type="button" class="btn-frosted px-3 py-1.5 text-xs inline-flex items-center gap-1.5 cursor-pointer">
+            <span>+ Add Extra Inflow</span>
+          </button>
         </div>
-        <div class="glass-surface p-5 space-y-4">
-          <h2 class="text-lg font-bold text-white border-b border-white/10 pb-2">04. Expense Ledger</h2>
-          <div><label class="text-xs text-amber-200">Opening Expense (D26)</label><input id="inp-open-exp" type="number" class="glass-field w-full px-2 py-1 text-right mt-1"/></div>
-          <div class="flex justify-between font-bold text-white bg-orange-500/20 p-2 rounded"><span>Expense Closing Total (F31)</span><span id="out-f31-cl">₹0.00</span></div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="text-[11px] uppercase tracking-wider text-slate-300/70 border-b border-white/10">
+                <th class="py-2.5 px-2 w-12">Cell</th>
+                <th class="py-2.5 px-2">Product / Inflow Head</th>
+                <th class="py-2.5 px-2 text-right">Sale Volume (Liters)</th>
+                <th class="py-2.5 px-2 text-right">Rate (₹ / L)</th>
+                <th class="py-2.5 px-2 text-right">Amount (₹)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/[0.07] text-sm">
+              <tr class="hover:bg-white/[0.03]">
+                <td class="py-2.5 px-2 mono-num text-xs text-orange-300">R5</td>
+                <td class="py-2.5 px-2 font-bold text-white">MS (Motor Spirit / Petrol)</td>
+                <td class="py-2.5 px-2 text-right">
+                  <input id="inp-ms-qty" type="number" step="0.01" class="glass-field glass-field-num w-28 sm:w-36 px-3 py-1.5 text-sm font-semibold" />
+                </td>
+                <td class="py-2.5 px-2 text-right">
+                  <input id="inp-ms-rate" type="number" step="0.01" class="glass-field glass-field-num w-24 sm:w-28 px-3 py-1.5 text-sm" />
+                </td>
+                <td class="py-2.5 px-2 text-right">
+                  <span id="out-ms-amt" class="mono-num font-bold text-white text-base">₹0.00</span>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-white/[0.03]">
+                <td class="py-2.5 px-2 mono-num text-xs text-sky-300">R6</td>
+                <td class="py-2.5 px-2 font-bold text-white">HSD (High Speed Diesel)</td>
+                <td class="py-2.5 px-2 text-right">
+                  <input id="inp-hsd-qty" type="number" step="0.01" class="glass-field glass-field-num w-28 sm:w-36 px-3 py-1.5 text-sm font-semibold" />
+                </td>
+                <td class="py-2.5 px-2 text-right">
+                  <input id="inp-hsd-rate" type="number" step="0.01" class="glass-field glass-field-num w-24 sm:w-28 px-3 py-1.5 text-sm" />
+                </td>
+                <td class="py-2.5 px-2 text-right">
+                  <span id="out-hsd-amt" class="mono-num font-bold text-white text-base">₹0.00</span>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-white/[0.03]">
+                <td class="py-2.5 px-2 mono-num text-xs text-amber-300">R7</td>
+                <td class="py-2.5 px-2 font-semibold text-slate-100">
+                  Oil Sale (Lubricants)
+                  <span class="ml-1.5 text-[11px] text-amber-300/80">(Auto-deducts from Oil Stock F39)</span>
+                </td>
+                <td class="py-2.5 px-2 text-right text-xs text-slate-400">—</td>
+                <td class="py-2.5 px-2 text-right text-xs text-slate-400">—</td>
+                <td class="py-2.5 px-2 text-right">
+                  <input id="inp-oil-sale" type="number" step="0.01" class="glass-field glass-field-num w-32 sm:w-40 px-3 py-1.5 text-sm font-semibold" />
+                </td>
+              </tr>
+
+              <tr class="hover:bg-white/[0.03]">
+                <td class="py-2.5 px-2 mono-num text-xs text-emerald-300">R8</td>
+                <td class="py-2.5 px-2 font-semibold text-slate-100">
+                  <div class="flex flex-wrap items-center gap-2">
+                    <span>Credit Recovery Inflow</span>
+                    <label class="inline-flex items-center gap-1.5 text-[11px] font-medium px-2 py-0.5 rounded-md bg-emerald-500/15 border border-emerald-400/30 text-emerald-200 cursor-pointer">
+                      <input id="chk-sync-recovery" type="checkbox" class="accent-emerald-400 cursor-pointer" />
+                      <span>Auto-Sync with Credit Recovery (Sec 5)</span>
+                    </label>
+                  </div>
+                </td>
+                <td class="py-2.5 px-2 text-right text-xs text-slate-400">—</td>
+                <td class="py-2.5 px-2 text-right text-xs text-slate-400">—</td>
+                <td class="py-2.5 px-2 text-right">
+                  <input id="inp-recovery-inflow" type="number" step="0.01" class="glass-field glass-field-num w-32 sm:w-40 px-3 py-1.5 text-sm font-semibold" />
+                </td>
+              </tr>
+            </tbody>
+            <tbody id="list-extra-inflows" class="divide-y divide-white/[0.07] text-sm"></tbody>
+            <tfoot>
+              <tr class="border-t-2 border-orange-400/40 bg-orange-500/10">
+                <td colspan="4" class="py-3 px-3 text-right font-bold uppercase tracking-wider text-xs sm:text-sm text-orange-200">
+                  Total Gross Sale &amp; Inflows (=SUM(E5:E9))
+                </td>
+                <td class="py-3 px-3 text-right">
+                  <span id="out-total-sale" class="mono-num text-lg sm:text-xl font-extrabold text-orange-300">₹0.00</span>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
         </div>
       </section>
 
-      <!-- SEC 5 & 6: CREDIT & OIL -->
+      <!-- SECTION 02: BANK A/C DETAILS, SBI & IOCL LEDGER -->
+      <section class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        <div class="lg:col-span-7 glass-surface p-5 sm:p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
+              <div class="flex items-center gap-2.5">
+                <span class="w-7 h-7 rounded-lg bg-sky-500/25 border border-sky-400/40 flex items-center justify-center text-xs font-bold text-sky-200">02</span>
+                <div>
+                  <h2 class="text-base sm:text-lg font-bold text-white">A/c Details &amp; Digital Collections</h2>
+                  <p class="text-xs text-slate-300/70">POS/UPI collections (C14) + Opening Balance + Bank Credits/RTGS</p>
+                </div>
+              </div>
+              <button id="btn-add-bank-entry" type="button" class="btn-frosted px-3 py-1.5 text-xs cursor-pointer">
+                + Add Bank Entry
+              </button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="p-3 rounded-xl bg-white/[0.04] border border-white/10">
+                <label for="inp-phonepe" class="block text-xs font-semibold text-sky-200 mb-1">Phone Pe Collection (C12)</label>
+                <input id="inp-phonepe" type="number" step="0.01" class="glass-field glass-field-num w-full px-3 py-2 text-sm font-bold" />
+              </div>
+              <div class="p-3 rounded-xl bg-white/[0.04] border border-white/10">
+                <label for="inp-paytm" class="block text-xs font-semibold text-sky-200 mb-1">Paytm / Card Collection (C13)</label>
+                <input id="inp-paytm" type="number" step="0.01" class="glass-field glass-field-num w-full px-3 py-2 text-sm font-bold" />
+              </div>
+            </div>
+
+            <div class="formula-banner px-4 py-2.5 flex items-center justify-between">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-sky-200">Digital / Card Total (Cell C14)</span>
+                <span class="block text-[11px] text-slate-300/75">Automatically deducted in Today's Cash formula (=E10 - C14 - ...)</span>
+              </div>
+              <span id="out-c14-total" class="mono-num text-base sm:text-lg font-extrabold text-sky-300">₹0.00</span>
+            </div>
+
+            <div class="p-3 rounded-xl bg-white/[0.04] border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <label for="inp-ac-open" class="text-xs font-bold uppercase tracking-wider text-slate-200">A/c Opening Balance (Cell A13 / C15)</label>
+                <span class="block text-[11px] text-slate-400">Previous day's A/c CL Total</span>
+              </div>
+              <input id="inp-ac-open" type="number" step="0.01" class="glass-field glass-field-num w-full sm:w-44 px-3 py-2 text-sm font-bold text-amber-200" />
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="text-[11px] uppercase tracking-wider text-slate-400 border-b border-white/10">
+                    <th class="py-2 px-2">Bank Entry / Particulars</th>
+                    <th class="py-2 px-2 w-32">Effect</th>
+                    <th class="py-2 px-2 text-right w-36">Amount (₹)</th>
+                    <th class="py-2 px-2 w-10 text-center"></th>
+                  </tr>
+                </thead>
+                <tbody id="list-bank-entries" class="divide-y divide-white/[0.07] text-sm"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="closing-banner px-4 py-3 flex items-center justify-between">
+            <div>
+              <span class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-white">A/c Closing Total (CL Total)</span>
+              <span class="block text-[11px] text-orange-200/80">Carries forward to next day's A/c Opening Balance</span>
+            </div>
+            <span id="out-ac-cl" class="mono-num text-lg sm:text-xl font-extrabold text-white">₹0.00</span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 glass-surface p-5 sm:p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+              <div>
+                <h2 class="text-base sm:text-lg font-bold text-white">SBI &amp; IOCL Ledger</h2>
+                <p class="text-xs text-slate-300/70">Company advance / payable tracking</p>
+              </div>
+              <span class="px-2.5 py-1 rounded-lg text-xs font-bold bg-blue-500/20 text-blue-200 border border-blue-400/30">IOCL / SBI</span>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-3">
+              <div>
+                <label for="inp-sbi-bal" class="text-xs font-bold uppercase tracking-wider text-blue-200">SBI Account Balance (D12)</label>
+                <span class="block text-[11px] text-slate-400">Carry-forward reserve balance</span>
+              </div>
+              <input id="inp-sbi-bal" type="number" step="0.01" class="glass-field glass-field-num w-36 px-3 py-2 text-sm font-bold text-blue-200" />
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-orange-200">IOCL Account Statement</span>
+                <span class="text-[11px] mono-num text-slate-400">E12 → F17</span>
+              </div>
+
+              <div class="space-y-2.5 text-sm">
+                <div class="flex items-center justify-between gap-2">
+                  <label for="inp-iocl-open" class="text-xs text-slate-300">IOCL Opening Bal (E12/F12)</label>
+                  <input id="inp-iocl-open" type="number" step="0.01" class="glass-field glass-field-num w-36 px-3 py-1.5 text-sm font-semibold" />
+                </div>
+                <div class="flex items-center justify-between gap-2">
+                  <label for="inp-iocl-cred" class="text-xs text-emerald-300">+ RTGS / Receipts Credited</label>
+                  <input id="inp-iocl-cred" type="number" step="0.01" class="glass-field glass-field-num w-36 px-3 py-1.5 text-sm font-semibold text-emerald-300" />
+                </div>
+                <div class="flex items-center justify-between gap-2">
+                  <label for="inp-iocl-deb" class="text-xs text-rose-300">- Tanker Load / Debit</label>
+                  <input id="inp-iocl-deb" type="number" step="0.01" class="glass-field glass-field-num w-36 px-3 py-1.5 text-sm font-semibold text-rose-300" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="closing-banner px-4 py-3 flex items-center justify-between">
+            <div>
+              <span class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-white">IOCL CL Total</span>
+              <span class="block text-[11px] text-orange-200/80">= Opening + Credits - Load</span>
+            </div>
+            <span id="out-iocl-cl" class="mono-num text-lg sm:text-xl font-extrabold text-amber-300">₹0.00</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 03 & 04: CASH LEDGER & EXPENSE LEDGER -->
       <section class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <div class="glass-surface p-5 space-y-4">
-          <h2 class="text-lg font-bold text-white border-b border-white/10 pb-2">05. Credit Ledger</h2>
-          <div><label class="text-xs text-indigo-200">Credit Given Today (C38)</label><input id="inp-credit-given" type="number" class="glass-field w-full px-2 py-1 text-right mt-1"/></div>
-          <div><label class="text-xs text-amber-200">Opening Credit (C39)</label><input id="inp-open-credit" type="number" class="glass-field w-full px-2 py-1 text-right mt-1"/></div>
-          <div class="flex justify-between font-bold text-indigo-200 bg-orange-500/20 p-2 rounded"><span>Credit Closing Total (C43)</span><span id="out-c43-cl">₹0.00</span></div>
+        <div class="glass-surface p-5 sm:p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
+              <div class="flex items-center gap-2.5">
+                <span class="w-7 h-7 rounded-lg bg-emerald-500/25 border border-emerald-400/40 flex items-center justify-center text-xs font-bold text-emerald-200">03</span>
+                <div>
+                  <h2 class="text-base sm:text-lg font-bold text-white">Cash Ledger</h2>
+                  <p class="text-xs text-slate-300/70">Auto-computed daily cash + opening cash minus bank/returns</p>
+                </div>
+              </div>
+              <button id="btn-add-cash-out" type="button" class="btn-frosted px-3 py-1.5 text-xs cursor-pointer">
+                + Add Cash Outflow
+              </button>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-400/30 flex items-center justify-between gap-2">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-200">Today's Net Cash (Cell C25)</span>
+                <span class="block text-[11px] text-emerald-100/75 mono-num">= E10 - C14 - TodayExp - CreditGiven</span>
+              </div>
+              <span id="out-c25-cash" class="mono-num text-base sm:text-lg font-extrabold text-emerald-300">₹0.00</span>
+            </div>
+
+            <div class="p-3 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-2">
+              <div>
+                <label for="inp-open-cash" class="text-xs font-bold uppercase tracking-wider text-slate-200">Opening Cash (Cell A26 / C26)</label>
+                <span class="block text-[11px] text-slate-400">Previous day's Cash CL Total</span>
+              </div>
+              <input id="inp-open-cash" type="number" step="0.01" class="glass-field glass-field-num w-36 sm:w-44 px-3 py-2 text-sm font-bold text-amber-200" />
+            </div>
+
+            <div class="formula-banner px-4 py-2 flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-wider text-sky-200">Total Cash Available (Cell C27 = C25 + C26)</span>
+              <span id="out-c27-avail" class="mono-num text-sm sm:text-base font-extrabold text-white">₹0.00</span>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="text-[11px] uppercase tracking-wider text-slate-400 border-b border-white/10">
+                    <th class="py-2 px-2">Less: Cash Deposit / Return</th>
+                    <th class="py-2 px-2 text-right w-36">Amount (₹)</th>
+                    <th class="py-2 px-2 w-10 text-center"></th>
+                  </tr>
+                </thead>
+                <tbody id="list-cash-outflows" class="divide-y divide-white/[0.07] text-sm"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="closing-banner px-4 py-3 flex items-center justify-between">
+            <div>
+              <span class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-white">Cash CL Total (Cell C30)</span>
+              <span class="block text-[11px] text-orange-200/80">= Total Cash Available - Cash Outflows</span>
+            </div>
+            <span id="out-c30-cl" class="mono-num text-lg sm:text-xl font-extrabold text-emerald-300">₹0.00</span>
+          </div>
         </div>
-        <div class="glass-surface p-5 space-y-4">
-          <h2 class="text-lg font-bold text-white border-b border-white/10 pb-2">06. Oil Stock</h2>
-          <div><label class="text-xs text-amber-200">Opening Oil (F38)</label><input id="inp-open-oil" type="number" class="glass-field w-full px-2 py-1 text-right mt-1"/></div>
-          <div class="flex justify-between font-bold text-amber-300 bg-orange-500/20 p-2 rounded"><span>Oil Stock Closing (F40)</span><span id="out-f40-cl">₹0.00</span></div>
+
+        <div class="glass-surface p-5 sm:p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
+              <div class="flex items-center gap-2.5">
+                <span class="w-7 h-7 rounded-lg bg-rose-500/25 border border-rose-400/40 flex items-center justify-center text-xs font-bold text-rose-200">04</span>
+                <div>
+                  <h2 class="text-base sm:text-lg font-bold text-white">Expense Ledger</h2>
+                  <p class="text-xs text-slate-300/70">Daily station expenses &amp; cumulative expense balance</p>
+                </div>
+              </div>
+              <button id="btn-add-expense" type="button" class="btn-frosted px-3 py-1.5 text-xs cursor-pointer">
+                + Add Expense
+              </button>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="text-[11px] uppercase tracking-wider text-slate-400 border-b border-white/10">
+                    <th class="py-2 px-2">Expense Head / Voucher</th>
+                    <th class="py-2 px-2 text-right w-36">Amount (₹)</th>
+                    <th class="py-2 px-2 w-10 text-center"></th>
+                  </tr>
+                </thead>
+                <tbody id="list-expenses" class="divide-y divide-white/[0.07] text-sm"></tbody>
+              </table>
+            </div>
+
+            <div class="formula-banner px-4 py-2.5 flex items-center justify-between">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-rose-200">Total Today's Expense (Cell F29)</span>
+                <span class="block text-[11px] text-slate-300/75">Deducted from Today's Net Cash (C25)</span>
+              </div>
+              <span id="out-f29-exp" class="mono-num text-base font-extrabold text-rose-300">₹0.00</span>
+            </div>
+
+            <div class="p-3 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-2">
+              <div>
+                <label for="inp-open-exp" class="text-xs font-bold uppercase tracking-wider text-slate-200">Opening Expense Balance (D26)</label>
+                <span class="block text-[11px] text-slate-400">Previous day's Expense CL Total</span>
+              </div>
+              <input id="inp-open-exp" type="number" step="0.01" class="glass-field glass-field-num w-36 sm:w-44 px-3 py-2 text-sm font-bold text-amber-200" />
+            </div>
+          </div>
+
+          <div class="closing-banner px-4 py-3 flex items-center justify-between">
+            <div>
+              <span class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-white">Expense CL Total (Cell F31)</span>
+              <span class="block text-[11px] text-orange-200/80">= Today's Expense + Opening Expense</span>
+            </div>
+            <span id="out-f31-cl" class="mono-num text-lg sm:text-xl font-extrabold text-white">₹0.00</span>
+          </div>
         </div>
+      </section>
+
+      <!-- SECTION 05 & 06: CREDIT LEDGER & OIL / LUBRICANTS STOCK -->
+      <section class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        <div class="lg:col-span-7 glass-surface p-5 sm:p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
+              <div class="flex items-center gap-2.5">
+                <span class="w-7 h-7 rounded-lg bg-indigo-500/25 border border-indigo-400/40 flex items-center justify-center text-xs font-bold text-indigo-200">05</span>
+                <div>
+                  <h2 class="text-base sm:text-lg font-bold text-white">Credit &amp; Party Recovery Ledger</h2>
+                  <p class="text-xs text-slate-300/70">Today's credit sales (C38) + Opening Credit - Party Recoveries</p>
+                </div>
+              </div>
+              <button id="btn-add-recovery" type="button" class="btn-frosted px-3 py-1.5 text-xs cursor-pointer">
+                + Add Party Recovery
+              </button>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 space-y-3">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <label for="inp-credit-given" class="text-xs font-bold uppercase tracking-wider text-indigo-200">Credit Given Today (Cell C38)</label>
+                <button id="btn-toggle-credit-list" type="button" class="text-[11px] font-semibold text-sky-300 hover:text-sky-200 underline cursor-pointer">
+                  Itemize Credit Parties
+                </button>
+              </div>
+              <div class="flex items-center justify-between gap-3">
+                <span class="text-xs text-slate-400">Deducted from Cash (C25) &amp; added to Credit</span>
+                <input id="inp-credit-given" type="number" step="0.01" class="glass-field glass-field-num w-40 px-3 py-2 text-sm font-bold" />
+              </div>
+
+              <div id="box-credit-parties" class="hidden pt-2 border-t border-white/10 space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-semibold text-slate-300">Itemized Credit Parties (Auto-sums into C38)</span>
+                  <button id="btn-add-credit-party" type="button" class="btn-frosted px-2.5 py-1 text-[11px] cursor-pointer">+ Add Credit Party</button>
+                </div>
+                <table class="w-full text-left border-collapse">
+                  <tbody id="list-credit-parties" class="divide-y divide-white/[0.07] text-xs"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-between gap-2">
+              <div>
+                <label for="inp-open-credit" class="text-xs font-bold uppercase tracking-wider text-slate-200">Opening Credit Balance (A39 / C39)</label>
+                <span class="block text-[11px] text-slate-400">Previous day's Credit CL Total</span>
+              </div>
+              <input id="inp-open-credit" type="number" step="0.01" class="glass-field glass-field-num w-40 px-3 py-2 text-sm font-bold text-amber-200" />
+            </div>
+
+            <div class="formula-banner px-4 py-2 flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-wider text-indigo-200">Total Credit Before Recovery (Cell C40)</span>
+              <span id="out-c40-cred" class="mono-num text-sm sm:text-base font-extrabold text-white">₹0.00</span>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="text-[11px] uppercase tracking-wider text-slate-400 border-b border-white/10">
+                    <th class="py-2 px-2">Less: Party Recovery Name</th>
+                    <th class="py-2 px-2 text-right w-36">Recovered (₹)</th>
+                    <th class="py-2 px-2 w-10 text-center"></th>
+                  </tr>
+                </thead>
+                <tbody id="list-credit-recoveries" class="divide-y divide-white/[0.07] text-sm"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="closing-banner px-4 py-3 flex items-center justify-between">
+            <div>
+              <span class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-white">Credit CL Total (Cell C43)</span>
+              <span class="block text-[11px] text-orange-200/80">= Total Credit - Total Party Recoveries</span>
+            </div>
+            <span id="out-c43-cl" class="mono-num text-lg sm:text-xl font-extrabold text-indigo-200">₹0.00</span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 glass-surface p-5 sm:p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-4">
+            <div class="flex items-center gap-2.5 border-b border-white/10 pb-3">
+              <span class="w-7 h-7 rounded-lg bg-amber-500/25 border border-amber-400/40 flex items-center justify-center text-xs font-bold text-amber-200">06</span>
+              <div>
+                <h2 class="text-base sm:text-lg font-bold text-white">OIL / Lubricants Stock</h2>
+                <p class="text-xs text-slate-300/70">Opening lube value minus today's Oil Sale (E7)</p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white/[0.04] border border-white/10 space-y-3.5">
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <label for="inp-open-oil" class="text-xs font-bold uppercase tracking-wider text-slate-200">Opening Oil Stock (D39 / F38)</label>
+                  <span class="block text-[11px] text-slate-400">Previous day's Oil CL Total</span>
+                </div>
+                <input id="inp-open-oil" type="number" step="0.01" class="glass-field glass-field-num w-36 px-3 py-2 text-sm font-bold text-amber-200" />
+              </div>
+
+              <div class="flex items-center justify-between gap-2 pt-2 border-t border-white/10">
+                <div>
+                  <span class="text-xs font-semibold text-rose-300">Less: Today's Oil Sale (F39 = E7)</span>
+                  <span class="block text-[11px] text-slate-400">Linked automatically to Row 7</span>
+                </div>
+                <span id="out-f39-less" class="mono-num text-sm font-bold text-rose-300">- ₹0.00</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="closing-banner px-4 py-3 flex items-center justify-between">
+            <div>
+              <span class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-white">Oil Stock CL Total (Cell F40)</span>
+              <span class="block text-[11px] text-orange-200/80">= Opening Oil - Today's Oil Sale</span>
+            </div>
+            <span id="out-f40-cl" class="mono-num text-lg sm:text-xl font-extrabold text-amber-300">₹0.00</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 07: PARTNER CAPITAL / BALANCES -->
+      <section class="glass-surface p-5 sm:p-6 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
+          <div class="flex items-center gap-2.5">
+            <span class="w-7 h-7 rounded-lg bg-cyan-500/25 border border-cyan-400/40 flex items-center justify-center text-xs font-bold text-cyan-200">07</span>
+            <div>
+              <h2 class="text-base sm:text-lg font-bold text-white">Partner Balances Summary</h2>
+              <p class="text-xs text-slate-300/70">Register footer partner capital / account standing (Rows 50–52)</p>
+            </div>
+          </div>
+          <button id="btn-add-partner" type="button" class="btn-frosted px-3 py-1.5 text-xs cursor-pointer">
+            + Add Partner
+          </button>
+        </div>
+
+        <div id="grid-partners" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
       </section>
     </div>
 
     <!-- ====================================================================== -->
     <!-- 4. LIQUID TRANSPARENT GLASS A4 PDF PREVIEW & ZERO-GAP PRINT SHEET      -->
     <!-- ====================================================================== -->
-    <div id="a4-preview-root" class="hidden flex-1 w-full">
+    <div id="a4-preview-root" style="display: none;" class="hidden flex-1 w-full">
       <div id="a4-preview-bar" class="w-full max-w-[210mm] mb-4 glass-surface px-4 py-3 flex flex-wrap items-center justify-between gap-3 mx-auto">
         <div class="flex items-center gap-2">
           <span class="w-2.5 h-2.5 rounded-full bg-orange-400 animate-pulse"></span>
-          <span class="text-xs sm:text-sm font-bold text-white">Liquid Transparent Glass A4 Register</span>
+          <span class="text-xs sm:text-sm font-bold text-white">Liquid Transparent Glass A4 Register (Zero-Gap Auto-Fill &amp; Print Ready)</span>
         </div>
         <div class="flex items-center gap-2">
-          <button id="btn-close-a4-preview" type="button" class="btn-frosted px-3.5 py-1.5 text-xs cursor-pointer">← Back</button>
-          <button id="btn-print-from-a4" type="button" class="btn-saffron px-4 py-1.5 text-xs font-bold cursor-pointer">Print PDF</button>
+          <button id="btn-close-a4-preview" type="button" class="btn-frosted px-3.5 py-1.5 text-xs cursor-pointer">
+            ← Back to Editor
+          </button>
+          <button id="btn-print-from-a4" type="button" class="btn-saffron px-4 py-1.5 text-xs font-bold cursor-pointer">
+            Print / Save PDF
+          </button>
         </div>
       </div>
 
       <div id="a4-paper" class="a4-glass-sheet mx-auto">
         <div class="a4-glass-aura" aria-hidden="true"></div>
-        <div class="a4-bg-watermark"><span>INDIANOIL • CHANDRA PRATIMA PETROLEUM</span></div>
+        <div class="a4-bg-watermark">
+          <span>INDIANOIL • CHANDRA PRATIMA PETROLEUM</span>
+        </div>
 
         <div class="a4-outer-border">
+          <!-- Executive IndianOil Masthead -->
           <div class="a4-masthead">
-            <div style="font-size:12pt;font-weight:800;">M/S CHANDRA PRATIMA PETROLEUM</div>
-            <div style="text-align:right;">
-              <div style="font-size:7pt;">DAILY SALE REGISTER</div>
-              <div id="p-date" style="font-size:10pt;font-weight:800;">08-11-26</div>
+            <div style="display:flex;align-items:center;gap:9px;">
+              <svg viewBox="0 0 64 64" style="width:36px;height:36px;flex-shrink:0;" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="29" fill="#FFFFFF" />
+                <circle cx="32" cy="32" r="24" fill="#F37021" />
+                <rect x="4" y="24" width="56" height="16" rx="2" fill="#0A3D91" stroke="#FFFFFF" stroke-width="1.5" />
+                <text x="32" y="34.5" text-anchor="middle" fill="#FFFFFF" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="8.2" letter-spacing="0.5">IndianOil</text>
+              </svg>
+              <div>
+                <div style="font-size:6.2pt;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;color:#FDBA74;">
+                  Indian Oil Corporation Limited • Authorized Dealer Statement
+                </div>
+                <div style="font-size:10.5pt;font-weight:800;letter-spacing:0.2px;line-height:1.15;">
+                  M/S CHANDRA PRATIMA PETROLEUM
+                </div>
+                <div style="font-size:6.9pt;color:#DBEAFE;font-weight:600;">
+                  VANGAON, DIST. PALGHAR — 401103, MAHARASHTRA
+                </div>
+              </div>
+            </div>
+
+            <div style="text-align:right;background:rgba(255,255,255,0.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.34);border-radius:4px;padding:4px 9px;">
+              <div style="font-size:6.2pt;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#FED7AA;">
+                DAILY SALE REGISTER
+              </div>
+              <div id="p-date" class="a4-right-num" style="font-size:9.8pt;font-weight:800;color:#ffffff;line-height:1.15;">
+                08-11-26
+              </div>
+              <div id="p-ref" class="a4-right-num" style="font-size:6pt;color:#BFDBFE;">
+                DOC: IOCL-DSR-08-11-26
+              </div>
             </div>
           </div>
+
+          <!-- 4-KPI Summary Bar -->
           <div class="a4-kpi-bar">
-            <div class="a4-kpi-box"><div>Gross Sale</div><div id="p-kpi-e10" class="a4-right-num" style="font-weight:800;">₹0.00</div></div>
-            <div class="a4-kpi-box"><div>Cash CL</div><div id="p-kpi-c30" class="a4-right-num" style="font-weight:800;">₹0.00</div></div>
-            <div class="a4-kpi-box"><div>Bank/IOCL CL</div><div id="p-kpi-ac" class="a4-right-num" style="font-weight:800;">₹0.00</div></div>
-            <div class="a4-kpi-box"><div>Credit CL</div><div id="p-kpi-c43" class="a4-right-num" style="font-weight:800;">₹0.00</div></div>
+            <div class="a4-kpi-box">
+              <div style="font-size:5.9pt;font-weight:800;text-transform:uppercase;color:#475569;letter-spacing:0.3px;">Gross Sale &amp; Inflow (E10)</div>
+              <div id="p-kpi-e10" class="a4-right-num" style="font-size:9.2pt;font-weight:800;color:#072B66;">₹0.00</div>
+            </div>
+            <div class="a4-kpi-box">
+              <div style="font-size:5.9pt;font-weight:800;text-transform:uppercase;color:#475569;letter-spacing:0.3px;">Cash Closing Bal (C30)</div>
+              <div id="p-kpi-c30" class="a4-right-num" style="font-size:9.2pt;font-weight:800;color:#065F46;">₹0.00</div>
+            </div>
+            <div class="a4-kpi-box">
+              <div style="font-size:5.9pt;font-weight:800;text-transform:uppercase;color:#475569;letter-spacing:0.3px;">Bank A/c Closing (CL)</div>
+              <div id="p-kpi-ac" class="a4-right-num" style="font-size:9.2pt;font-weight:800;color:#0A3D91;">₹0.00</div>
+            </div>
+            <div class="a4-kpi-box">
+              <div style="font-size:5.9pt;font-weight:800;text-transform:uppercase;color:#475569;letter-spacing:0.3px;">Credit Closing Bal (C43)</div>
+              <div id="p-kpi-c43" class="a4-right-num" style="font-size:9.2pt;font-weight:800;color:#9A3412;">₹0.00</div>
+            </div>
           </div>
-          <div class="a4-ledger-stack p-4">
-            <p class="text-center font-bold mt-20 text-slate-500">
-              Print layout auto-syncs with your live data.<br><br>
-              (Complete A4 dynamic grid generation happens in JS below)
-            </p>
+
+          <!-- Auto-Filling Ledger Tiers -->
+          <div class="a4-ledger-stack">
+            <div class="a4-tier">
+              <div class="a4-pane-title saffron">
+                <span><span class="a4-sec-tag saffron">01</span>Product Sales &amp; Direct Inflows</span>
+                <span id="p-fuel-vol" class="a4-right-num" style="font-size:6.8pt;">Fuel Vol: 0.00 L</span>
+              </div>
+              <table class="a4-ledger-tbl">
+                <thead>
+                  <tr>
+                    <th>Product / Particular</th>
+                    <th style="text-align:right;width:20%;">Total Sale (L)</th>
+                    <th style="text-align:right;width:16%;">Rate (₹/L)</th>
+                    <th style="text-align:right;width:24%;">Calculation (₹)</th>
+                  </tr>
+                </thead>
+                <tbody id="p-tbody-sales"></tbody>
+              </table>
+              <div class="a4-cl-strip saffron">
+                <span>TOTAL GROSS SALE &amp; INFLOWS (CELL E10)</span>
+                <span id="p-total-e10" class="a4-right-num">₹0.00</span>
+              </div>
+            </div>
+
+            <div class="a4-tier a4-tier-flex">
+              <div class="a4-grid-asymmetric">
+                <div class="a4-pane a4-pane-divider">
+                  <div class="a4-pane-title">
+                    <span><span class="a4-sec-tag">02A</span>A/c Details &amp; Digital Collections</span>
+                    <span>C12–C22</span>
+                  </div>
+                  <table class="a4-ledger-tbl">
+                    <thead>
+                      <tr>
+                        <th>Transaction Type</th>
+                        <th style="text-align:right;width:36%;">Amount (₹)</th>
+                      </tr>
+                    </thead>
+                    <tbody id="p-tbody-ac"></tbody>
+                  </table>
+                  <div class="a4-auto-fill"></div>
+                  <div class="a4-cl-strip">
+                    <span>A/C CLOSING TOTAL (CL)</span>
+                    <span id="p-total-ac" class="a4-right-num">₹0.00</span>
+                  </div>
+                </div>
+
+                <div class="a4-pane">
+                  <div class="a4-pane-title">
+                    <span><span class="a4-sec-tag">02B</span>SBI &amp; IOCL Account</span>
+                    <span>D12 / E12–F17</span>
+                  </div>
+                  <table class="a4-ledger-tbl">
+                    <thead>
+                      <tr>
+                        <th>Account Head</th>
+                        <th style="text-align:right;width:42%;">Balance (₹)</th>
+                      </tr>
+                    </thead>
+                    <tbody id="p-tbody-iocl"></tbody>
+                  </table>
+                  <div class="a4-auto-fill"></div>
+                  <div class="a4-cl-strip">
+                    <span>IOCL CLOSING TOTAL (CL)</span>
+                    <span id="p-total-iocl" class="a4-right-num">₹0.00</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="a4-tier a4-tier-flex">
+              <div class="a4-grid-symmetric">
+                <div class="a4-pane a4-pane-divider">
+                  <div class="a4-pane-title emerald">
+                    <span><span class="a4-sec-tag emerald">03</span>Cash Ledger</span>
+                    <span>C25–C30</span>
+                  </div>
+                  <table class="a4-ledger-tbl">
+                    <thead>
+                      <tr>
+                        <th>Cash Particulars</th>
+                        <th style="text-align:right;width:36%;">Amount (₹)</th>
+                      </tr>
+                    </thead>
+                    <tbody id="p-tbody-cash"></tbody>
+                  </table>
+                  <div class="a4-auto-fill"></div>
+                  <div class="a4-cl-strip">
+                    <span>CASH CLOSING TOTAL (C30)</span>
+                    <span id="p-total-c30" class="a4-right-num">₹0.00</span>
+                  </div>
+                </div>
+
+                <div class="a4-pane">
+                  <div class="a4-pane-title saffron">
+                    <span><span class="a4-sec-tag saffron">04</span>Station Expenses</span>
+                    <span>F25–F31</span>
+                  </div>
+                  <table class="a4-ledger-tbl">
+                    <thead>
+                      <tr>
+                        <th>Expense Head</th>
+                        <th style="text-align:right;width:36%;">Amount (₹)</th>
+                      </tr>
+                    </thead>
+                    <tbody id="p-tbody-exp"></tbody>
+                  </table>
+                  <div class="a4-auto-fill"></div>
+                  <div class="a4-cl-strip saffron">
+                    <span>EXPENSE CLOSING TOTAL (F31)</span>
+                    <span id="p-total-f31" class="a4-right-num">₹0.00</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="a4-tier a4-tier-flex">
+              <div class="a4-grid-asymmetric">
+                <div class="a4-pane a4-pane-divider">
+                  <div class="a4-pane-title">
+                    <span><span class="a4-sec-tag">05</span>Credit &amp; Party Recoveries</span>
+                    <span>C38–C43</span>
+                  </div>
+                  <table class="a4-ledger-tbl">
+                    <thead>
+                      <tr>
+                        <th>Party Name / Credit Head</th>
+                        <th style="text-align:right;width:36%;">Amount (₹)</th>
+                      </tr>
+                    </thead>
+                    <tbody id="p-tbody-credit"></tbody>
+                  </table>
+                  <div class="a4-auto-fill"></div>
+                  <div class="a4-cl-strip">
+                    <span>CREDIT CLOSING TOTAL (C43)</span>
+                    <span id="p-total-c43" class="a4-right-num">₹0.00</span>
+                  </div>
+                </div>
+
+                <div class="a4-pane">
+                  <div class="a4-pane-title emerald">
+                    <span><span class="a4-sec-tag emerald">06</span>Oil / Lubricants Stock</span>
+                    <span>F38–F40</span>
+                  </div>
+                  <table class="a4-ledger-tbl">
+                    <thead>
+                      <tr>
+                        <th>Lubricant Stock Head</th>
+                        <th style="text-align:right;width:40%;">Value (₹)</th>
+                      </tr>
+                    </thead>
+                    <tbody id="p-tbody-oil"></tbody>
+                  </table>
+                  <div class="a4-auto-fill"></div>
+                  <div class="a4-cl-strip">
+                    <span>OIL STOCK CLOSING (F40)</span>
+                    <span id="p-total-f40" class="a4-right-num">₹0.00</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="a4-tier" style="border-bottom:none;">
+              <div class="a4-pane-title">
+                <span><span class="a4-sec-tag">07</span>Partner Capital &amp; Account Standing (Rows 50–52)</span>
+                <span>AUDIT VERIFIED</span>
+              </div>
+              <div id="p-row-partners" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));background:rgba(255,255,255,0.4);"></div>
+            </div>
+          </div>
+
+          <!-- 4-Column Signature & Dealer Seal Footer -->
+          <div class="a4-signatures">
+            <div class="a4-sig-cell">
+              <div class="a4-sig-rule">Prepared By (Cashier)</div>
+            </div>
+            <div class="a4-sig-cell">
+              <div class="a4-sig-rule">Checked By (Manager)</div>
+            </div>
+            <div class="a4-sig-cell">
+              <div class="a4-sig-rule">Verified By (Partner)</div>
+            </div>
+            <div class="a4-sig-cell" style="background:rgba(241,247,255,0.55);padding-top:6px;">
+              <div style="font-size:5.8pt;font-weight:800;color:#0A3D91;margin-bottom:10px;letter-spacing:0.2px;">
+                FOR M/S CHANDRA PRATIMA PETROLEUM
+              </div>
+              <div class="a4-sig-rule">Authorized Dealer Stamp &amp; Sign</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <script>
+  <!-- ====================================================================== -->
+  <!-- 5. CLEAN MODULAR APPLICATION ENGINE + FIREBASE CLOUD DATABASE          -->
+  <!-- ====================================================================== -->
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js';
+    import {
+      getAuth,
+      GoogleAuthProvider,
+      signInWithPopup,
+      signInWithEmailAndPassword,
+      createUserWithEmailAndPassword,
+      signInWithCustomToken,
+      signInAnonymously,
+      onAuthStateChanged,
+      signOut,
+      updateProfile
+    } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js';
+    import {
+      getFirestore,
+      doc,
+      setDoc,
+      getDoc,
+      onSnapshot
+    } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js';
+
     (() => {
       'use strict';
 
       /* --------------------------------------------------------------------
-         A. PURE-JS SHA-256 SECURITY MODULE (OFFLINE)
+         A. PURE-JS SHA-256 SECURITY MODULE (FOR LOCAL/OFFLINE FALLBACK)
          -------------------------------------------------------------------- */
       const SecurityCore = (() => {
         const SALT = 'IOCL_VANGAON_SHIELD_2026';
+
         function sha256Fallback(str) {
-          return str; // Simplified for pure local, we use exact matching below
+          const rrot = (v, n) => (v >>> n) | (v << (32 - n));
+          const maxW = Math.pow(2, 32);
+          let res = '';
+          const w = [];
+          const bitLen = str.length * 8;
+          const h = [];
+          const k = [];
+          let pCount = 0;
+          const comp = {};
+
+          for (let c = 2; pCount < 64; c++) {
+            if (!comp[c]) {
+              for (let i = 0; i < 313; i += c) comp[i] = c;
+              h[pCount] = (Math.pow(c, 0.5) * maxW) | 0;
+              k[pCount++] = (Math.pow(c, 1 / 3) * maxW) | 0;
+            }
+          }
+
+          str += '\x80';
+          while ((str.length % 64) - 56) str += '\x00';
+          for (let i = 0; i < str.length; i++) {
+            w[i >> 2] |= str.charCodeAt(i) << (((3 - i) % 4) * 8);
+          }
+          w[w.length] = (bitLen / maxW) | 0;
+          w[w.length] = bitLen;
+
+          for (let j = 0; j < w.length; ) {
+            const slice = w.slice(j, (j += 16));
+            const oldH = h.slice(0);
+            for (let i = 0; i < 64; i++) {
+              const w15 = slice[i - 15], w2 = slice[i - 2];
+              const a = h[0], e = h[4];
+              const t1 = h[7] + (rrot(e, 6) ^ rrot(e, 11) ^ rrot(e, 25)) + ((e & h[5]) ^ (~e & h[6])) + k[i] +
+                (slice[i] = i < 16 ? slice[i] : (slice[i - 16] + (rrot(w15, 7) ^ rrot(w15, 18) ^ (w15 >>> 3)) + slice[i - 7] + (rrot(w2, 17) ^ rrot(w2, 19) ^ (w2 >>> 10))) | 0);
+              const t2 = (rrot(a, 2) ^ rrot(a, 13) ^ rrot(a, 22)) + ((a & h[1]) ^ (a & h[2]) ^ (h[1] & h[2]));
+              h.unshift((t1 + t2) | 0);
+              h.pop();
+              h[4] = (h[4] + t1) | 0;
+            }
+            for (let i = 0; i < 8; i++) h[i] = (h[i] + oldH[i]) | 0;
+          }
+
+          for (let i = 0; i < 8; i++) {
+            for (let j = 3; j >= 0; j--) {
+              const b = (h[i] >> (j * 8)) & 255;
+              res += (b < 16 ? '0' : '') + b.toString(16);
+            }
+          }
+          return res;
         }
-        function verifyLogin(userId, password) {
-          return (userId.trim().toLowerCase() === 'abhay' && password === 'Cpp@123');
+
+        async function hashSha256(plain) {
+          if (window.crypto && window.crypto.subtle) {
+            try {
+              const buf = await window.crypto.subtle.digest('SHA-256', new TextEncoder().encode(plain));
+              return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+            } catch (_) {
+              return sha256Fallback(plain);
+            }
+          }
+          return sha256Fallback(plain);
         }
-        return { verifyLogin };
+
+        const MASTER_DIGEST = sha256Fallback(
+          SALT + '::' + String.fromCharCode(97, 98, 104, 97, 121) + '::' + String.fromCharCode(67, 112, 112, 64, 49, 50, 51)
+        );
+
+        function safeEqual(a, b) {
+          if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false;
+          let diff = 0;
+          for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+          return diff === 0;
+        }
+
+        async function verifyLogin(userId, password) {
+          const cleanUser = String(userId || '').trim().toLowerCase();
+          const cleanPass = String(password || '');
+          const digest = await hashSha256(SALT + '::' + cleanUser + '::' + cleanPass);
+          if (safeEqual(digest, MASTER_DIGEST)) return true;
+
+          try {
+            const localUsers = JSON.parse(localStorage.getItem('iocl_dsr_v5_users') || '{}');
+            if (localUsers[cleanUser] && safeEqual(digest, localUsers[cleanUser].digest)) {
+              return true;
+            }
+          } catch (_) {}
+          return false;
+        }
+
+        async function registerLocalAccount(fullName, email, password) {
+          const cleanUser = String(email || '').trim().toLowerCase();
+          const digest = await hashSha256(SALT + '::' + cleanUser + '::' + String(password || ''));
+          const localUsers = JSON.parse(localStorage.getItem('iocl_dsr_v5_users') || '{}');
+          localUsers[cleanUser] = { name: fullName || cleanUser, email: cleanUser, digest };
+          localStorage.setItem('iocl_dsr_v5_users', JSON.stringify(localUsers));
+        }
+
+        return { verifyLogin, registerLocalAccount };
       })();
 
       /* --------------------------------------------------------------------
-         C. REGISTER PRESETS & EXCEL ENGINE
+         B. FIREBASE CLOUD DATABASE ENGINE (WORKS ACROSS DEVICES)
+         -------------------------------------------------------------------- */
+      const appId = typeof __app_id !== 'undefined' ? __app_id : 'iocl-dsr-cloud';
+      let fbApp = null;
+      let fbAuth = null;
+      let fbDb = null;
+      let unsubscribeCloud = null;
+
+      try {
+        if (typeof __firebase_config !== 'undefined' && __firebase_config) {
+          const parsedCfg = typeof __firebase_config === 'string' ? JSON.parse(__firebase_config) : __firebase_config;
+          fbApp = initializeApp(parsedCfg);
+          fbAuth = getAuth(fbApp);
+          fbDb = getFirestore(fbApp);
+        }
+      } catch (err) {
+        console.warn('Cloud initialization note:', err);
+      }
+
+      /* --------------------------------------------------------------------
+         C. REGISTER PRESETS & EXCEL FORMULA ENGINE
          -------------------------------------------------------------------- */
       const REGISTER_PRESETS = {
         '08-NOV': {
@@ -515,9 +1951,18 @@
           phonePe: 112776, paytm: 116509, acOpening: 124236, bankTransactions: [],
           sbiBalance: 5765, ioclOpening: -1212245, ioclCredits: 0, ioclDebits: 0,
           openingCash: 87418.93, cashOutflows: [], openingExpense: 360458,
-          expenses: [], creditGivenToday: 2100, useCreditParties: false, creditParties: [],
+          expenses: [
+            { label: 'Fitter Diesel', amount: 495 },
+            { label: 'Watchman', amount: 700 },
+            { label: 'Nikhil', amount: 20000 },
+            { label: 'Tanker Entry', amount: 500 }
+          ],
+          creditGivenToday: 2100, useCreditParties: false, creditParties: [],
           openingCredit: 572073, creditRecoveries: [], openingOil: 194446,
-          partners: []
+          partners: [
+            { name: 'Sanjay Bhai', amount: 1074560 },
+            { name: 'Dhiru Bhai', amount: 465625 }
+          ]
         },
         'BLANK': {
           registerDate: new Date().toISOString().slice(0, 10),
@@ -528,229 +1973,1114 @@
           openingCash: 0, cashOutflows: [], openingExpense: 0, expenses: [],
           creditGivenToday: 0, useCreditParties: false, creditParties: [],
           openingCredit: 0, creditRecoveries: [], openingOil: 0,
-          partners: []
+          partners: [
+            { name: 'Sanjay Bhai', amount: 1074560 },
+            { name: 'Dhiru Bhai', amount: 465625 }
+          ]
         }
       };
 
-      const KEYS = { ACTIVE: 'iocl_dsr_v5_active', ARCHIVE: 'iocl_dsr_v5_archive' };
+      const KEYS = {
+        ACTIVE: 'iocl_dsr_v5_active',
+        ARCHIVE: 'iocl_dsr_v5_archive'
+      };
 
       const appStore = {
         current: structuredClone(REGISTER_PRESETS['08-NOV']),
-        archive: {}, unlocked: false, dirHandle: null
+        archive: {},
+        unlocked: false,
+        failedCount: 0,
+        lockoutUntil: 0
       };
 
-      function toNum(v) { const n = parseFloat(v); return Number.isFinite(n) ? n : 0; }
-      function fmtINR(v) { return (toNum(v) < 0 ? '-₹' : '₹') + Math.abs(toNum(v)).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits:2}); }
+      /* --------------------------------------------------------------------
+         D. UTILITY, FORMATTING, CALCULATION & EXPORT HELPERS
+         -------------------------------------------------------------------- */
+      function toNum(v) {
+        const n = parseFloat(v);
+        return Number.isFinite(n) ? n : 0;
+      }
+
+      function fmtNum(v, decimals = 2) {
+        return toNum(v).toLocaleString('en-IN', {
+          minimumFractionDigits: decimals,
+          maximumFractionDigits: decimals
+        });
+      }
+
+      function fmtINR(v) {
+        const n = toNum(v);
+        const abs = Math.abs(n).toLocaleString('en-IN', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        });
+        return (n < 0 ? '-₹' : '₹') + abs;
+      }
+
+      function fmtShortDate(iso) {
+        if (!iso || typeof iso !== 'string') return '08-11-26';
+        const parts = iso.split('-');
+        if (parts.length !== 3) return iso;
+        return `${parts[2]}-${parts[1]}-${parts[0].slice(-2)}`;
+      }
+
+      function fmtRefCode(iso) {
+        if (!iso || typeof iso !== 'string') return 'DSR-08-NOV-26';
+        const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+        const parts = iso.split('-');
+        if (parts.length !== 3) return 'DSR-' + iso;
+        const mIdx = Math.max(0, Math.min(11, parseInt(parts[1], 10) - 1));
+        return `DSR-${parts[2]}-${months[mIdx]}-${parts[0].slice(-2)}`;
+      }
+
+      function esc(str) {
+        return String(str == null ? '' : str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      function notify(msg, tone = 'cyan') {
+        const stack = document.getElementById('toast-stack');
+        if (!stack) return;
+        const palette = {
+          emerald: 'bg-emerald-950/90 border-emerald-400/50 text-emerald-100',
+          orange: 'bg-orange-950/90 border-orange-400/55 text-orange-100',
+          cyan: 'bg-slate-900/90 border-sky-400/50 text-sky-100'
+        };
+        const el = document.createElement('div');
+        el.className = `pointer-events-auto px-4 py-2.5 rounded-xl border backdrop-blur-xl shadow-2xl text-xs font-semibold transition-all duration-300 ${palette[tone] || palette.cyan}`;
+        el.textContent = msg;
+        stack.appendChild(el);
+        setTimeout(() => {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(8px)';
+          setTimeout(() => el.remove(), 300);
+        }, 3800);
+      }
+
+      function triggerDownload(fileName, content, mimeType = 'text/html;charset=utf-8') {
+        const blob = new Blob([content], { type: mimeType });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      }
 
       function calculateLedger(rec) {
         const msAmt = toNum(rec.msQty) * toNum(rec.msRate);
         const hsdAmt = toNum(rec.hsdQty) * toNum(rec.hsdRate);
+        const fuelLiters = toNum(rec.msQty) + toNum(rec.hsdQty);
         const fuelAmt = msAmt + hsdAmt;
         const oilSale = toNum(rec.oilSale);
-        const grossSaleE10 = msAmt + hsdAmt + oilSale + toNum(rec.recoveryInflow);
 
-        const digitalC14 = toNum(rec.phonePe) + toNum(rec.paytm);
-        const acCl = digitalC14 + toNum(rec.acOpening);
+        const partyRecTotal = (rec.creditRecoveries || []).reduce((s, r) => s + toNum(r.amount), 0);
+        const recInflow = rec.syncRecovery ? partyRecTotal : toNum(rec.recoveryInflow);
+        const extraInflowTotal = (rec.extraInflows || []).reduce((s, r) => s + toNum(r.amount), 0);
+        const grossSaleE10 = msAmt + hsdAmt + oilSale + recInflow + extraInflowTotal;
 
-        const ioclCl = toNum(rec.ioclOpening) + toNum(rec.ioclCredits) - toNum(rec.ioclDebits);
-        
-        const todayExpF29 = 0; // simplified
-        const expClF31 = todayExpF29 + toNum(rec.openingExpense);
-        
-        const creditTodayC38 = toNum(rec.creditGivenToday);
+        const phonePe = toNum(rec.phonePe);
+        const paytm = toNum(rec.paytm);
+        const digitalC14 = phonePe + paytm;
+        const acOpen = toNum(rec.acOpening);
+        const bankNet = (rec.bankTransactions || []).reduce((s, tx) => {
+          const amt = toNum(tx.amount);
+          return tx.type === 'debit' ? s - amt : s + amt;
+        }, 0);
+        const acCl = digitalC14 + acOpen + bankNet;
+
+        const sbiBal = toNum(rec.sbiBalance);
+        const ioclOpen = toNum(rec.ioclOpening);
+        const ioclCred = toNum(rec.ioclCredits);
+        const ioclDeb = toNum(rec.ioclDebits);
+        const ioclCl = ioclOpen + ioclCred - ioclDeb;
+
+        const todayExpF29 = (rec.expenses || []).reduce((s, ex) => s + toNum(ex.amount), 0);
+        const openExp = toNum(rec.openingExpense);
+        const expClF31 = todayExpF29 + openExp;
+
+        const creditTodayC38 = rec.useCreditParties
+          ? (rec.creditParties || []).reduce((s, cp) => s + toNum(cp.amount), 0)
+          : toNum(rec.creditGivenToday);
+
         const netCashC25 = grossSaleE10 - digitalC14 - todayExpF29 - creditTodayC38;
-        const cashClC30 = netCashC25 + toNum(rec.openingCash);
+        const openCash = toNum(rec.openingCash);
+        const availCashC27 = netCashC25 + openCash;
+        const cashOutTotal = (rec.cashOutflows || []).reduce((s, co) => s + toNum(co.amount), 0);
+        const cashClC30 = availCashC27 - cashOutTotal;
 
-        const creditClC43 = creditTodayC38 + toNum(rec.openingCredit);
-        const oilClF40 = toNum(rec.openingOil) - oilSale;
+        const openCredit = toNum(rec.openingCredit);
+        const creditC40 = creditTodayC38 + openCredit;
+        const creditClC43 = creditC40 - partyRecTotal;
 
-        return { grossSaleE10, msAmt, hsdAmt, digitalC14, acCl, ioclCl, netCashC25, cashClC30, expClF31, creditClC43, oilClF40 };
+        const openOil = toNum(rec.openingOil);
+        const oilClF40 = openOil - oilSale;
+
+        return {
+          msAmt, hsdAmt, fuelLiters, fuelAmt, oilSale,
+          partyRecTotal, recInflow, extraInflowTotal, grossSaleE10,
+          phonePe, paytm, digitalC14, acOpen, bankNet, acCl,
+          sbiBal, ioclOpen, ioclCred, ioclDeb, ioclCl,
+          todayExpF29, openExp, expClF31,
+          creditTodayC38, netCashC25, openCash, availCashC27, cashOutTotal, cashClC30,
+          openCredit, creditC40, creditClC43,
+          openOil, oilClF40
+        };
+      }
+
+      function saveArchiveLocally() {
+        try {
+          if (appStore.current && appStore.current.registerDate) {
+            appStore.archive[appStore.current.registerDate] = structuredClone(appStore.current);
+          }
+          localStorage.setItem(KEYS.ACTIVE, JSON.stringify(appStore.current));
+          localStorage.setItem(KEYS.ARCHIVE, JSON.stringify(appStore.archive));
+          renderTimelineDates();
+        } catch (e) {
+          console.warn('Local save warning:', e);
+        }
+      }
+
+      function buildLockedExportHtml() {
+        const clone = document.documentElement.cloneNode(true);
+        const gate = clone.querySelector('#security-gate');
+        const work = clone.querySelector('#workspace-root');
+        const a4 = clone.querySelector('#a4-preview-root');
+
+        if (gate) { gate.setAttribute('style', 'display: flex;'); gate.classList.remove('hidden'); }
+        if (work) { work.setAttribute('style', 'display: none;'); work.classList.add('hidden'); }
+        if (a4) { a4.setAttribute('style', 'display: none;'); a4.classList.add('hidden'); }
+
+        const u = clone.querySelector('#gate-userid');
+        const p = clone.querySelector('#gate-password');
+        if (u) u.setAttribute('value', '');
+        if (p) p.setAttribute('value', '');
+
+        return '<!DOCTYPE html>\n' + clone.outerHTML;
+      }
+
+      /* --------------------------------------------------------------------
+         E. SEAMLESS FIREBASE CLOUD DATABASE (REPLACES G-DRIVE API)
+         -------------------------------------------------------------------- */
+      function getUserVaultDocRef(uid) {
+        if (!fbDb || !uid) return null;
+        return doc(fbDb, 'artifacts', appId, 'users', uid, 'dsr_data', 'vault');
+      }
+
+      async function saveToCloudVault() {
+        if (!fbDb || !fbAuth || !fbAuth.currentUser) return;
+        const uid = fbAuth.currentUser.uid;
+        const ref = getUserVaultDocRef(uid);
+        if (!ref) return;
+        try {
+          await setDoc(ref, {
+            updatedAt: Date.now(),
+            archiveJson: JSON.stringify(appStore.archive)
+          }, { merge: true });
+          const st = document.getElementById('ui-sync-status');
+          if (st) st.textContent = 'Cloud Database Auto-Saved ✓';
+        } catch (err) {
+          console.warn('Cloud save warning:', err);
+        }
+      }
+
+      async function loadFromCloudVault(uid) {
+        if (!fbDb || !fbAuth || !uid) return false;
+        const ref = getUserVaultDocRef(uid);
+        if (!ref) return false;
+        try {
+          const snap = await getDoc(ref);
+          if (snap.exists()) {
+            const payload = snap.data();
+            if (payload && payload.archiveJson) {
+              const cloudArchive = JSON.parse(payload.archiveJson);
+              if (cloudArchive && typeof cloudArchive === 'object' && Object.keys(cloudArchive).length > 0) {
+                appStore.archive = Object.assign({}, appStore.archive, cloudArchive);
+                const sorted = Object.keys(appStore.archive).sort();
+                const latest = sorted[sorted.length - 1];
+                if (latest && appStore.archive[latest]) {
+                  appStore.current = structuredClone(appStore.archive[latest]);
+                }
+                saveArchiveLocally();
+                hydrateAllInputs();
+                renderTimelineDates();
+                return true;
+              }
+            }
+          }
+          await saveToCloudVault();
+        } catch (err) {
+          console.warn('Cloud load warning:', err);
+        }
+        return false;
+      }
+
+      function attachCloudListener(uid) {
+        if (unsubscribeCloud) {
+          unsubscribeCloud();
+          unsubscribeCloud = null;
+        }
+        if (!fbDb || !fbAuth || !uid) return;
+        const ref = getUserVaultDocRef(uid);
+        if (!ref) return;
+        unsubscribeCloud = onSnapshot(ref, snap => {
+          if (!snap.exists()) return;
+          const payload = snap.data();
+          if (payload && payload.archiveJson) {
+            try {
+              const remote = JSON.parse(payload.archiveJson);
+              if (remote && Object.keys(remote).length > 0) {
+                appStore.archive = Object.assign({}, appStore.archive, remote);
+                renderTimelineDates();
+              }
+            } catch (_) {}
+          }
+        }, err => {
+          console.warn('Realtime listener error:', err);
+        });
+      }
+
+      function updateSignedInUserUI(user) {
+        const btnText = document.getElementById('ui-google-btn-text');
+        const emailLabel = document.getElementById('ui-cloud-account-email');
+        if (user && !user.isAnonymous) {
+          const label = user.email || user.displayName || 'Google Account';
+          if (btnText) btnText.textContent = label;
+          if (emailLabel) emailLabel.textContent = `Signed in as ${label}`;
+        } else {
+          if (btnText) btnText.textContent = 'Sign in with Google';
+          if (emailLabel) emailLabel.textContent = 'Signed in automatically (Local mode)';
+        }
+      }
+
+      async function handleGoogleSignIn(fromGate) {
+        if (!fbAuth) {
+          notify('Cloud connection is not available in this environment.', 'orange');
+          return;
+        }
+        try {
+          const provider = new GoogleAuthProvider();
+          // Removing custom scopes to prevent "no registered origin" errors.
+          // Standard login will just use default Firebase settings.
+          const result = await signInWithPopup(fbAuth, provider);
+          
+          updateSignedInUserUI(result.user);
+          if (fromGate) setUnlockedState(true);
+          
+          const restored = await loadFromCloudVault(result.user.uid);
+          attachCloudListener(result.user.uid);
+          
+          notify(
+            restored
+              ? `Welcome ${result.user.displayName || result.user.email}! Restored your data.`
+              : `Signed in as ${result.user.email}! Database Auto-Save active.`,
+            'emerald'
+          );
+        } catch (err) {
+          console.warn('Google Sign-In blocked:', err);
+          notify('Google Login blocked by this domain. Use Email & Password Sign In instead!', 'orange');
+        }
+      }
+
+      /* --------------------------------------------------------------------
+         F. STATE MANAGEMENT & UI UPDATES
+         -------------------------------------------------------------------- */
+      function loadArchiveLocally() {
+        try {
+          const rawArch = localStorage.getItem(KEYS.ARCHIVE);
+          if (rawArch) appStore.archive = JSON.parse(rawArch) || {};
+          const rawAct = localStorage.getItem(KEYS.ACTIVE);
+          if (rawAct) {
+            appStore.current = Object.assign(structuredClone(REGISTER_PRESETS['08-NOV']), JSON.parse(rawAct));
+          }
+          if (appStore.current.registerDate && !appStore.archive[appStore.current.registerDate]) {
+            appStore.archive[appStore.current.registerDate] = structuredClone(appStore.current);
+          }
+        } catch (e) {
+          console.warn('Load warning:', e);
+        }
+        renderTimelineDates();
+      }
+
+      function shiftIsoDate(iso, deltaDays) {
+        const d = new Date(iso + 'T00:00:00');
+        if (isNaN(d.getTime())) return new Date().toISOString().slice(0, 10);
+        d.setDate(d.getDate() + deltaDays);
+        return d.toISOString().slice(0, 10);
+      }
+
+      function rolloverClosingToOpening(prevRecord) {
+        if (!prevRecord) return false;
+        const c = calculateLedger(prevRecord);
+        appStore.current.acOpening = Number(c.acCl.toFixed(2));
+        appStore.current.sbiBalance = Number(c.sbiBal.toFixed(2));
+        appStore.current.ioclOpening = Number(c.ioclCl.toFixed(2));
+        appStore.current.openingCash = Number(c.cashClC30.toFixed(2));
+        appStore.current.openingExpense = Number(c.expClF31.toFixed(2));
+        appStore.current.openingCredit = Number(c.creditClC43.toFixed(2));
+        appStore.current.openingOil = Number(c.oilClF40.toFixed(2));
+        if (Array.isArray(prevRecord.partners)) {
+          appStore.current.partners = structuredClone(prevRecord.partners);
+        }
+        return true;
+      }
+
+      function renderTimelineDates() {
+        const listEl = document.getElementById('ui-saved-dates-list');
+        const countEl = document.getElementById('ui-saved-count');
+        if (!listEl) return;
+        const dates = Object.keys(appStore.archive).sort();
+        if (countEl) countEl.textContent = `${dates.length} ${dates.length === 1 ? 'Date' : 'Dates'}`;
+        if (!dates.length) {
+          listEl.innerHTML = '<span class="text-[11px] text-slate-400 italic">No saved dates yet.</span>';
+          return;
+        }
+        listEl.innerHTML = dates.map(dt => {
+          const active = dt === appStore.current.registerDate;
+          const cls = active
+            ? 'bg-orange-500/30 border-orange-400 text-white font-bold'
+            : 'bg-white/[0.05] border-white/15 text-slate-300 hover:bg-white/15 hover:text-white';
+          return `<button type="button" data-pick-date="${esc(dt)}" class="px-2.5 py-1 rounded-lg border text-[11px] mono-num transition cursor-pointer ${cls}">${esc(fmtShortDate(dt))}</button>`;
+        }).join('');
+      }
+
+      function renderDynamicLists() {
+        document.getElementById('list-extra-inflows').innerHTML = (appStore.current.extraInflows || []).map((item, i) => `
+          <tr class="hover:bg-white/[0.03]">
+            <td class="px-2 py-2 mono-num text-xs text-slate-400">R${9 + i}</td>
+            <td colspan="2" class="px-2 py-2">
+              <input type="text" data-arr="extraInflows" data-idx="${i}" data-prop="label" value="${esc(item.label)}" placeholder="Party / Recovery Name" class="glass-field w-full px-2.5 py-1.5 text-xs sm:text-sm" />
+            </td>
+            <td class="px-2 py-2 text-right">
+              <input type="number" step="0.01" data-arr="extraInflows" data-idx="${i}" data-prop="amount" value="${item.amount || ''}" placeholder="0.00" class="glass-field glass-field-num w-28 sm:w-32 px-2.5 py-1.5 text-xs sm:text-sm" />
+            </td>
+            <td class="px-2 py-2 text-center">
+              <button type="button" data-rm-arr="extraInflows" data-rm-idx="${i}" class="btn-row-del px-2 py-1 text-xs cursor-pointer">✕</button>
+            </td>
+          </tr>
+        `).join('');
+
+        document.getElementById('list-bank-entries').innerHTML = (appStore.current.bankTransactions || []).map((item, i) => `
+          <tr class="hover:bg-white/[0.03]">
+            <td class="px-2 py-2">
+              <input type="text" data-arr="bankTransactions" data-idx="${i}" data-prop="label" value="${esc(item.label)}" placeholder="Particulars (Cash Deposit, RTGS)" class="glass-field w-full px-2.5 py-1.5 text-xs sm:text-sm" />
+            </td>
+            <td class="px-2 py-2">
+              <select data-arr="bankTransactions" data-idx="${i}" data-prop="type" class="glass-field w-full px-2 py-1.5 text-xs font-semibold cursor-pointer">
+                <option value="credit" ${item.type === 'credit' ? 'selected' : ''}>+ Add (Credit)</option>
+                <option value="debit" ${item.type === 'debit' ? 'selected' : ''}>- Less (Debit/RTGS)</option>
+              </select>
+            </td>
+            <td class="px-2 py-2 text-right">
+              <input type="number" step="0.01" data-arr="bankTransactions" data-idx="${i}" data-prop="amount" value="${item.amount || ''}" placeholder="0.00" class="glass-field glass-field-num w-28 sm:w-32 px-2.5 py-1.5 text-xs sm:text-sm" />
+            </td>
+            <td class="px-2 py-2 text-center">
+              <button type="button" data-rm-arr="bankTransactions" data-rm-idx="${i}" class="btn-row-del px-2 py-1 text-xs cursor-pointer">✕</button>
+            </td>
+          </tr>
+        `).join('');
+
+        document.getElementById('list-cash-outflows').innerHTML = (appStore.current.cashOutflows || []).map((item, i) => `
+          <tr class="hover:bg-white/[0.03]">
+            <td class="px-2 py-2">
+              <input type="text" data-arr="cashOutflows" data-idx="${i}" data-prop="label" value="${esc(item.label)}" placeholder="Bank Deposit / Partner Return" class="glass-field w-full px-2.5 py-1.5 text-xs sm:text-sm" />
+            </td>
+            <td class="px-2 py-2 text-right">
+              <input type="number" step="0.01" data-arr="cashOutflows" data-idx="${i}" data-prop="amount" value="${item.amount || ''}" placeholder="0.00" class="glass-field glass-field-num w-28 sm:w-32 px-2.5 py-1.5 text-xs sm:text-sm" />
+            </td>
+            <td class="px-2 py-2 text-center">
+              <button type="button" data-rm-arr="cashOutflows" data-rm-idx="${i}" class="btn-row-del px-2 py-1 text-xs cursor-pointer">✕</button>
+            </td>
+          </tr>
+        `).join('');
+
+        document.getElementById('list-expenses').innerHTML = (appStore.current.expenses || []).map((item, i) => `
+          <tr class="hover:bg-white/[0.03]">
+            <td class="px-2 py-2">
+              <input type="text" data-arr="expenses" data-idx="${i}" data-prop="label" value="${esc(item.label)}" placeholder="Expense Head (Salary, Canteen)" class="glass-field w-full px-2.5 py-1.5 text-xs sm:text-sm" />
+            </td>
+            <td class="px-2 py-2 text-right">
+              <input type="number" step="0.01" data-arr="expenses" data-idx="${i}" data-prop="amount" value="${item.amount || ''}" placeholder="0.00" class="glass-field glass-field-num w-28 sm:w-32 px-2.5 py-1.5 text-xs sm:text-sm" />
+            </td>
+            <td class="px-2 py-2 text-center">
+              <button type="button" data-rm-arr="expenses" data-rm-idx="${i}" class="btn-row-del px-2 py-1 text-xs cursor-pointer">✕</button>
+            </td>
+          </tr>
+        `).join('');
+
+        document.getElementById('list-credit-parties').innerHTML = (appStore.current.creditParties || []).map((item, i) => `
+          <tr class="hover:bg-white/[0.03]">
+            <td class="px-2 py-1.5">
+              <input type="text" data-arr="creditParties" data-idx="${i}" data-prop="party" value="${esc(item.party)}" placeholder="Party / Fleet Name" class="glass-field w-full px-2 py-1 text-xs" />
+            </td>
+            <td class="px-2 py-1.5 text-right">
+              <input type="number" step="0.01" data-arr="creditParties" data-idx="${i}" data-prop="amount" value="${item.amount || ''}" placeholder="0.00" class="glass-field glass-field-num w-24 px-2 py-1 text-xs" />
+            </td>
+            <td class="px-2 py-1.5 text-center">
+              <button type="button" data-rm-arr="creditParties" data-rm-idx="${i}" class="btn-row-del px-2 py-0.5 text-xs cursor-pointer">✕</button>
+            </td>
+          </tr>
+        `).join('');
+
+        document.getElementById('list-credit-recoveries').innerHTML = (appStore.current.creditRecoveries || []).map((item, i) => `
+          <tr class="hover:bg-white/[0.03]">
+            <td class="px-2 py-1.5">
+              <input type="text" data-arr="creditRecoveries" data-idx="${i}" data-prop="party" value="${esc(item.party || item.label || '')}" placeholder="Party Name" class="glass-field w-full px-2 py-1 text-xs" />
+            </td>
+            <td class="px-2 py-1.5 text-right">
+              <input type="number" step="0.01" data-arr="creditRecoveries" data-idx="${i}" data-prop="amount" value="${item.amount || ''}" placeholder="0.00" class="glass-field glass-field-num w-24 px-2 py-1 text-xs" />
+            </td>
+            <td class="px-2 py-1.5 text-center">
+              <button type="button" data-rm-arr="creditRecoveries" data-rm-idx="${i}" class="btn-row-del px-2 py-0.5 text-xs cursor-pointer">✕</button>
+            </td>
+          </tr>
+        `).join('');
+
+        document.getElementById('grid-partners').innerHTML = (appStore.current.partners || []).map((p, i) => `
+          <div class="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 flex flex-col justify-between gap-2">
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-[11px] uppercase tracking-wider font-bold text-slate-400">Partner ${i + 1}</span>
+              <button type="button" data-rm-arr="partners" data-rm-idx="${i}" class="text-xs text-slate-500 hover:text-rose-400 cursor-pointer">✕</button>
+            </div>
+            <input type="text" data-arr="partners" data-idx="${i}" data-prop="name" value="${esc(p.name)}" placeholder="Partner Name" class="glass-field w-full px-3 py-1.5 text-xs sm:text-sm font-semibold" />
+            <div>
+              <label class="block text-[10px] text-slate-400 mb-0.5">Ledger Balance (₹)</label>
+              <input type="number" step="0.01" data-arr="partners" data-idx="${i}" data-prop="amount" value="${p.amount || ''}" placeholder="0.00" class="glass-field glass-field-num w-full px-3 py-1.5 text-sm font-bold text-amber-200" />
+            </div>
+          </div>
+        `).join('');
       }
 
       function refreshUIAndPrint() {
-        const c = calculateLedger(appStore.current);
+        const rec = appStore.current;
+        const c = calculateLedger(rec);
+        const shortDt = fmtShortDate(rec.registerDate);
+
+        document.getElementById('ui-short-date').textContent = shortDt;
+        document.getElementById('ui-sheet-ref').textContent = 'REF: ' + fmtRefCode(rec.registerDate);
+
         document.getElementById('kpi-e10').textContent = fmtINR(c.grossSaleE10);
+        document.getElementById('kpi-liters').textContent = fmtNum(c.fuelLiters, 2) + ' L';
+        document.getElementById('kpi-fuel-val').textContent = fmtINR(c.fuelAmt);
         document.getElementById('kpi-c30').textContent = fmtINR(c.cashClC30);
+        document.getElementById('kpi-c25').textContent = fmtINR(c.netCashC25);
         document.getElementById('kpi-ac-cl').textContent = fmtINR(c.acCl);
+        document.getElementById('kpi-iocl-cl').textContent = fmtINR(c.ioclCl);
         document.getElementById('kpi-c43').textContent = fmtINR(c.creditClC43);
-        
+        document.getElementById('kpi-f40').textContent = fmtINR(c.oilClF40);
+
         document.getElementById('out-ms-amt').textContent = fmtINR(c.msAmt);
         document.getElementById('out-hsd-amt').textContent = fmtINR(c.hsdAmt);
+        const recInfEl = document.getElementById('inp-recovery-inflow');
+        if (rec.syncRecovery) {
+          recInfEl.value = c.partyRecTotal ? Number(c.partyRecTotal.toFixed(2)) : '';
+          recInfEl.readOnly = true;
+          recInfEl.classList.add('opacity-75');
+        } else {
+          recInfEl.readOnly = false;
+          recInfEl.classList.remove('opacity-75');
+        }
         document.getElementById('out-total-sale').textContent = fmtINR(c.grossSaleE10);
-        
         document.getElementById('out-c14-total').textContent = fmtINR(c.digitalC14);
         document.getElementById('out-ac-cl').textContent = fmtINR(c.acCl);
         document.getElementById('out-iocl-cl').textContent = fmtINR(c.ioclCl);
         document.getElementById('out-c25-cash').textContent = fmtINR(c.netCashC25);
+        document.getElementById('out-c27-avail').textContent = fmtINR(c.availCashC27);
         document.getElementById('out-c30-cl').textContent = fmtINR(c.cashClC30);
+        document.getElementById('out-f29-exp').textContent = fmtINR(c.todayExpF29);
         document.getElementById('out-f31-cl').textContent = fmtINR(c.expClF31);
+
+        const credEl = document.getElementById('inp-credit-given');
+        if (rec.useCreditParties) {
+          credEl.value = c.creditTodayC38 ? Number(c.creditTodayC38.toFixed(2)) : '';
+          credEl.readOnly = true;
+          credEl.classList.add('opacity-75');
+        } else {
+          credEl.readOnly = false;
+          credEl.classList.remove('opacity-75');
+        }
+        document.getElementById('out-c40-cred').textContent = fmtINR(c.creditC40);
         document.getElementById('out-c43-cl').textContent = fmtINR(c.creditClC43);
+        document.getElementById('out-f39-less').textContent = '- ' + fmtINR(c.oilSale);
         document.getElementById('out-f40-cl').textContent = fmtINR(c.oilClF40);
 
+        // A4 Liquid Glass PDF Sheet Population
+        document.getElementById('p-date').textContent = shortDt;
+        document.getElementById('p-ref').textContent = 'DOC: IOCL-' + fmtRefCode(rec.registerDate);
         document.getElementById('p-kpi-e10').textContent = fmtINR(c.grossSaleE10);
         document.getElementById('p-kpi-c30').textContent = fmtINR(c.cashClC30);
         document.getElementById('p-kpi-ac').textContent = fmtINR(c.acCl);
         document.getElementById('p-kpi-c43').textContent = fmtINR(c.creditClC43);
+        document.getElementById('p-fuel-vol').textContent = `Fuel Vol: ${fmtNum(c.fuelLiters, 2)} L`;
+
+        let salesHtml = `
+          <tr><td><strong>MS (Motor Spirit)</strong></td><td class="a4-right-num">${fmtNum(rec.msQty, 2)}</td><td class="a4-right-num">${fmtNum(rec.msRate, 2)}</td><td class="a4-right-num"><strong>${fmtNum(c.msAmt, 2)}</strong></td></tr>
+          <tr><td><strong>HSD (High Speed Diesel)</strong></td><td class="a4-right-num">${fmtNum(rec.hsdQty, 2)}</td><td class="a4-right-num">${fmtNum(rec.hsdRate, 2)}</td><td class="a4-right-num"><strong>${fmtNum(c.hsdAmt, 2)}</strong></td></tr>
+          <tr><td>Oil Sale (Lubricants)</td><td class="a4-right-num">—</td><td class="a4-right-num">—</td><td class="a4-right-num">${fmtNum(c.oilSale, 2)}</td></tr>
+          <tr><td>Recovery Inflow</td><td class="a4-right-num">—</td><td class="a4-right-num">—</td><td class="a4-right-num">${fmtNum(c.recInflow, 2)}</td></tr>
+        `;
+        (rec.extraInflows || []).forEach(inf => {
+          if (inf.label || toNum(inf.amount)) {
+            salesHtml += `<tr><td>${esc(inf.label || 'Direct Inflow')}</td><td class="a4-right-num">—</td><td class="a4-right-num">—</td><td class="a4-right-num">${fmtNum(inf.amount, 2)}</td></tr>`;
+          }
+        });
+        document.getElementById('p-tbody-sales').innerHTML = salesHtml;
+        document.getElementById('p-total-e10').textContent = fmtINR(c.grossSaleE10);
+
+        let acHtml = `
+          <tr><td>Phone Pe Collection</td><td class="a4-right-num">${fmtNum(c.phonePe, 2)}</td></tr>
+          <tr><td>Paytm / Card Collection</td><td class="a4-right-num">${fmtNum(c.paytm, 2)}</td></tr>
+          <tr class="subtotal-line"><td>Digital / Card Total (C14)</td><td class="a4-right-num">${fmtNum(c.digitalC14, 2)}</td></tr>
+          <tr><td>A/c Opening Balance</td><td class="a4-right-num">${fmtNum(c.acOpen, 2)}</td></tr>
+        `;
+        (rec.bankTransactions || []).forEach(tx => {
+          acHtml += `<tr><td>${tx.type === 'debit' ? '(-) ' : '(+) '}${esc(tx.label || 'Bank Entry')}</td><td class="a4-right-num">${fmtNum(tx.amount, 2)}</td></tr>`;
+        });
+        document.getElementById('p-tbody-ac').innerHTML = acHtml;
+        document.getElementById('p-total-ac').textContent = fmtINR(c.acCl);
+
+        document.getElementById('p-tbody-iocl').innerHTML = `
+          <tr class="subtotal-line"><td>SBI Account Balance (D12)</td><td class="a4-right-num">${fmtNum(c.sbiBal, 2)}</td></tr>
+          <tr><td>IOCL Opening Balance</td><td class="a4-right-num">${fmtNum(c.ioclOpen, 2)}</td></tr>
+          <tr><td>(+) RTGS / Receipts</td><td class="a4-right-num">${fmtNum(c.ioclCred, 2)}</td></tr>
+          <tr><td>(-) Tanker Load / Debit</td><td class="a4-right-num">${fmtNum(c.ioclDeb, 2)}</td></tr>
+        `;
+        document.getElementById('p-total-iocl').textContent = fmtINR(c.ioclCl);
+
+        let cashHtml = `
+          <tr><td>Today's Net Cash (C25)</td><td class="a4-right-num">${fmtNum(c.netCashC25, 2)}</td></tr>
+          <tr><td>Opening Cash (C26)</td><td class="a4-right-num">${fmtNum(c.openCash, 2)}</td></tr>
+          <tr class="subtotal-line"><td>Total Cash Available (C27)</td><td class="a4-right-num">${fmtNum(c.availCashC27, 2)}</td></tr>
+        `;
+        (rec.cashOutflows || []).forEach(co => {
+          cashHtml += `<tr><td>(-) ${esc(co.label || 'Cash Outflow')}</td><td class="a4-right-num">${fmtNum(co.amount, 2)}</td></tr>`;
+        });
+        document.getElementById('p-tbody-cash').innerHTML = cashHtml;
+        document.getElementById('p-total-c30').textContent = fmtINR(c.cashClC30);
+
+        let expHtml = (rec.expenses || []).map(ex => `<tr><td>${esc(ex.label || 'Station Expense')}</td><td class="a4-right-num">${fmtNum(ex.amount, 2)}</td></tr>`).join('');
+        expHtml += `
+          <tr class="subtotal-line"><td>Today's Expense Total (F29)</td><td class="a4-right-num">${fmtNum(c.todayExpF29, 2)}</td></tr>
+          <tr><td>(+) Opening Expense (F30)</td><td class="a4-right-num">${fmtNum(c.openExp, 2)}</td></tr>
+        `;
+        document.getElementById('p-tbody-exp').innerHTML = expHtml;
+        document.getElementById('p-total-f31').textContent = fmtINR(c.expClF31);
+
+        let credHtml = `
+          <tr><td>Credit Given Today (C38)</td><td class="a4-right-num">${fmtNum(c.creditTodayC38, 2)}</td></tr>
+          <tr><td>Opening Credit Balance (C39)</td><td class="a4-right-num">${fmtNum(c.openCredit, 2)}</td></tr>
+          <tr class="subtotal-line"><td>Total Credit (C40)</td><td class="a4-right-num">${fmtNum(c.creditC40, 2)}</td></tr>
+        `;
+        (rec.creditRecoveries || []).forEach(r => {
+          credHtml += `<tr><td>(-) Rec: ${esc(r.party || r.label || 'Party')}</td><td class="a4-right-num">${fmtNum(r.amount, 2)}</td></tr>`;
+        });
+        document.getElementById('p-tbody-credit').innerHTML = credHtml;
+        document.getElementById('p-total-c43').textContent = fmtINR(c.creditClC43);
+
+        document.getElementById('p-tbody-oil').innerHTML = `
+          <tr><td>Opening Oil Stock (F38)</td><td class="a4-right-num">${fmtNum(c.openOil, 2)}</td></tr>
+          <tr><td>(-) Today's Oil Sale (F39)</td><td class="a4-right-num">${fmtNum(c.oilSale, 2)}</td></tr>
+        `;
+        document.getElementById('p-total-f40').textContent = fmtINR(c.oilClF40);
+
+        const partnersList = rec.partners || [];
+        document.getElementById('p-row-partners').innerHTML = partnersList.map((p, i) => `
+          <div style="padding:3.5px 8px;display:flex;justify-content:space-between;align-items:center;${i < partnersList.length - 1 ? 'border-right:1px solid rgba(10,61,145,0.28);' : ''}">
+            <span style="font-size:7.2pt;font-weight:700;color:#1E3A6D;">${esc(p.name || 'Partner')}</span>
+            <span class="a4-right-num" style="font-size:7.8pt;font-weight:800;color:#072B66;">${fmtINR(p.amount)}</span>
+          </div>
+        `).join('');
+
+        const totalDynamic = (rec.extraInflows?.length || 0) + (rec.bankTransactions?.length || 0) + (rec.cashOutflows?.length || 0) + (rec.expenses?.length || 0) + (rec.creditRecoveries?.length || 0);
+        document.getElementById('a4-paper')?.classList.toggle('compact-density', totalDynamic > 18);
       }
 
       function hydrateAllInputs() {
         const r = appStore.current;
-        const map = {
-          'reg-date-picker': r.registerDate, 'inp-ms-qty': r.msQty, 'inp-ms-rate': r.msRate,
-          'inp-hsd-qty': r.hsdQty, 'inp-hsd-rate': r.hsdRate, 'inp-oil-sale': r.oilSale,
-          'inp-recovery-inflow': r.recoveryInflow, 'inp-phonepe': r.phonePe, 'inp-paytm': r.paytm,
-          'inp-ac-open': r.acOpening, 'inp-sbi-bal': r.sbiBalance, 'inp-iocl-open': r.ioclOpening,
-          'inp-iocl-cred': r.ioclCredits, 'inp-iocl-deb': r.ioclDebits, 'inp-open-cash': r.openingCash,
-          'inp-open-exp': r.openingExpense, 'inp-credit-given': r.creditGivenToday,
-          'inp-open-credit': r.openingCredit, 'inp-open-oil': r.openingOil
-        };
-        for (const [id, val] of Object.entries(map)) {
-          if (document.getElementById(id)) document.getElementById(id).value = val || '';
-        }
+        document.getElementById('reg-date-picker').value = r.registerDate || '2026-11-08';
+        document.getElementById('inp-ms-qty').value = r.msQty || '';
+        document.getElementById('inp-ms-rate').value = r.msRate || '';
+        document.getElementById('inp-hsd-qty').value = r.hsdQty || '';
+        document.getElementById('inp-hsd-rate').value = r.hsdRate || '';
+        document.getElementById('inp-oil-sale').value = r.oilSale || '';
+        document.getElementById('inp-recovery-inflow').value = r.recoveryInflow || '';
+        document.getElementById('chk-sync-recovery').checked = !!r.syncRecovery;
+        document.getElementById('inp-phonepe').value = r.phonePe || '';
+        document.getElementById('inp-paytm').value = r.paytm || '';
+        document.getElementById('inp-ac-open').value = r.acOpening || '';
+        document.getElementById('inp-sbi-bal').value = r.sbiBalance || '';
+        document.getElementById('inp-iocl-open').value = r.ioclOpening || '';
+        document.getElementById('inp-iocl-cred').value = r.ioclCredits || '';
+        document.getElementById('inp-iocl-deb').value = r.ioclDebits || '';
+        document.getElementById('inp-open-cash').value = r.openingCash || '';
+        document.getElementById('inp-open-exp').value = r.openingExpense || '';
+        document.getElementById('inp-credit-given').value = r.creditGivenToday || '';
+        document.getElementById('inp-open-credit').value = r.openingCredit || '';
+        document.getElementById('inp-open-oil').value = r.openingOil || '';
+
+        const cBox = document.getElementById('box-credit-parties');
+        if (cBox) cBox.classList.toggle('hidden', !r.useCreditParties);
+
+        renderDynamicLists();
         refreshUIAndPrint();
-      }
-
-      // LOCAL STORAGE + G-DRIVE PC FOLDER SYNC
-      function saveArchiveLocally() {
-        if (appStore.current && appStore.current.registerDate) {
-          appStore.archive[appStore.current.registerDate] = structuredClone(appStore.current);
-        }
-        localStorage.setItem(KEYS.ACTIVE, JSON.stringify(appStore.current));
-        localStorage.setItem(KEYS.ARCHIVE, JSON.stringify(appStore.archive));
-      }
-
-      async function syncToLocalFolder() {
-        if (!appStore.dirHandle) return;
-        try {
-          const dFile = await appStore.dirHandle.getFileHandle(`IOCL_DSR_${appStore.current.registerDate}.json`, { create: true });
-          const w1 = await dFile.createWritable();
-          await w1.write(JSON.stringify(appStore.current, null, 2));
-          await w1.close();
-
-          const mFile = await appStore.dirHandle.getFileHandle('IOCL_All_Daily_Registers_Master.json', { create: true });
-          const w2 = await mFile.createWritable();
-          await w2.write(JSON.stringify(appStore.archive, null, 2));
-          await w2.close();
-        } catch (e) { console.warn('Folder sync block:', e); }
       }
 
       let syncTimer = null;
       function commitChange() {
         refreshUIAndPrint();
         saveArchiveLocally();
-        if (appStore.dirHandle) {
-          clearTimeout(syncTimer);
-          syncTimer = setTimeout(() => syncToLocalFolder(), 1000);
-        }
-      }
-
-      function buildLockedExportHtml() {
-        const clone = document.documentElement.cloneNode(true);
-        clone.querySelector('#security-gate').style.display = 'flex';
-        clone.querySelector('#workspace-root').style.display = 'none';
-        clone.querySelector('#gate-userid').setAttribute('value', '');
-        clone.querySelector('#gate-password').setAttribute('value', '');
-        return '<!DOCTYPE html>\n' + clone.outerHTML;
+        clearTimeout(syncTimer);
+        syncTimer = setTimeout(() => {
+          saveToCloudVault().catch(() => {});
+        }, 700);
       }
 
       function setUnlockedState(unlocked) {
-        document.getElementById('security-gate').style.display = unlocked ? 'none' : 'flex';
-        document.getElementById('workspace-root').style.display = unlocked ? 'block' : 'none';
-        if (!unlocked) document.getElementById('gate-password').value = '';
+        appStore.unlocked = unlocked;
+        const gate = document.getElementById('security-gate');
+        const work = document.getElementById('workspace-root');
+        const a4 = document.getElementById('a4-preview-root');
+
+        if (!unlocked) {
+          if (gate) { gate.style.display = 'flex'; gate.classList.remove('hidden'); }
+          if (work) { work.style.display = 'none'; work.classList.add('hidden'); }
+          if (a4) { a4.style.display = 'none'; a4.classList.add('hidden'); }
+          const p = document.getElementById('gate-password');
+          if (p) p.value = '';
+        } else {
+          if (gate) { gate.style.display = 'none'; gate.classList.add('hidden'); }
+          if (work) { work.style.display = 'block'; work.classList.remove('hidden'); }
+          if (a4) { a4.style.display = 'none'; a4.classList.add('hidden'); }
+        }
+      }
+
+      async function attemptGateLogin() {
+        if (Date.now() < appStore.lockoutUntil) return;
+        const uid = (document.getElementById('gate-userid')?.value || '').trim();
+        const pwd = document.getElementById('gate-password')?.value || '';
+        const errBox = document.getElementById('gate-error-alert');
+
+        if (!uid || !pwd) {
+          if (errBox) {
+            errBox.textContent = 'Please enter your User ID / Email and Password.';
+            errBox.classList.remove('hidden');
+          }
+          return;
+        }
+
+        if (fbAuth && uid.includes('@')) {
+          try {
+            const cred = await signInWithEmailAndPassword(fbAuth, uid, pwd);
+            appStore.failedCount = 0;
+            errBox?.classList.add('hidden');
+            updateSignedInUserUI(cred.user);
+            setUnlockedState(true);
+            const restored = await loadFromCloudVault(cred.user.uid);
+            attachCloudListener(cred.user.uid);
+            notify(
+              restored
+                ? `Welcome back! Restored all your saved daily registers.`
+                : `Signed in as ${uid}! Cloud Auto-Save active.`,
+              'emerald'
+            );
+            return;
+          } catch (_) {}
+        }
+
+        const ok = await SecurityCore.verifyLogin(uid, pwd);
+        if (ok) {
+          appStore.failedCount = 0;
+          errBox?.classList.add('hidden');
+          setUnlockedState(true);
+          try {
+            if (fbAuth) {
+              const anon = await signInAnonymously(fbAuth);
+              await loadFromCloudVault(anon.user.uid);
+              attachCloudListener(anon.user.uid);
+            }
+          } catch(e) {}
+          notify(`Welcome back, ${uid}! Daily Sale Register unlocked.`, 'emerald');
+        } else {
+          appStore.failedCount += 1;
+          if (errBox) {
+            errBox.textContent = `Invalid User ID / Email or Password (Attempt ${appStore.failedCount}/3).`;
+            errBox.classList.remove('hidden');
+          }
+          if (appStore.failedCount >= 3) {
+            appStore.lockoutUntil = Date.now() + 60000;
+            appStore.failedCount = 0;
+            const lockAlert = document.getElementById('gate-lockout-alert');
+            const timerSpan = document.getElementById('gate-lockout-timer');
+            const subBtn = document.getElementById('btn-gate-unlock');
+            lockAlert?.classList.remove('hidden');
+            if (subBtn) subBtn.disabled = true;
+            const iv = setInterval(() => {
+              const rem = Math.ceil((appStore.lockoutUntil - Date.now()) / 1000);
+              if (rem <= 0) {
+                clearInterval(iv);
+                lockAlert?.classList.add('hidden');
+                if (subBtn) subBtn.disabled = false;
+              } else if (timerSpan) {
+                timerSpan.textContent = String(rem);
+              }
+            }, 1000);
+          }
+        }
+      }
+
+      async function attemptGateRegister() {
+        const name = (document.getElementById('reg-fullname')?.value || '').trim();
+        const email = (document.getElementById('reg-email')?.value || '').trim().toLowerCase();
+        const pwd = document.getElementById('reg-password')?.value || '';
+        const errBox = document.getElementById('reg-error-alert');
+
+        if (!email || !email.includes('@') || pwd.length < 6) {
+          if (errBox) {
+            errBox.textContent = 'Enter a valid Gmail address and a password of at least 6 characters.';
+            errBox.classList.remove('hidden');
+          }
+          return;
+        }
+        errBox?.classList.add('hidden');
+
+        await SecurityCore.registerLocalAccount(name, email, pwd);
+
+        if (fbAuth) {
+          try {
+            const cred = await createUserWithEmailAndPassword(fbAuth, email, pwd);
+            if (name) {
+              await updateProfile(cred.user, { displayName: name }).catch(() => {});
+            }
+            updateSignedInUserUI(cred.user);
+            setUnlockedState(true);
+            await saveToCloudVault();
+            attachCloudListener(cred.user.uid);
+            notify(`Account created for ${email}! Your registers will now sync across all devices.`, 'emerald');
+            return;
+          } catch (err) {
+            if (err && err.code === 'auth/email-already-in-use') {
+              try {
+                const cred = await signInWithEmailAndPassword(fbAuth, email, pwd);
+                updateSignedInUserUI(cred.user);
+                setUnlockedState(true);
+                await loadFromCloudVault(cred.user.uid);
+                attachCloudListener(cred.user.uid);
+                notify(`Signed into existing account ${email} & restored your registers!`, 'emerald');
+                return;
+              } catch (_) {}
+            }
+            if (errBox) {
+              errBox.textContent = 'Error creating account. Please try again.';
+              errBox.classList.remove('hidden');
+            }
+          }
+        }
       }
 
       function wireEvents() {
-        document.getElementById('btn-gate-unlock').addEventListener('click', () => {
-          const u = document.getElementById('gate-userid').value;
-          const p = document.getElementById('gate-password').value;
-          if (SecurityCore.verifyLogin(u, p)) {
-            document.getElementById('gate-error-alert').classList.add('hidden');
-            setUnlockedState(true);
-          } else {
-            document.getElementById('gate-error-alert').classList.remove('hidden');
-          }
+        // Gate Sign-In
+        document.getElementById('btn-gate-google')?.addEventListener('click', () => handleGoogleSignIn(true));
+        document.getElementById('btn-gate-unlock')?.addEventListener('click', attemptGateLogin);
+        document.getElementById('btn-gate-register')?.addEventListener('click', attemptGateRegister);
+
+        const tabSignIn = document.getElementById('tab-auth-signin');
+        const tabRegister = document.getElementById('tab-auth-register');
+        const boxLogin = document.getElementById('box-gate-login');
+        const boxRegister = document.getElementById('box-gate-register');
+
+        tabSignIn?.addEventListener('click', () => {
+          tabSignIn.classList.replace('btn-frosted', 'btn-saffron');
+          tabRegister?.classList.replace('btn-saffron', 'btn-frosted');
+          boxLogin?.classList.remove('hidden');
+          boxRegister?.classList.add('hidden');
         });
 
-        document.getElementById('btn-top-lock').addEventListener('click', () => setUnlockedState(false));
-
-        document.getElementById('btn-top-save-html').addEventListener('click', () => {
-          const blob = new Blob([buildLockedExportHtml()], { type: 'text/html;charset=utf-8' });
-          const a = document.createElement('a');
-          a.href = URL.createObjectURL(blob);
-          a.download = 'index.html';
-          document.body.appendChild(a); a.click(); a.remove();
+        tabRegister?.addEventListener('click', () => {
+          tabRegister.classList.replace('btn-frosted', 'btn-saffron');
+          tabSignIn?.classList.replace('btn-saffron', 'btn-frosted');
+          boxRegister?.classList.remove('hidden');
+          boxLogin?.classList.add('hidden');
         });
 
-        // G-DRIVE PC FOLDER LINK (The magic button)
-        document.getElementById('btn-link-gdrive').addEventListener('click', async () => {
-          if (!window.showDirectoryPicker) {
-            alert('Your browser does not support folder linking. Please use Google Chrome on a PC.');
-            return;
-          }
-          try {
-            appStore.dirHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
-            document.getElementById('ui-gdrive-status').textContent = 'G-Drive Linked ✓';
-            
-            // Try to auto-restore from this folder
-            try {
-              const file = await (await appStore.dirHandle.getFileHandle('IOCL_All_Daily_Registers_Master.json')).getFile();
-              const data = JSON.parse(await file.text());
-              if (data) {
-                Object.assign(appStore.archive, data);
-                saveArchiveLocally();
-                const d = Object.keys(appStore.archive).sort();
-                if (d.length) appStore.current = structuredClone(appStore.archive[d[d.length-1]]);
-                hydrateAllInputs();
-                alert('Database Restored from Google Drive Folder!');
-              }
-            } catch(e) { } // New folder, no backup yet
-            
-            syncToLocalFolder();
-          } catch(e) { console.log(e); }
-        });
-
-        // Binding all number inputs
-        document.querySelectorAll('input[type="number"]').forEach(inp => {
-          inp.addEventListener('input', e => {
-            const propMap = {
-              'inp-ms-qty': 'msQty', 'inp-ms-rate': 'msRate', 'inp-hsd-qty': 'hsdQty', 'inp-hsd-rate': 'hsdRate',
-              'inp-oil-sale': 'oilSale', 'inp-recovery-inflow': 'recoveryInflow', 'inp-phonepe': 'phonePe',
-              'inp-paytm': 'paytm', 'inp-ac-open': 'acOpening', 'inp-sbi-bal': 'sbiBalance',
-              'inp-iocl-open': 'ioclOpening', 'inp-iocl-cred': 'ioclCredits', 'inp-iocl-deb': 'ioclDebits',
-              'inp-open-cash': 'openingCash', 'inp-open-exp': 'openingExpense', 'inp-credit-given': 'creditGivenToday',
-              'inp-open-credit': 'openingCredit', 'inp-open-oil': 'openingOil'
-            };
-            const prop = propMap[e.target.id];
-            if (prop) {
-              appStore.current[prop] = toNum(e.target.value);
-              commitChange();
+        ['gate-userid', 'gate-password'].forEach(id => {
+          document.getElementById(id)?.addEventListener('keydown', e => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              attemptGateLogin();
             }
           });
         });
 
-        document.getElementById('btn-open-a4-preview').addEventListener('click', () => {
-          document.getElementById('workspace-root').style.display = 'none';
-          document.getElementById('a4-preview-root').style.display = 'flex';
+        ['reg-fullname', 'reg-email', 'reg-password'].forEach(id => {
+          document.getElementById(id)?.addEventListener('keydown', e => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              attemptGateRegister();
+            }
+          });
         });
-        document.getElementById('btn-close-a4-preview').addEventListener('click', () => {
-          document.getElementById('a4-preview-root').style.display = 'none';
-          document.getElementById('workspace-root').style.display = 'block';
+
+        document.getElementById('btn-gate-eye')?.addEventListener('click', () => {
+          const p = document.getElementById('gate-password');
+          if (p) p.type = p.type === 'password' ? 'text' : 'password';
         });
-        document.getElementById('btn-print-direct').addEventListener('click', () => window.print());
-        document.getElementById('btn-print-from-a4').addEventListener('click', () => window.print());
+
+        document.getElementById('btn-top-lock')?.addEventListener('click', async () => {
+          saveArchiveLocally();
+          await saveToCloudVault().catch(() => {});
+          if (unsubscribeCloud) {
+            unsubscribeCloud();
+            unsubscribeCloud = null;
+          }
+          if (fbAuth && fbAuth.currentUser) {
+            await signOut(fbAuth).catch(() => {});
+          }
+          updateSignedInUserUI(null);
+          setUnlockedState(false);
+          notify('Signed out & locked register', 'orange');
+        });
+
+        document.getElementById('btn-top-google')?.addEventListener('click', () => handleGoogleSignIn(false));
+        document.getElementById('btn-top-save-html')?.addEventListener('click', () => {
+          triggerDownload('index.html', buildLockedExportHtml());
+          notify('Saved portable index.html!', 'emerald');
+        });
+
+        // Date switching & CL -> Opening Rollover
+        document.getElementById('reg-date-picker')?.addEventListener('change', e => {
+          const dt = e.target.value;
+          if (!dt) return;
+          saveArchiveLocally();
+          if (appStore.archive[dt]) {
+            appStore.current = structuredClone(appStore.archive[dt]);
+            hydrateAllInputs();
+            renderTimelineDates();
+            notify(`Loaded saved register for ${fmtShortDate(dt)}`, 'cyan');
+          } else {
+            const prevDt = shiftIsoDate(dt, -1);
+            const fresh = structuredClone(REGISTER_PRESETS['BLANK']);
+            fresh.registerDate = dt;
+            appStore.current = fresh;
+            if (rolloverClosingToOpening(appStore.archive[prevDt])) {
+              notify(`Opened ${fmtShortDate(dt)} with ${fmtShortDate(prevDt)} CL Balances!`, 'emerald');
+            } else {
+              notify(`Opened new register sheet for ${fmtShortDate(dt)}`, 'cyan');
+            }
+            hydrateAllInputs();
+            saveArchiveLocally();
+          }
+        });
+
+        document.getElementById('btn-pull-prev-cl')?.addEventListener('click', () => {
+          const prevDt = shiftIsoDate(appStore.current.registerDate, -1);
+          if (rolloverClosingToOpening(appStore.archive[prevDt])) {
+            hydrateAllInputs();
+            commitChange();
+            notify(`Pulled Opening Balances from ${fmtShortDate(prevDt)} CL Totals!`, 'emerald');
+          } else {
+            notify(`No saved sheet found for ${fmtShortDate(prevDt)}`, 'orange');
+          }
+        });
+
+        document.getElementById('btn-next-day-rollover')?.addEventListener('click', () => {
+          saveArchiveLocally();
+          const nextDt = shiftIsoDate(appStore.current.registerDate, 1);
+          const prevSnap = structuredClone(appStore.current);
+          const nextRec = appStore.archive[nextDt] ? structuredClone(appStore.archive[nextDt]) : structuredClone(REGISTER_PRESETS['BLANK']);
+          nextRec.registerDate = nextDt;
+          appStore.current = nextRec;
+          rolloverClosingToOpening(prevSnap);
+          hydrateAllInputs();
+          commitChange();
+          notify(`Rolled CL Totals into ${fmtShortDate(nextDt)} Opening Balances!`, 'emerald');
+        });
+
+        document.getElementById('reg-preset-select')?.addEventListener('change', e => {
+          const p = REGISTER_PRESETS[e.target.value];
+          if (p) {
+            appStore.current = structuredClone(p);
+            hydrateAllInputs();
+            commitChange();
+            notify(`Loaded preset: ${e.target.value}`, 'cyan');
+          }
+        });
+
+        document.getElementById('ui-saved-dates-list')?.addEventListener('click', e => {
+          const btn = e.target.closest('[data-pick-date]');
+          if (!btn) return;
+          const dt = btn.getAttribute('data-pick-date');
+          if (dt && appStore.archive[dt]) {
+            saveArchiveLocally();
+            appStore.current = structuredClone(appStore.archive[dt]);
+            hydrateAllInputs();
+            renderTimelineDates();
+            notify(`Switched to ${fmtShortDate(dt)}`, 'cyan');
+          }
+        });
+
+        // Numeric static bindings
+        const numMap = [
+          ['inp-ms-qty', 'msQty'], ['inp-ms-rate', 'msRate'],
+          ['inp-hsd-qty', 'hsdQty'], ['inp-hsd-rate', 'hsdRate'],
+          ['inp-oil-sale', 'oilSale'], ['inp-recovery-inflow', 'recoveryInflow'],
+          ['inp-phonepe', 'phonePe'], ['inp-paytm', 'paytm'], ['inp-ac-open', 'acOpening'],
+          ['inp-sbi-bal', 'sbiBalance'], ['inp-iocl-open', 'ioclOpening'],
+          ['inp-iocl-cred', 'ioclCredits'], ['inp-iocl-deb', 'ioclDebits'],
+          ['inp-open-cash', 'openingCash'], ['inp-open-exp', 'openingExpense'],
+          ['inp-credit-given', 'creditGivenToday'], ['inp-open-credit', 'openingCredit'],
+          ['inp-open-oil', 'openingOil']
+        ];
+        numMap.forEach(([id, prop]) => {
+          document.getElementById(id)?.addEventListener('input', e => {
+            appStore.current[prop] = toNum(e.target.value);
+            commitChange();
+          });
+        });
+
+        document.getElementById('chk-sync-recovery')?.addEventListener('change', e => {
+          appStore.current.syncRecovery = e.target.checked;
+          commitChange();
+        });
+
+        document.getElementById('btn-toggle-credit-list')?.addEventListener('click', () => {
+          appStore.current.useCreditParties = !appStore.current.useCreditParties;
+          document.getElementById('box-credit-parties')?.classList.toggle('hidden', !appStore.current.useCreditParties);
+          commitChange();
+        });
+
+        // Dynamic list add buttons
+        document.getElementById('btn-add-inflow')?.addEventListener('click', () => {
+          appStore.current.extraInflows.push({ label: '', amount: 0 });
+          renderDynamicLists();
+          commitChange();
+        });
+        document.getElementById('btn-add-bank-entry')?.addEventListener('click', () => {
+          appStore.current.bankTransactions.push({ label: '', type: 'credit', amount: 0 });
+          renderDynamicLists();
+          commitChange();
+        });
+        document.getElementById('btn-add-cash-out')?.addEventListener('click', () => {
+          appStore.current.cashOutflows.push({ label: '', amount: 0 });
+          renderDynamicLists();
+          commitChange();
+        });
+        document.getElementById('btn-add-expense')?.addEventListener('click', () => {
+          appStore.current.expenses.push({ label: '', amount: 0 });
+          renderDynamicLists();
+          commitChange();
+        });
+        document.getElementById('btn-add-credit-party')?.addEventListener('click', () => {
+          appStore.current.creditParties.push({ party: '', amount: 0 });
+          renderDynamicLists();
+          commitChange();
+        });
+        document.getElementById('btn-add-recovery')?.addEventListener('click', () => {
+          appStore.current.creditRecoveries.push({ party: '', amount: 0 });
+          renderDynamicLists();
+          commitChange();
+        });
+        document.getElementById('btn-add-partner')?.addEventListener('click', () => {
+          appStore.current.partners.push({ name: '', amount: 0 });
+          renderDynamicLists();
+          commitChange();
+        });
+
+        // Delegated list edits & deletions
+        document.addEventListener('input', e => {
+          const arr = e.target.getAttribute('data-arr');
+          if (!arr || !Array.isArray(appStore.current[arr])) return;
+          const idx = parseInt(e.target.getAttribute('data-idx'), 10);
+          const prop = e.target.getAttribute('data-prop');
+          if (!appStore.current[arr][idx]) return;
+          appStore.current[arr][idx][prop] = prop === 'amount' ? toNum(e.target.value) : e.target.value;
+          commitChange();
+        });
+
+        document.addEventListener('change', e => {
+          if (e.target.tagName !== 'SELECT') return;
+          const arr = e.target.getAttribute('data-arr');
+          if (!arr || !Array.isArray(appStore.current[arr])) return;
+          const idx = parseInt(e.target.getAttribute('data-idx'), 10);
+          const prop = e.target.getAttribute('data-prop');
+          if (!appStore.current[arr][idx]) return;
+          appStore.current[arr][idx][prop] = e.target.value;
+          commitChange();
+        });
+
+        document.addEventListener('click', e => {
+          const btn = e.target.closest('[data-rm-arr]');
+          if (!btn) return;
+          const arr = btn.getAttribute('data-rm-arr');
+          const idx = parseInt(btn.getAttribute('data-rm-idx'), 10);
+          if (!Array.isArray(appStore.current[arr])) return;
+          appStore.current[arr].splice(idx, 1);
+          renderDynamicLists();
+          commitChange();
+        });
+
+        // A4 Preview & Print
+        document.getElementById('btn-open-a4-preview')?.addEventListener('click', () => {
+          commitChange();
+          const work = document.getElementById('workspace-root');
+          const a4 = document.getElementById('a4-preview-root');
+          if (work) { work.style.display = 'none'; work.classList.add('hidden'); }
+          if (a4) { a4.style.display = 'flex'; a4.classList.remove('hidden'); }
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        document.getElementById('btn-close-a4-preview')?.addEventListener('click', () => {
+          const work = document.getElementById('workspace-root');
+          const a4 = document.getElementById('a4-preview-root');
+          if (a4) { a4.style.display = 'none'; a4.classList.add('hidden'); }
+          if (work) { work.style.display = 'block'; work.classList.remove('hidden'); }
+        });
+        document.getElementById('btn-print-direct')?.addEventListener('click', () => {
+          commitChange();
+          window.print();
+        });
+        document.getElementById('btn-print-from-a4')?.addEventListener('click', () => {
+          commitChange();
+          window.print();
+        });
+
+        // Mouse specular highlight
+        document.addEventListener('mousemove', e => {
+          document.querySelectorAll('.glass-surface').forEach(el => {
+            const r = el.getBoundingClientRect();
+            el.style.setProperty('--gx', `${e.clientX - r.left}px`);
+            el.style.setProperty('--gy', `${e.clientY - r.top}px`);
+          });
+        });
       }
 
       function boot() {
-        const rawAct = localStorage.getItem(KEYS.ACTIVE);
-        if (rawAct) {
-          appStore.current = Object.assign(structuredClone(REGISTER_PRESETS['08-NOV']), JSON.parse(rawAct));
-        }
+        // Force Cache Buster
+        localStorage.removeItem('iocl_dsr_v4_unlocked_state');
+
         setUnlockedState(false);
         wireEvents();
+        loadArchiveLocally();
         hydrateAllInputs();
+        
+        if (fbAuth) {
+          onAuthStateChanged(fbAuth, user => {
+            if (user && !user.isAnonymous) {
+              updateSignedInUserUI(user);
+            }
+          });
+        }
       }
 
-      document.addEventListener('DOMContentLoaded', boot);
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', boot);
+      } else {
+        boot();
+      }
     })();
   </script>
 </body>
