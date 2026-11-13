@@ -751,41 +751,14 @@
           </div>
         </div>
 
-        <!-- Primary Google Sign-In Button -->
-        <button id="btn-gate-google" type="button" class="btn-google w-full py-3 px-4 text-sm font-bold flex items-center justify-center gap-2.5 cursor-pointer">
-          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-          </svg>
-          <span>Sign in with Google</span>
-        </button>
-
-        <div class="relative flex items-center justify-center">
-          <div class="border-t border-white/15 w-full"></div>
-          <span class="px-3 text-[10px] uppercase tracking-widest font-bold text-slate-400 bg-transparent shrink-0">or use account</span>
-          <div class="border-t border-white/15 w-full"></div>
-        </div>
-
-        <!-- Sign In / Register Switch Tabs -->
-        <div class="grid grid-cols-2 gap-2 p-1 rounded-xl bg-slate-950/55 border border-white/10">
-          <button id="tab-auth-signin" type="button" class="btn-saffron py-2 text-xs font-bold cursor-pointer">
-            Sign In
-          </button>
-          <button id="tab-auth-register" type="button" class="btn-frosted py-2 text-xs font-bold text-slate-300 cursor-pointer border-transparent">
-            Register
-          </button>
-        </div>
-
         <!-- SIGN IN PANEL -->
-        <div id="box-gate-login" class="space-y-3.5">
+        <div id="box-gate-login" class="space-y-3.5 mt-2">
           <div>
-            <label for="gate-userid" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Email / User ID</label>
+            <label for="gate-userid" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">User ID</label>
             <input
               id="gate-userid"
               type="text"
-              placeholder="Abhay or yourname@gmail.com"
+              placeholder="Enter User ID (Abhay)"
               autocomplete="off"
               class="glass-field w-full px-3.5 py-2.5 text-sm font-semibold text-white"
             />
@@ -811,7 +784,7 @@
           </div>
 
           <div id="gate-error-alert" class="hidden px-3.5 py-2 rounded-xl bg-rose-500/20 border border-rose-400/40 text-xs font-semibold text-rose-200 text-center">
-            Invalid User ID / Email or Password.
+            Invalid User ID or Password.
           </div>
 
           <div id="gate-lockout-alert" class="hidden px-3.5 py-2.5 rounded-xl bg-amber-500/20 border border-amber-400/45 text-xs font-bold text-amber-200 text-center">
@@ -819,58 +792,12 @@
           </div>
 
           <button id="btn-gate-unlock" type="button" class="btn-saffron w-full py-3 text-sm font-extrabold tracking-wide cursor-pointer flex items-center justify-center gap-2">
-            <span>Sign In &amp; Open Register</span>
+            <span>Unlock Daily Sale Register</span>
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.4">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
           </button>
         </div>
-
-        <!-- REGISTER PANEL -->
-        <div id="box-gate-register" class="hidden space-y-3.5">
-          <div>
-            <label for="reg-fullname" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Full Name</label>
-            <input
-              id="reg-fullname"
-              type="text"
-              placeholder="e.g. Abhay"
-              autocomplete="off"
-              class="glass-field w-full px-3.5 py-2.5 text-sm font-semibold text-white"
-            />
-          </div>
-
-          <div>
-            <label for="reg-email" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Email Address</label>
-            <input
-              id="reg-email"
-              type="email"
-              placeholder="yourname@gmail.com"
-              autocomplete="off"
-              class="glass-field w-full px-3.5 py-2.5 text-sm font-semibold text-white"
-            />
-          </div>
-
-          <div>
-            <label for="reg-password" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">Create Password (Min 6 chars)</label>
-            <input
-              id="reg-password"
-              type="password"
-              placeholder="Create a secure password"
-              autocomplete="new-password"
-              class="glass-field w-full px-3.5 py-2.5 text-sm font-mono text-white"
-            />
-          </div>
-
-          <div id="reg-error-alert" class="hidden px-3.5 py-2 rounded-xl bg-rose-500/20 border border-rose-400/40 text-xs font-semibold text-rose-200 text-center"></div>
-
-          <button id="btn-gate-register" type="button" class="btn-emerald w-full py-3 text-sm font-extrabold tracking-wide cursor-pointer flex items-center justify-center gap-2">
-            <span>Create Account &amp; Sync</span>
-          </button>
-        </div>
-
-        <p class="text-center text-[11px] text-slate-400 pt-1">
-          Your data is automatically synced to the Cloud Database. Sign in from any device to restore instantly.
-        </p>
       </div>
     </div>
 
@@ -912,11 +839,6 @@
 
         <!-- TIER 2: Clean Account & Export Action Buttons -->
         <div class="flex flex-wrap items-center gap-2.5 pt-1">
-          <div class="flex items-center px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-xs font-bold text-sky-200 gap-2">
-            <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-            <span id="ui-cloud-account-email">Signed in automatically</span>
-          </div>
-
           <button id="btn-top-save-html" type="button" title="Download Portable index.html" class="btn-emerald px-4 py-2 text-xs font-bold inline-flex items-center gap-1.5 cursor-pointer">
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -928,7 +850,7 @@
             <svg class="w-3.5 h-3.5 text-rose-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
             </svg>
-            <span>Sign Out</span>
+            <span>Lock Register</span>
           </button>
         </div>
 
@@ -1786,35 +1708,14 @@
   </div>
 
   <!-- ====================================================================== -->
-  <!-- 5. CLEAN MODULAR APPLICATION ENGINE + FIREBASE CLOUD DATABASE          -->
+  <!-- 5. CLEAN MODULAR APPLICATION ENGINE                                      -->
   <!-- ====================================================================== -->
-  <script type="module">
-    import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js';
-    import {
-      getAuth,
-      GoogleAuthProvider,
-      signInWithPopup,
-      signInWithEmailAndPassword,
-      createUserWithEmailAndPassword,
-      signInWithCustomToken,
-      signInAnonymously,
-      onAuthStateChanged,
-      signOut,
-      updateProfile
-    } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js';
-    import {
-      getFirestore,
-      doc,
-      setDoc,
-      getDoc,
-      onSnapshot
-    } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js';
-
+  <script>
     (() => {
       'use strict';
 
       /* --------------------------------------------------------------------
-         A. PURE-JS SHA-256 SECURITY MODULE (FOR LOCAL/OFFLINE FALLBACK)
+         A. PURE-JS SHA-256 SECURITY MODULE (FOR LOCAL/OFFLINE)
          -------------------------------------------------------------------- */
       const SecurityCore = (() => {
         const SALT = 'IOCL_VANGAON_SHIELD_2026';
@@ -1919,26 +1820,6 @@
 
         return { verifyLogin, registerLocalAccount };
       })();
-
-      /* --------------------------------------------------------------------
-         B. FIREBASE CLOUD DATABASE ENGINE (WORKS ACROSS DEVICES)
-         -------------------------------------------------------------------- */
-      const appId = typeof __app_id !== 'undefined' ? __app_id : 'iocl-dsr-cloud';
-      let fbApp = null;
-      let fbAuth = null;
-      let fbDb = null;
-      let unsubscribeCloud = null;
-
-      try {
-        if (typeof __firebase_config !== 'undefined' && __firebase_config) {
-          const parsedCfg = typeof __firebase_config === 'string' ? JSON.parse(__firebase_config) : __firebase_config;
-          fbApp = initializeApp(parsedCfg);
-          fbAuth = getAuth(fbApp);
-          fbDb = getFirestore(fbApp);
-        }
-      } catch (err) {
-        console.warn('Cloud initialization note:', err);
-      }
 
       /* --------------------------------------------------------------------
          C. REGISTER PRESETS & EXCEL FORMULA ENGINE
@@ -2163,129 +2044,6 @@
         if (p) p.setAttribute('value', '');
 
         return '<!DOCTYPE html>\n' + clone.outerHTML;
-      }
-
-      /* --------------------------------------------------------------------
-         E. SEAMLESS FIREBASE CLOUD DATABASE (REPLACES G-DRIVE API)
-         -------------------------------------------------------------------- */
-      function getUserVaultDocRef(uid) {
-        if (!fbDb || !uid) return null;
-        return doc(fbDb, 'artifacts', appId, 'users', uid, 'dsr_data', 'vault');
-      }
-
-      async function saveToCloudVault() {
-        if (!fbDb || !fbAuth || !fbAuth.currentUser) return;
-        const uid = fbAuth.currentUser.uid;
-        const ref = getUserVaultDocRef(uid);
-        if (!ref) return;
-        try {
-          await setDoc(ref, {
-            updatedAt: Date.now(),
-            archiveJson: JSON.stringify(appStore.archive)
-          }, { merge: true });
-          const st = document.getElementById('ui-sync-status');
-          if (st) st.textContent = 'Cloud Database Auto-Saved ✓';
-        } catch (err) {
-          console.warn('Cloud save warning:', err);
-        }
-      }
-
-      async function loadFromCloudVault(uid) {
-        if (!fbDb || !fbAuth || !uid) return false;
-        const ref = getUserVaultDocRef(uid);
-        if (!ref) return false;
-        try {
-          const snap = await getDoc(ref);
-          if (snap.exists()) {
-            const payload = snap.data();
-            if (payload && payload.archiveJson) {
-              const cloudArchive = JSON.parse(payload.archiveJson);
-              if (cloudArchive && typeof cloudArchive === 'object' && Object.keys(cloudArchive).length > 0) {
-                appStore.archive = Object.assign({}, appStore.archive, cloudArchive);
-                const sorted = Object.keys(appStore.archive).sort();
-                const latest = sorted[sorted.length - 1];
-                if (latest && appStore.archive[latest]) {
-                  appStore.current = structuredClone(appStore.archive[latest]);
-                }
-                saveArchiveLocally();
-                hydrateAllInputs();
-                renderTimelineDates();
-                return true;
-              }
-            }
-          }
-          await saveToCloudVault();
-        } catch (err) {
-          console.warn('Cloud load warning:', err);
-        }
-        return false;
-      }
-
-      function attachCloudListener(uid) {
-        if (unsubscribeCloud) {
-          unsubscribeCloud();
-          unsubscribeCloud = null;
-        }
-        if (!fbDb || !fbAuth || !uid) return;
-        const ref = getUserVaultDocRef(uid);
-        if (!ref) return;
-        unsubscribeCloud = onSnapshot(ref, snap => {
-          if (!snap.exists()) return;
-          const payload = snap.data();
-          if (payload && payload.archiveJson) {
-            try {
-              const remote = JSON.parse(payload.archiveJson);
-              if (remote && Object.keys(remote).length > 0) {
-                appStore.archive = Object.assign({}, appStore.archive, remote);
-                renderTimelineDates();
-              }
-            } catch (_) {}
-          }
-        }, err => {
-          console.warn('Realtime listener error:', err);
-        });
-      }
-
-      function updateSignedInUserUI(user) {
-        const btnText = document.getElementById('ui-google-btn-text');
-        const emailLabel = document.getElementById('ui-cloud-account-email');
-        if (user && !user.isAnonymous) {
-          const label = user.email || user.displayName || 'Google Account';
-          if (btnText) btnText.textContent = label;
-          if (emailLabel) emailLabel.textContent = `Signed in as ${label}`;
-        } else {
-          if (btnText) btnText.textContent = 'Sign in with Google';
-          if (emailLabel) emailLabel.textContent = 'Signed in automatically (Local mode)';
-        }
-      }
-
-      async function handleGoogleSignIn(fromGate) {
-        if (!fbAuth) {
-          notify('Cloud connection is not available in this environment.', 'orange');
-          return;
-        }
-        try {
-          const provider = new GoogleAuthProvider();
-          // Removing custom scopes to prevent "no registered origin" errors.
-          // Standard login will just use default Firebase settings.
-          const result = await signInWithPopup(fbAuth, provider);
-          
-          updateSignedInUserUI(result.user);
-          if (fromGate) setUnlockedState(true);
-          
-          const restored = await loadFromCloudVault(result.user.uid);
-          attachCloudListener(result.user.uid);
-          
-          notify(
-            restored
-              ? `Welcome ${result.user.displayName || result.user.email}! Restored your data.`
-              : `Signed in as ${result.user.email}! Database Auto-Save active.`,
-            'emerald'
-          );
-        } catch (err) {
-          console.warn('Google Sign-In blocked:', err);
-          notify('Google Login blocked by this domain. Use Email & Password Sign In instead!', 'orange');
-        }
       }
 
       /* --------------------------------------------------------------------
@@ -2635,10 +2393,6 @@
       function commitChange() {
         refreshUIAndPrint();
         saveArchiveLocally();
-        clearTimeout(syncTimer);
-        syncTimer = setTimeout(() => {
-          saveToCloudVault().catch(() => {});
-        }, 700);
       }
 
       function setUnlockedState(unlocked) {
@@ -2668,29 +2422,10 @@
 
         if (!uid || !pwd) {
           if (errBox) {
-            errBox.textContent = 'Please enter your User ID / Email and Password.';
+            errBox.textContent = 'Please enter your User ID and Password.';
             errBox.classList.remove('hidden');
           }
           return;
-        }
-
-        if (fbAuth && uid.includes('@')) {
-          try {
-            const cred = await signInWithEmailAndPassword(fbAuth, uid, pwd);
-            appStore.failedCount = 0;
-            errBox?.classList.add('hidden');
-            updateSignedInUserUI(cred.user);
-            setUnlockedState(true);
-            const restored = await loadFromCloudVault(cred.user.uid);
-            attachCloudListener(cred.user.uid);
-            notify(
-              restored
-                ? `Welcome back! Restored all your saved daily registers.`
-                : `Signed in as ${uid}! Cloud Auto-Save active.`,
-              'emerald'
-            );
-            return;
-          } catch (_) {}
         }
 
         const ok = await SecurityCore.verifyLogin(uid, pwd);
@@ -2698,18 +2433,11 @@
           appStore.failedCount = 0;
           errBox?.classList.add('hidden');
           setUnlockedState(true);
-          try {
-            if (fbAuth) {
-              const anon = await signInAnonymously(fbAuth);
-              await loadFromCloudVault(anon.user.uid);
-              attachCloudListener(anon.user.uid);
-            }
-          } catch(e) {}
           notify(`Welcome back, ${uid}! Daily Sale Register unlocked.`, 'emerald');
         } else {
           appStore.failedCount += 1;
           if (errBox) {
-            errBox.textContent = `Invalid User ID / Email or Password (Attempt ${appStore.failedCount}/3).`;
+            errBox.textContent = `Invalid User ID or Password (Attempt ${appStore.failedCount}/3).`;
             errBox.classList.remove('hidden');
           }
           if (appStore.failedCount >= 3) {
@@ -2734,79 +2462,9 @@
         }
       }
 
-      async function attemptGateRegister() {
-        const name = (document.getElementById('reg-fullname')?.value || '').trim();
-        const email = (document.getElementById('reg-email')?.value || '').trim().toLowerCase();
-        const pwd = document.getElementById('reg-password')?.value || '';
-        const errBox = document.getElementById('reg-error-alert');
-
-        if (!email || !email.includes('@') || pwd.length < 6) {
-          if (errBox) {
-            errBox.textContent = 'Enter a valid Gmail address and a password of at least 6 characters.';
-            errBox.classList.remove('hidden');
-          }
-          return;
-        }
-        errBox?.classList.add('hidden');
-
-        await SecurityCore.registerLocalAccount(name, email, pwd);
-
-        if (fbAuth) {
-          try {
-            const cred = await createUserWithEmailAndPassword(fbAuth, email, pwd);
-            if (name) {
-              await updateProfile(cred.user, { displayName: name }).catch(() => {});
-            }
-            updateSignedInUserUI(cred.user);
-            setUnlockedState(true);
-            await saveToCloudVault();
-            attachCloudListener(cred.user.uid);
-            notify(`Account created for ${email}! Your registers will now sync across all devices.`, 'emerald');
-            return;
-          } catch (err) {
-            if (err && err.code === 'auth/email-already-in-use') {
-              try {
-                const cred = await signInWithEmailAndPassword(fbAuth, email, pwd);
-                updateSignedInUserUI(cred.user);
-                setUnlockedState(true);
-                await loadFromCloudVault(cred.user.uid);
-                attachCloudListener(cred.user.uid);
-                notify(`Signed into existing account ${email} & restored your registers!`, 'emerald');
-                return;
-              } catch (_) {}
-            }
-            if (errBox) {
-              errBox.textContent = 'Error creating account. Please try again.';
-              errBox.classList.remove('hidden');
-            }
-          }
-        }
-      }
-
       function wireEvents() {
         // Gate Sign-In
-        document.getElementById('btn-gate-google')?.addEventListener('click', () => handleGoogleSignIn(true));
         document.getElementById('btn-gate-unlock')?.addEventListener('click', attemptGateLogin);
-        document.getElementById('btn-gate-register')?.addEventListener('click', attemptGateRegister);
-
-        const tabSignIn = document.getElementById('tab-auth-signin');
-        const tabRegister = document.getElementById('tab-auth-register');
-        const boxLogin = document.getElementById('box-gate-login');
-        const boxRegister = document.getElementById('box-gate-register');
-
-        tabSignIn?.addEventListener('click', () => {
-          tabSignIn.classList.replace('btn-frosted', 'btn-saffron');
-          tabRegister?.classList.replace('btn-saffron', 'btn-frosted');
-          boxLogin?.classList.remove('hidden');
-          boxRegister?.classList.add('hidden');
-        });
-
-        tabRegister?.addEventListener('click', () => {
-          tabRegister.classList.replace('btn-frosted', 'btn-saffron');
-          tabSignIn?.classList.replace('btn-saffron', 'btn-frosted');
-          boxRegister?.classList.remove('hidden');
-          boxLogin?.classList.add('hidden');
-        });
 
         ['gate-userid', 'gate-password'].forEach(id => {
           document.getElementById(id)?.addEventListener('keydown', e => {
@@ -2817,36 +2475,17 @@
           });
         });
 
-        ['reg-fullname', 'reg-email', 'reg-password'].forEach(id => {
-          document.getElementById(id)?.addEventListener('keydown', e => {
-            if (e.key === 'Enter') {
-              e.preventDefault();
-              attemptGateRegister();
-            }
-          });
-        });
-
         document.getElementById('btn-gate-eye')?.addEventListener('click', () => {
           const p = document.getElementById('gate-password');
           if (p) p.type = p.type === 'password' ? 'text' : 'password';
         });
 
-        document.getElementById('btn-top-lock')?.addEventListener('click', async () => {
+        document.getElementById('btn-top-lock')?.addEventListener('click', () => {
           saveArchiveLocally();
-          await saveToCloudVault().catch(() => {});
-          if (unsubscribeCloud) {
-            unsubscribeCloud();
-            unsubscribeCloud = null;
-          }
-          if (fbAuth && fbAuth.currentUser) {
-            await signOut(fbAuth).catch(() => {});
-          }
-          updateSignedInUserUI(null);
           setUnlockedState(false);
-          notify('Signed out & locked register', 'orange');
+          notify('Locked register', 'orange');
         });
 
-        document.getElementById('btn-top-google')?.addEventListener('click', () => handleGoogleSignIn(false));
         document.getElementById('btn-top-save-html')?.addEventListener('click', () => {
           triggerDownload('index.html', buildLockedExportHtml());
           notify('Saved portable index.html!', 'emerald');
@@ -3066,14 +2705,6 @@
         wireEvents();
         loadArchiveLocally();
         hydrateAllInputs();
-        
-        if (fbAuth) {
-          onAuthStateChanged(fbAuth, user => {
-            if (user && !user.isAnonymous) {
-              updateSignedInUserUI(user);
-            }
-          });
-        }
       }
 
       if (document.readyState === 'loading') {
